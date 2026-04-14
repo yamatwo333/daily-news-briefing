@@ -1,0 +1,8 @@
+.env
+.env.local
+.DS_Store
+output/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/

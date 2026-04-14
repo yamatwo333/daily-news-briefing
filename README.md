@@ -1,1 +1,32 @@
 # daily-news-briefing
+
+Generate a daily Japanese news learning brief, keep local reference outputs, and
+mirror the final daily study script into one fixed Google Doc for NotebookLM.
+
+## Repository layout
+
+- `scripts/sync_google_doc.py`: push a generated Markdown file to Google Docs
+- `apps-script/Code.gs`: Apps Script web app that receives the Markdown
+- `config/google_doc_sync.json`: fixed Google Doc sync settings
+- `docs/news_foundation_2026_ja.*`: foundational learning map for the daily brief
+- `docs/daily_briefing_principles.md`: concise operating model for the daily brief
+- `docs/automation_prompt_daily_briefing.md`: tracked reference copy of the daily automation prompt
+- `docs/google-doc-sync.md`: setup and operation notes
+- `output/`: ignored generated briefings
+
+## Daily briefing model
+
+The foundational document is the map. The daily brief is a guided daily exercise
+that applies that map to current events. Keep daily outputs beginner-friendly,
+plain, calm, and focused on 3 to 5 important stories.
+
+## Quick sync check
+
+After generating a Markdown artifact, create a local `.env` from `.env.example`
+and validate without updating Google Docs:
+
+```sh
+python3 scripts/sync_google_doc.py path/to/generated.md --dry-run
+```
+
+For full setup and sync operation, see `docs/google-doc-sync.md`.

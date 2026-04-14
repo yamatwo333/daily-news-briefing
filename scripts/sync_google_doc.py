@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Push a generated weekly rolling Markdown file to a fixed Google Doc."""
+"""Push a generated Markdown file to a fixed Google Doc."""
 
 from __future__ import annotations
 
@@ -46,7 +46,7 @@ def parse_args() -> argparse.Namespace:
         'markdown_path',
         nargs='?',
         help=(
-            'Path to the weekly rolling Markdown file. '
+            'Path to the generated Markdown file. '
             'Defaults to NEWS_ROLLING_MARKDOWN_PATH.'
         ),
     )
@@ -173,6 +173,7 @@ def main() -> int:
 
     payload = {
         'secret': sync_settings['sync_secret'],
+        'markdown': markdown,
         'text': markdown,
     }
 
