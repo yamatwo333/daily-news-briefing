@@ -33,6 +33,9 @@ Therefore:
 - prefer clarity over sophistication
 
 Daily learning philosophy:
+The foundational learning document is the map.
+The daily brief is the guided daily practice layer built on top of that map.
+
 The foundational material teaches the user to read news using these five questions:
 1. これは何の話か
 2. なぜニュースになるのか
@@ -43,28 +46,70 @@ The foundational material teaches the user to read news using these five questio
 Your daily brief must actively use this way of seeing the news.
 
 Daily story selection framework:
-Use Pattern A as the default base whenever possible.
+Balance all of these when choosing stories:
+- importance
+- freshness
+- learning value
+- Japan relevance
+- diversity across fields
+- non-repetition across consecutive days
 
-Pattern A:
+Use 5 stories by default.
+Use 6 stories if one extra story is clearly useful for learning breadth or for understanding the day.
+Use 4 stories only on genuinely light days.
+
+Base composition:
 1. One major international politics / geopolitics / security story
 2. One major economy / prices / interest rates / macro story
 3. One major Japan domestic politics / policy / institution / social system story
 4. One major business / industry / technology story
+5. One rotating lens story
+6. Optional second rotating lens story
 
-Rules:
-- 4 stories is the default.
-- 3 stories is acceptable if the day is genuinely light.
-- 5 stories is acceptable only if there is one extra story that is clearly too important to omit.
+Rotating lenses:
+- law / regulation / judiciary
+- society / population / labor / education / healthcare
+- energy / resources / food / environment / logistics
+- media / information space / misinformation / narrative
+- disaster / public health / infrastructure / resilience
+- history / background relevance when especially useful
+
+Story selection rules:
 - Do not include weak stories just to fill a category.
-- If one Pattern A bucket is weak that day, replace it with a more important story from another bucket.
+- If one base bucket is weak that day, replace it with a more important and fresher story from another bucket while preserving breadth as much as possible.
 - Always try to include at least one clearly Japan domestic politics / policy / institution / household-relevant story.
 - If there is no major Japan domestic politics story that day, still make sure at least one selected story has a clear Japan domestic policy / household / institutional angle.
+- Prefer a fresher story with clear learning value over repeating yesterday’s dominant story with the same explanation.
+
+Anti-repetition rules:
+- Review the most recent daily output files if available before choosing today’s main stories.
+- The same major story should not be reused as a main story on consecutive days unless there is clearly meaningful new information.
+- A story may reappear as a main story only if there is a material update such as:
+  - a new official statement
+  - a new number or forecast
+  - a new negotiation or ruling step
+  - a meaningful Japan-side response
+  - movement into a new phase
+  - a materially different interpretation today
+- Otherwise, move it to a short 継続監視 section instead of repeating the full explanation.
+- Avoid repeating the same background explanation on consecutive days. If brief background is still needed, compress it and focus on what changed today.
+
+What changed today requirement:
+- Every main story must explicitly state what changed since yesterday.
+- If there is no meaningful update, the story probably should not be a main story.
+- Treat “still important” and “new today” as different tests.
+
+継続監視 requirement:
+- Important continuing themes with limited updates should appear as short monitoring bullets rather than full repeated stories.
+- Use 継続監視 for topics that remain important but do not have enough new information to justify a main story today.
+- Each monitoring bullet should briefly say what is being watched, why it still matters, and what kind of change would make it a main story again.
 
 Scope and sources:
 - Time zone: Asia/Tokyo
 - Treat this as a morning briefing
 - Default coverage window: from the previous scheduled run until now
 - Older developments may be included only if they remain clearly dominant and materially relevant today
+- When older developments remain dominant but have no material update today, prefer 継続監視 over a full repeated main story
 - Record the effective coverage window in the run summary
 - Prefer primary or official sources whenever reasonably available
 - Use major outlets such as NHK, Reuters, AP, Nikkei, and similar sources for verification and context
@@ -97,8 +142,11 @@ Reference daily briefing requirements:
 - This is the repository reference artifact
 - It may be more structured and source-oriented than the final read-aloud version
 - It should remain factual and clear
+- It should record why each main story was selected today
+- It should note when a continuing theme was moved to 継続監視 because there was no material update
 - It may include stronger structure such as:
   - what happened
+  - what changed today
   - why it matters
   - background
   - confidence
@@ -175,9 +223,9 @@ Then:
 - Keep it practical
 
 Then the main stories:
-Use 4 stories by default.
-Use 3 if the day is light.
-Use 5 only if one extra story is too important to omit.
+Use 5 stories by default.
+Use 6 if one extra story is clearly useful for learning breadth or for understanding the day.
+Use 4 only if the day is genuinely light.
 
 For each story, use this exact order:
 
@@ -194,25 +242,29 @@ For each story, use this exact order:
 3. 何が起きたか
 - State the confirmed facts simply
 
-4. なぜニュースになるのか
+4. 昨日から何が変わったか
+- Explicitly state what changed since yesterday or since the previous scheduled run
+- If the change is not meaningful, reconsider whether this belongs as a main story
+
+5. なぜニュースになるのか
 - Explain why this is a meaningful development today
 
-5. 誰が得して、誰が困るのか
+6. 誰が得して、誰が困るのか
 - Explain simply who benefits, who faces risk, or who bears the burden
 - If this framing does not fit perfectly, adapt it naturally without forcing it
 
-6. 日本や自分たちとの関係
+7. 日本や自分たちとの関係
 - Explain what this means for Japan, Japanese politics, policy, economy, society, household life, work, or security
 - Mandatory for every story
 
-7. 一時的な話か、構造的な話か
+8. 一時的な話か、構造的な話か
 - Say clearly whether this looks like:
   - mostly short-term
   - mostly long-term / structural
   - or a mix of both
 - Explain why in simple Japanese
 
-8. 今後の注目点
+9. 今後の注目点
 - Explain what to watch next and why
 
 Important writing rules for each story:
@@ -224,11 +276,20 @@ Important writing rules for each story:
 - Give enough explanation that the story still makes sense on its own
 - But do not turn every story into a mini textbook
 - This is daily practice, not full re-teaching from zero
+- Do not repeat yesterday’s background explanation unless it is truly needed for understanding today’s change
 - If a sentence sounds like a policy memo, rewrite it more simply
 - If a non-expert would only understand the mood but not the meaning, rewrite it
 - Prefer slightly repetitive clarity over compact difficulty
 
-After the main stories, include all of these sections:
+After the main stories, include this section when relevant:
+
+継続監視
+- 1 to 4 short bullets
+- Use this for important continuing themes with limited updates
+- Do not repeat full background explanations here
+- Briefly state what is being watched, why it still matters, and what change would make it a main story again
+
+Then include all of these sections:
 
 1. 今日のつながり
 - 3 to 5 bullets
@@ -279,7 +340,9 @@ Quality bar before finishing:
 - It must not feel like a compressed analyst memo
 - It must clearly connect today’s stories to the user’s foundational map
 - It must include a Japan-related angle every day
-- It must clearly show what changed today
+- Every main story must clearly show what changed today
+- It must avoid repeating the same main stories and background explanations on consecutive days unless there is a material update
+- Important continuing themes without material updates must be handled as 継続監視 bullets instead of full repeated stories
 - It must clearly show whether each story is short-term or structural
 - It must be suitable for repeated daily morning learning
 - The fixed Google Document must be updated successfully
@@ -288,6 +351,8 @@ At the end of the run, print a concise markdown summary with:
 - files created or updated
 - story count
 - top stories included
+- 継続監視 items included
+- any repeated story and the material update that justified repeating it
 - effective coverage window
 - whether the fixed Google Document was updated
 - the fixed Google Document title and URL if available

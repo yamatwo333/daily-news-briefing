@@ -17,8 +17,14 @@ mirror the final daily study script into one fixed Google Doc for NotebookLM.
 ## Daily briefing model
 
 The foundational document is the map. The daily brief is a guided daily exercise
-that applies that map to current events. Keep daily outputs beginner-friendly,
-plain, calm, and focused on 3 to 5 important stories.
+that applies that map to current events. Use `docs/daily_briefing_principles.md`
+as the source of truth for story selection.
+
+Keep daily outputs beginner-friendly, plain, calm, and focused on 5 stories by
+default. Use 6 only when one extra story is clearly useful, and 4 only on
+genuinely light days. Every main story should explain what changed today; major
+continuing themes without meaningful updates belong in `継続監視` instead of
+being repeated as full stories.
 
 ## Quick sync check
 
