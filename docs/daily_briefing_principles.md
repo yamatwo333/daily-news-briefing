@@ -21,6 +21,7 @@ Daily story selection must balance:
 - diversity across fields
 - non-repetition across consecutive days
 - non-repetition of yesterday’s explanation
+- meaningful day-level coverage
 
 ## Daily Reading Questions
 
@@ -68,6 +69,7 @@ Rotating lenses:
 - energy / resources / food / environment / logistics
 - media / information space / misinformation / narrative
 - disaster / public health / infrastructure / resilience
+- art / culture / cultural policy / heritage / entertainment when it reveals social values or broader change
 - history / background relevance when especially useful
 
 Do not include weak stories just to fill a category. If one base bucket is weak that day, replace it with a more important and fresher story from another bucket while preserving breadth as much as possible.
@@ -107,9 +109,9 @@ A business or technology story should generally require meaningful new substance
 
 Weak-update business stories should be moved to `継続監視` or excluded.
 
-## Freshness And Non-Repetition
+## Freshness And Topic Repetition
 
-Every main story must explicitly state what changed since yesterday or since the previous scheduled run. If there is no meaningful update, the story probably should not be a main story.
+Every main story must explicitly state what changed since yesterday or since the previous scheduled run. Treat "still important" and "new today" as different tests. If there is no meaningful update, the story probably should not be a main story.
 
 The same major story should not be reused as a main story on consecutive days unless there is clearly meaningful new information.
 
@@ -144,6 +146,23 @@ If a topic appeared as a main story within the last 3 days, then unless there is
 - key term explanation should be shorter than usual
 - the value should come mainly from the delta
 
+## Art And Culture Lens
+
+Art and culture may be used as a rotating-lens main story when the story reveals something broader about society, values, identity, public policy, regulation, international relations, or changes in Japanese life.
+
+Do not use celebrity gossip or low-value entertainment updates as main stories.
+
+Prefer stories that help the reader understand society through culture.
+
+Examples that may qualify:
+
+- cultural policy
+- heritage / preservation issues with public significance
+- expression / censorship / free speech related cultural topics
+- major film / literature / art developments that reflect broader social change
+- international cultural relations
+- Japanese content / cultural exports / arts institutions when they reveal structural or social meaning
+
 ## 継続監視
 
 Important continuing themes with limited updates should appear as short monitoring bullets rather than full repeated stories.
@@ -155,6 +174,8 @@ Monitoring bullets should be short and should explain:
 - what is being watched
 - why it still matters
 - what kind of change would make it a main story again
+
+Do not repeat full background explanations in `継続監視`.
 
 ## Final Study Script Structure
 

@@ -6,14 +6,14 @@ Primary objective:
 Create a daily Japanese morning news learning brief that works as a practical daily exercise built on top of the user’s foundational world-news study material.
 Then overwrite the same fixed Google Document with the final daily study script.
 
-Core role of the daily brief:
+Core model:
+The foundational learning document is the map.
+The daily brief is the guided daily practice layer built on top of that map.
+
 This daily brief is NOT a standalone textbook.
 It is NOT a dense analyst memo.
 It is NOT a pure headline summary.
-It is a daily guided practice text that helps the user apply their foundational understanding to real current events.
-
-The foundational learning document is the map.
-The daily brief is the guided daily practice layer built on top of that map.
+It is guided daily practice that helps the user apply their foundational understanding to real current events.
 
 Assume the user:
 - is still a beginner
@@ -45,6 +45,17 @@ The foundational material teaches the user to read news using these five questio
 
 Your daily brief must actively use this way of seeing the news.
 
+Coverage window:
+- Time zone: Asia/Tokyo
+- Treat this as a morning briefing
+- Default effective coverage window: from the previous scheduled run until now
+- Preserve meaningful day-level understanding across that window
+- Do not bias story selection toward only the most recent few morning hours unless the relevant news flow truly happened only then
+- If execution timing is manual or shifted, still select stories as a day-level briefing, not as a narrow latest-headlines scan
+- Older developments may be included only if they remain clearly dominant and materially relevant today
+- When older developments remain dominant but have no material update today, prefer 継続監視 over a full repeated main story
+- Record the effective coverage window in the reference briefing and in the run summary
+
 Daily story selection framework:
 Balance all of these when choosing stories:
 - importance
@@ -54,6 +65,7 @@ Balance all of these when choosing stories:
 - diversity across fields
 - non-repetition across consecutive days
 - non-repetition of yesterday’s explanation
+- meaningful day-level coverage
 
 Use 5 stories by default.
 Use 6 stories if one extra story is clearly useful for learning breadth or for understanding the day.
@@ -73,6 +85,7 @@ Rotating lenses:
 - energy / resources / food / environment / logistics
 - media / information space / misinformation / narrative
 - disaster / public health / infrastructure / resilience
+- art / culture / cultural policy / heritage / entertainment when it reveals social values or broader change
 - history / background relevance when especially useful
 
 Story selection rules:
@@ -81,6 +94,7 @@ Story selection rules:
 - Always try to include a true Japan domestic politics / policy / institution / social system story.
 - Prefer a fresher story with clear learning value over repeating yesterday’s dominant story with the same explanation.
 - Treat “still important” and “new today” as different tests.
+- Every main story must have meaningful new substance within the effective coverage window, or a clearly justified reason for inclusion.
 
 Strengthened Japan domestic rule:
 The Japan domestic slot should preferably be a true Japan domestic politics / policy / institution / social system story.
@@ -111,6 +125,21 @@ A business or technology story should generally require meaningful new substance
 - materially new documents or results
 
 Weak-update business stories should be moved to 継続監視 or excluded.
+
+Art / culture rotating-lens rule:
+Art and culture may be used as a rotating-lens main story when the story reveals something broader about society, values, identity, public policy, regulation, international relations, or changes in Japanese life.
+
+Do not use celebrity gossip or low-value entertainment updates as main stories.
+
+Prefer stories that help the user understand society through culture.
+
+Examples that may qualify:
+- cultural policy
+- heritage / preservation issues with public significance
+- expression / censorship / free speech related cultural topics
+- major film / literature / art developments that reflect broader social change
+- international cultural relations
+- Japanese content / cultural exports / arts institutions when they reveal structural or social meaning
 
 Anti-repetition rules:
 - Review the most recent daily output files if available before choosing today’s main stories.
@@ -148,31 +177,22 @@ What changed today requirement:
 - Do not repeat full background explanations in 継続監視.
 
 Scope and sources:
-- Time zone: Asia/Tokyo
-- Treat this as a morning briefing
-- Default coverage window: from the previous scheduled run until now
-- Preserve meaningful day-level understanding across that window
-- Do not bias story selection toward only the most recent few morning hours unless the relevant news flow truly happened only then
-- If execution timing is manual or shifted, still select stories as a day-level briefing, not as a narrow latest-headlines scan
-- Older developments may be included only if they remain clearly dominant and materially relevant today
-- When older developments remain dominant but have no material update today, prefer 継続監視 over a full repeated main story
-- Record the effective coverage window in the run summary
-- Prefer primary or official sources whenever reasonably available
-- Use major outlets such as NHK, Reuters, AP, Nikkei, and similar sources for verification and context
-- If a primary source is missing, say so briefly
-- Distinguish fact, background, and inference
-- Mark uncertainty clearly
+- Prefer primary or official sources whenever reasonably available.
+- Use major outlets such as NHK, Reuters, AP, Nikkei, and similar sources for verification and context.
+- If a primary source is missing, say so briefly.
+- Distinguish fact, background, and inference.
+- Mark uncertainty clearly.
 
 Google Docs integration:
-- Reuse the existing repository integration for the fixed Google Document
-- Look for tracked config and sync files first
-- Prefer repository files such as config/google_doc_sync.json, scripts/sync_google_doc.py, README, docs, AGENTS.md, or similar tracked sources
-- Treat tracked config as the source of truth
-- After generating the final daily study script, overwrite the same fixed Google Document with that final study script
-- Do not write the weekly rolling reference file into the Google Document
-- Keep the same fixed Google Document URL
-- Do not modify config/google_doc_sync.json unless a sync change is explicitly required
-- Do not modify scripts/sync_google_doc.py unless a sync bug fix is explicitly required
+- Reuse the existing repository integration for the fixed Google Document.
+- Look for tracked config and sync files first.
+- Prefer repository files such as config/google_doc_sync.json, scripts/sync_google_doc.py, README, docs, AGENTS.md, or similar tracked sources.
+- Treat tracked config as the source of truth.
+- After generating the final daily study script, overwrite the same fixed Google Document with that final study script.
+- Do not write the weekly rolling reference file into the Google Document.
+- Keep the same fixed Google Document URL.
+- Do not modify config/google_doc_sync.json unless a sync change is explicitly required.
+- Do not modify scripts/sync_google_doc.py unless a sync bug fix is explicitly required.
 
 Required output files:
 1. Reference daily briefing
@@ -187,14 +207,14 @@ Required output files:
    output/daily/YYYY/YYYY-MM/YYYY-MM-DD_read_aloud_ja.md
 
 Reference daily briefing requirements:
-- This is the repository reference artifact
-- It may be more structured and source-oriented than the final read-aloud version
-- It should remain factual and clear
-- It should record the effective coverage window used for story selection
-- It should record why each main story was selected today
-- It should identify what changed since yesterday or since the previous scheduled run
-- It should note when a continuing theme was moved to 継続監視 because there was no material update
-- It should note when a recurring topic was shortened because it appeared recently
+- This is the repository reference artifact.
+- It may be more structured and source-oriented than the final read-aloud version.
+- It should remain factual and clear.
+- It should record the effective coverage window used for story selection.
+- It should record why each main story was selected today.
+- It should identify what changed since yesterday or since the previous scheduled run.
+- It should note when a continuing theme was moved to 継続監視 because there was no material update.
+- It should note when a recurring topic was shortened because it appeared recently.
 - It may include stronger structure such as:
   - what happened
   - what changed today
@@ -397,22 +417,23 @@ Examples of desired writing:
 - Better: 「物価が上がると、中央銀行は金利を下げにくくなります。すると、お金を借りる条件が厳しくなりやすいです。」
 
 Quality bar before finishing:
-- The script must be understandable to a beginner
-- It must be easier to understand than ordinary news writing
-- It must not feel intimidating
-- It must not feel like a compressed analyst memo
-- It must clearly connect today’s stories to the user’s foundational map
-- It must include a Japan-related angle every day
-- It must actively include true Japan domestic policy / institution / social system coverage when available
-- Every main story must clearly show what changed today
-- The brief must preserve meaningful day-level coverage from the previous scheduled run until now
-- It must avoid repeating the same main stories and background explanations on consecutive days unless there is a material update
-- It must suppress full repeated explanations for topics that appeared as main stories within the last 3 days unless there is a major phase change
-- Important continuing themes without material updates must be handled as 継続監視 bullets instead of full repeated stories
-- Weak-update business or technology stories must be moved to 継続監視 or excluded
-- It must clearly show whether each story is short-term or structural
-- It must be suitable for repeated daily morning learning
-- The fixed Google Document must be updated successfully
+- The script must be understandable to a beginner.
+- It must be easier to understand than ordinary news writing.
+- It must not feel intimidating.
+- It must not feel like a compressed analyst memo.
+- It must clearly connect today’s stories to the user’s foundational map.
+- It must include a Japan-related angle every day.
+- It must actively include true Japan domestic policy / institution / social system coverage when available.
+- It may use art / culture as a rotating lens only when it meaningfully helps social understanding.
+- Every main story must clearly show what changed today.
+- The brief must preserve meaningful day-level coverage from the previous scheduled run until now.
+- It must avoid repeating the same main stories and background explanations on consecutive days unless there is a material update.
+- It must suppress full repeated explanations for topics that appeared as main stories within the last 3 days unless there is a major phase change.
+- Important continuing themes without material updates must be handled as 継続監視 bullets instead of full repeated stories.
+- Weak-update business or technology stories must be moved to 継続監視 or excluded.
+- It must clearly show whether each story is short-term or structural.
+- It must be suitable for repeated daily morning learning.
+- The fixed Google Document must be updated successfully.
 
 At the end of the run, print a concise markdown summary with:
 - files created or updated
