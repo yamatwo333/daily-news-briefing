@@ -33,6 +33,8 @@ Use these five reading questions in every daily brief:
 4. 日本や自分の生活とどう関係するのか
 5. 一時的な話か、構造的な話か
 
+These questions remain the central learning frame for story selection, explanation, and final script structure.
+
 ## Coverage Window
 
 The effective coverage window should normally run from the previous scheduled run until now.
@@ -73,6 +75,16 @@ Rotating lenses:
 - history / background relevance when especially useful
 
 Do not include weak stories just to fill a category. If one base bucket is weak that day, replace it with a more important and fresher story from another bucket while preserving breadth as much as possible.
+
+## Cluster Diversity
+
+Avoid filling too many main-story slots with topics from the same broad causal cluster.
+
+Prefer not to use more than 2 main stories from the same broad causal cluster on one day.
+
+If a 3rd candidate from the same cluster is important but adds limited incremental learning value, move it to `継続監視`.
+
+The goal is breadth across the map, so the reader does not feel they heard the same story in three different forms.
 
 ## Japan Domestic Slot
 
@@ -163,6 +175,14 @@ Examples that may qualify:
 - international cultural relations
 - Japanese content / cultural exports / arts institutions when they reveal structural or social meaning
 
+Art and culture are not mandatory every day.
+
+If no art or culture rotating story has appeared in the last 7 daily runs, raise its priority meaningfully for the next eligible day.
+
+If an art or culture story and another rotating-lens story have similar importance and freshness, prefer the art or culture story when the category has been absent recently.
+
+Do not force low-value art or culture content just to satisfy frequency.
+
 ## 継続監視
 
 Important continuing themes with limited updates should appear as short monitoring bullets rather than full repeated stories.
@@ -177,9 +197,21 @@ Monitoring bullets should be short and should explain:
 
 Do not repeat full background explanations in `継続監視`.
 
+## Read-Aloud And Google Docs Formatting
+
+The final `read_aloud_ja.md` file and the Google Document body should be TTS-friendly and avoid noisy markdown symbols.
+
+Do not use markdown heading markers such as `#`, `##`, or `###` in the final read-aloud version.
+
+Do not use markdown bullet markers such as `-` or `*`, numbered markdown lists, or backticks in the final read-aloud version.
+
+Use plain readable Japanese section labels instead.
+
+Repository reference artifacts may still use markdown when useful.
+
 ## Final Study Script Structure
 
-The final read-aloud study script must use this structure:
+The final read-aloud study script must use this structure with plain Japanese labels, not markdown heading markers:
 
 1. `今日の全体像`
 2. `昨日から新しく分かったこと`

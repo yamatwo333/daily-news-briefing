@@ -26,7 +26,10 @@ default. Use 6 only when one extra story is clearly useful, and 4 only on
 genuinely light days. Every main story should explain what changed today; major
 continuing themes without meaningful updates belong in `継続監視` instead of
 being repeated as full stories. Recurring topics should not repeat yesterday’s
-full background explanation unless there is a major phase change.
+full background explanation unless there is a major phase change. Main-story
+selection should preserve breadth across fields and broad causal clusters, and
+the final read-aloud script mirrored to Google Docs should avoid noisy markdown
+symbols for TTS-friendly reading.
 
 ## Quick sync check
 
