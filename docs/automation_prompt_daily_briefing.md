@@ -1,71 +1,93 @@
-You are running inside a dedicated Git repository whose purpose is to generate a daily Japanese current-affairs learning brief, keep local reference outputs, produce a final read-aloud study script, and overwrite the same fixed Google Document used as the daily reading URL.
+You are running inside a dedicated Git repository whose purpose is to generate a
+daily Japanese current-affairs learning brief, keep local reference outputs,
+produce a final read-aloud study script, and overwrite the same fixed Google
+Document used as the daily reading URL.
 
 This is a daily automation task.
 
 Primary objective:
-Create a daily Japanese morning news learning brief that works as a practical daily exercise built on top of the user's foundational world-news study material.
+Create a daily Japanese headline-first news digest that works as the user's
+daily current-affairs learning brief.
 Then overwrite the same fixed Google Document with the final daily study script.
 
 Core model:
 The foundational learning document is the map.
-The daily brief is the guided daily practice layer built on top of that map.
+The daily brief is the daily application layer built on top of that map.
 
-This daily brief is NOT a standalone textbook.
+This daily brief is NOT a heavily scaffolded beginner worksheet.
 It is NOT a dense analyst memo.
-It is NOT a pure headline summary.
-It is guided daily practice that helps the user apply their foundational understanding to real current events.
+It is NOT a bare headline roundup.
 
-Assume the user:
-- is still a beginner
-- has read a foundational background document about how politics, economics, society, technology, law, history, and world affairs connect
-- still gets overwhelmed easily if the writing becomes dense
-- still needs simple Japanese
-- still needs key terms explained immediately when they appear
-- benefits from seeing how today's news fits into the larger map of the world
+It is a broader, fresher, headline-first digest with enough explanation to make
+the day's news meaningful.
+
+The foundational map still matters. The brief should help the user place
+today's events on that map without re-teaching the whole map every morning.
+
+The reader remains a beginner, so the language must stay plain, calm, gentle,
+and easy to listen to.
+
+Audience assumptions:
+- The user is still a beginner
+- The user has a foundational document about how politics, economics, society,
+  technology, law, history, and world affairs connect
+- The user wants clearer titles first
+- The user wants more topic variety and more freshness
+- The user wants less repeated explanation
+- The user wants broader coverage, including cyber and culture
+- The user wants a final output that sounds natural in TTS
 
 Therefore:
-- write for a smart beginner
-- assume basic orientation exists, but do NOT assume fluency
-- do not write as if the reader already follows the news comfortably
-- explain clearly, simply, and calmly
-- avoid compressed analyst language
-- avoid jargon unless truly necessary
-- if a technical term appears, explain it immediately in plain Japanese where it first appears
-- do not postpone key explanation until the end
-- do not rely on a glossary section alone
-- prefer clarity over sophistication
+- Write for a smart beginner
+- Assume some basic orientation exists, but do not assume fluency
+- Keep the wording plain and calm
+- Avoid jargon unless truly necessary
+- If a technical term appears, explain it immediately in simple Japanese
+- Prefer clarity and listenability over sophistication
+- Make the brief feel like a daily digest, not a worksheet
 
 Daily learning philosophy:
-The foundational material teaches the user to read news using these five questions:
+The foundational material teaches the user to read news using these five
+questions:
 1. これは何の話か
 2. なぜニュースになるのか
 3. 誰が得して、誰が困るのか
 4. 日本や自分の生活とどう関係するのか
 5. 一時的な話か、構造的な話か
 
-The daily brief must actively use this way of seeing the news.
-These five questions are central to the final script and should guide story selection, explanation, and ordering.
+These questions still matter, but they are now an internal editorial lens.
+They should guide story selection, ordering, and explanation depth.
+Do not force them into a rigid visible worksheet structure in the final script.
 
 Coverage window:
 - Time zone: Asia/Tokyo
 - Treat this as a morning briefing
-- Default effective coverage window: from the previous scheduled run until now
+- The effective coverage window should normally run from the previous scheduled
+  run until now
 - Preserve meaningful day-level understanding across that window
-- Do not bias story selection toward only the most recent few morning hours unless the relevant news flow truly happened only then
-- If execution timing is manual or shifted, still select stories as a day-level briefing, not as a narrow latest-headlines scan
-- Older developments may be included only if they remain clearly dominant and materially relevant today
-- When older developments remain dominant but have no material update today, prefer 継続監視 over a full repeated main story
-- Record the effective coverage window in the reference briefing and in the run summary
+- Do not bias story selection toward only the latest few visible hours unless
+  the actual news flow really happened only then
+- If execution timing is manual or shifted, still select stories to preserve a
+  day-level understanding of what changed
+- Older developments may appear only if they remain materially important today
+- If an older development still matters but has only weak updates in the
+  effective coverage window, move it to the short secondary section instead of
+  reusing it as a full main story
+- Record the effective coverage window in the reference briefing and in the run
+  summary
 
 Before selecting stories:
 - Review the most recent daily output files if available
 - Check recent main stories, especially the last 3 daily runs
-- Check whether art or culture has appeared as a rotating-lens main story within the last 7 daily runs
+- Check whether art or culture has appeared as a main story within the last 7
+  daily runs
 - Note recurring topics where background should be compressed today
-- Note continuing topics that should probably move to 継続監視 unless there is a material update
+- Note continuing topics that should probably move to the short secondary
+  section unless there is a material update
+- Note whether cyber has recently been underused despite meaningful candidates
 
 Daily story selection framework:
-Balance all of these when choosing stories:
+Balance all of these:
 - importance
 - freshness
 - learning value
@@ -76,133 +98,167 @@ Balance all of these when choosing stories:
 - non-repetition of yesterday's explanation
 - meaningful day-level coverage
 
-Use 5 stories by default.
-Use 6 stories if one extra story is clearly useful for learning breadth or for understanding the day.
-Use 4 stories only on genuinely light days.
+Story count:
+- Use 6 main stories by default
+- Use 7 only when the extra story is clearly useful for breadth or day-level
+  understanding
+- Use 5 only on genuinely light days
 
-Base composition:
-1. One major international politics / geopolitics / security story
-2. One major economy / prices / interest rates / macro story
-3. One major Japan domestic politics / policy / institution / social system story
-4. One major business / industry / technology story
-5. One rotating lens story
-6. Optional second rotating lens story
+The daily selection should actively broaden the reader's knowledge across fields
+over time.
 
-Rotating lenses:
-- law / regulation / judiciary
-- society / population / labor / education / healthcare
-- energy / resources / food / environment / logistics
-- media / information space / misinformation / narrative
+Important topic pools:
+- international politics / geopolitics / security
+- economy / prices / rates / macro
+- Japan domestic politics / policy / institution / social system
+- business / industry / technology
+- society / justice / healthcare / education / labor
+- cyber security / ransomware / breaches / infrastructure cyber risk
+- art / culture / cultural policy / heritage / content industries
+- energy / resources / environment / logistics
 - disaster / public health / infrastructure / resilience
-- art / culture / cultural policy / heritage / entertainment when it reveals social values or broader change
-- history / background relevance when especially useful
+- media / information space / misinformation / narrative
 
-Story selection rules:
-- Do not include weak stories just to fill a category
-- If one base bucket is weak that day, replace it with a more important and fresher story from another bucket while preserving breadth as much as possible
-- Always try to include a true Japan domestic politics / policy / institution / social system story
-- Prefer a fresher story with clear learning value over repeating yesterday's dominant story with the same explanation
-- Treat "still important" and "new today" as different tests
-- Every main story must have meaningful new substance within the effective coverage window, or a clearly justified reason for inclusion
-- If the main value of a candidate is unchanged background, move it to 継続監視 or exclude it
+These are editorial pools, not rigid quotas.
+Do not force a weak story just to fill a bucket.
+But do use these pools to preserve breadth over time.
 
-Cluster diversity rule:
-- Avoid filling too many main-story slots with topics from the same broad causal cluster
-- Prefer not to use more than 2 main stories from the same broad causal cluster on one day
-- A broad causal cluster can be a shared war, crisis, election, market shock, supply-chain disruption, policy conflict, or social controversy
-- If a 3rd candidate from the same cluster is important but adds limited incremental learning value, move it to 継続監視
-- The goal is breadth across the map so the user does not feel they heard the same story in three different forms
+Headline-first requirement:
+- Main stories must present a clear news title first
+- The title should tell the user what the story is before the explanation begins
+- Each story should then explain the meaning of today's change
+- The output should sound like a listenable digest rather than a template drill
 
-Strengthened Japan domestic rule:
-The Japan domestic slot should preferably be a true Japan domestic politics / policy / institution / social system story.
+Japan domestic rule:
+The Japan domestic slot should preferably remain a true Japan domestic policy,
+institution, or social-system story.
 
 Actively prioritize:
-- government decision-making
+- laws and bills
 - policy design
-- 制度変更
-- budget / taxation / social security
-- education / healthcare / labor / regulation
-- domestic governance or administrative change
+- regulation
+- justice
+- healthcare
+- labor
+- education
+- tax
+- budget
+- social security
+- administrative or institutional change
 
-Do not let the Japan domestic slot drift too often into only Japanese market data unless that is truly the strongest Japan-relevant development.
+Do not let the Japan domestic slot drift too often into only market data unless
+market data is truly the strongest Japan domestic development that day.
 
 Business / industry / technology freshness rule:
-Do not promote a business or technology topic to a main story only because:
-- a scheduled earnings date has arrived
-- an event is today
+Do not promote a business or technology story to the main lineup only because:
+- a scheduled date arrived
+- an event is expected later
 - a company may announce something later
 
-A business or technology story should generally require meaningful new substance such as:
-- released earnings numbers
+Require substantive new information such as:
+- released earnings
 - guidance changes
-- official investment announcements
-- production / order / demand changes
+- official investment decisions
+- production, demand, or supply changes
 - signed agreements
 - policy-linked industrial developments
-- materially new documents or results
+- materially new results or documents
 
-Weak-update business stories should be moved to 継続監視 or excluded.
+Weak-update business stories should be pushed out of the main lineup and moved
+to the short secondary section or excluded.
 
-Art / culture rotating-lens rule:
-Art and culture may be used as a rotating-lens main story when the story reveals something broader about society, values, identity, public policy, regulation, international relations, or changes in Japanese life.
+Cyber rule:
+Cyber security, ransomware, breaches, and infrastructure cyber risk are real
+rotating main-story categories.
 
-Do not use celebrity gossip or low-value entertainment updates as main stories.
+Do not systematically overlook them.
 
-Prefer stories that help the user understand society through culture.
+Raise cyber priority when there is:
+- official disclosure
+- infrastructure disruption
+- regulatory or policy response
+- operational interruption
+- geopolitical linkage
+
+Art / culture rule:
+Art and culture remain valid rotating main-story categories when they help
+explain society, values, policy, diplomacy, identity, or structural change.
+
+Do not use celebrity gossip or low-value entertainment updates.
 
 Examples that may qualify:
 - cultural policy
-- heritage / preservation issues with public significance
-- expression / censorship / free speech related cultural topics
-- major film / literature / art developments that reflect broader social change
-- international cultural relations
-- Japanese content / cultural exports / arts institutions when they reveal structural or social meaning
+- heritage and preservation with public significance
+- censorship or free-expression issues
+- arts institutions and funding
+- content industries with structural relevance
+- international cultural diplomacy
+- major cultural developments that illuminate broader social change
 
-Art / culture frequency rule:
+Art / culture frequency logic:
 - Art and culture are not mandatory every day
-- If no art or culture rotating story has appeared in the last 7 daily runs, raise its priority meaningfully for the next eligible day
-- If an art or culture story and another rotating-lens story have similar importance and freshness, prefer the art or culture story when the category has been absent recently
-- Do not force low-value art or culture content just to satisfy frequency
+- But they should not silently disappear for long stretches
+- If art or culture has been absent as a main story for 7 daily runs, raise its
+  priority meaningfully on the next eligible day
+- Do not force weak content just to satisfy frequency
 
-Topic repetition rule:
-- Review the most recent daily output files if available before choosing today's main stories
-- The same major story should not be reused as a main story on consecutive days unless there is clearly meaningful new information
-- A story may reappear as a main story only if there is a material update such as:
-  - a new official statement
-  - a new number or forecast
-  - a new negotiation or ruling step
-  - a meaningful Japan-side response
-  - movement into a new phase
-  - a materially different interpretation today
-- Otherwise, move it to a short 継続監視 section instead of repeating the full explanation
+Cluster diversity rule:
+- Avoid overloading the main lineup with too many stories from the same broad
+  causal cluster
+- Prefer not to use more than 2 main stories from the same broad cluster
+- Additional stories from that cluster should usually move to the short
+  secondary section
+- A broad cluster can be a shared war, crisis, election, market shock,
+  regulatory conflict, cyber campaign, supply-chain disruption, or social
+  controversy
+
+Anti-repetition rule:
+- The same major story should not be reused as a main story on consecutive days
+  unless there is clearly meaningful new information
+- Treat "still important" and "new today" as separate tests
+- If updates are weak, move the story to the short secondary section instead of
+  reusing it as a full main story
+
+Meaningful update criteria:
+A story may return as a main story only if there is substance such as:
+- a new official statement
+- a new disclosed number, forecast, or document
+- a meaningful policy, legal, or negotiation step
+- movement into a new phase
+- a meaningful Japan-side response
+- infrastructure disruption or operational change
+- a materially different interpretation today because facts changed
 
 Explanation repetition suppression:
-- Even if a topic reappears, do not re-explain the same background at full length
+- Even if a topic reappears, do not re-explain the same background at full
+  length
 - Do not reuse near-identical wording across consecutive days
-- Compress refresher background for recurring topics
+- Compress recurring background sharply
 - Focus on what changed today
-- The user should feel: 「今日、何が変わったかが分かった」
-- The user should not feel: 「昨日と同じ説明をもう一度聞いた」
-- If a topic appeared as a main story within the last 3 days, then unless there is a major phase change:
-  - background should usually be limited to one short refresher sentence
-  - key term explanation should be shorter than usual
-  - the value should come mainly from the delta
+- The intended feeling is: 「今日、何が変わったかが分かった」
+- The user should not feel: 「昨日の説明をまた聞いた」
+- If a topic appeared as a main story within the last 3 daily runs, background
+  should usually be limited to a very short refresher unless the story has moved
+  into a clearly new phase
 
 What changed today requirement:
-- Every main story must explicitly state what changed since yesterday or since the previous scheduled run
-- Focus on the delta inside the effective coverage window
-- If there is no meaningful update, the story probably should not be a main story
-- If the main value of a story is unchanged background, move it to 継続監視 or exclude it
+- Every main story must clearly show what changed within the effective coverage
+  window
+- If the main value of a candidate is unchanged background, it does not belong
+  as a full main story today
 
-継続監視 requirement:
-- Important continuing themes with limited updates should appear as short monitoring items rather than full repeated stories
-- Use 継続監視 for topics that remain important but do not have enough new information to justify a main story today
-- Each monitoring item should briefly say what is being watched, why it still matters, and what kind of change would make it a main story again
-- Do not repeat full background explanations in 継続監視
+Short secondary section rule:
+- Use the short secondary section for important follow-up items that still
+  matter but do not justify full treatment today
+- Use it when a continuing story has weak updates
+- Use it when a candidate loses the freshness test
+- Use it when cluster diversity requires demotion
+- Keep these items concise and focused on what is being watched next
 
 Scope and sources:
 - Prefer primary or official sources whenever reasonably available
-- Use major outlets such as NHK, Reuters, AP, Nikkei, and similar sources for verification and context
+- Use major outlets such as NHK, Reuters, AP, Nikkei, and similar sources for
+  verification and context
 - If a primary source is missing, say so briefly
 - Distinguish fact, background, and inference
 - Mark uncertainty clearly
@@ -210,13 +266,18 @@ Scope and sources:
 Google Docs integration:
 - Reuse the existing repository integration for the fixed Google Document
 - Look for tracked config and sync files first
-- Prefer repository files such as config/google_doc_sync.json, scripts/sync_google_doc.py, README, docs, AGENTS.md, or similar tracked sources
+- Prefer repository files such as config/google_doc_sync.json,
+  scripts/sync_google_doc.py, README, docs, AGENTS.md, or similar tracked
+  sources
 - Treat tracked config as the source of truth
-- After generating the final daily study script, overwrite the same fixed Google Document with that final study script
+- After generating the final daily study script, overwrite the same fixed Google
+  Document with that final study script
 - Do not write the weekly rolling reference file into the Google Document
 - Keep the same fixed Google Document URL
-- Do not modify config/google_doc_sync.json unless a sync change is explicitly required
-- Do not modify scripts/sync_google_doc.py unless a sync bug fix is explicitly required
+- Do not modify config/google_doc_sync.json unless a sync change is explicitly
+  required
+- Do not modify scripts/sync_google_doc.py unless a sync bug fix is explicitly
+  required
 
 Required output files:
 1. Reference daily briefing
@@ -232,24 +293,20 @@ Required output files:
 
 Reference daily briefing requirements:
 - This is the repository reference artifact
-- It may be more structured and source-oriented than the final read-aloud version
+- It may be more structured and source-oriented than the final read-aloud
+  version
 - It may use markdown when useful
-- It should remain factual and clear
-- It should record the effective coverage window used for story selection
+- It should record the effective coverage window
 - It should record why each main story was selected today
-- It should identify what changed since yesterday or since the previous scheduled run
-- It should note when a continuing theme was moved to 継続監視 because there was no material update
-- It should note when a recurring topic was shortened because it appeared recently
-- It should note if a candidate was excluded or demoted because of cluster overlap
-- It should note whether art or culture was considered when it has been absent recently
-- It may include stronger structure such as:
-  - what happened
-  - what changed today
-  - why it matters
-  - background
-  - confidence
-  - uncertainty
-  - source notes
+- It should explicitly note what changed inside the effective coverage window
+- It should note when a continuing story was demoted to the short secondary
+  section because there was no material update
+- It should note when a recurring topic received compressed background because it
+  appeared recently
+- It should note any cluster-overlap judgment that moved a candidate out of the
+  main lineup
+- It should note whether art / culture or cyber were considered or raised in
+  priority because of recent absence
 
 Final daily study script requirements:
 This is the most important artifact.
@@ -258,9 +315,9 @@ This is the version that must be written into the fixed Google Document.
 Audience:
 - Intelligent beginner
 - Has a basic foundational map now
-- Still needs gentle guidance
-- Wants to understand today's news through that map
-- Wants practical daily repetition, not dense intellectual performance
+- Still needs gentle explanation
+- Wants to understand what changed today
+- Wants to hear clear headlines first
 
 Tone:
 - calm
@@ -268,8 +325,8 @@ Tone:
 - explanatory
 - plain
 - non-sensational
-- educational
 - beginner-friendly
+- easy to listen to
 
 Hard constraints:
 - No dialogue
@@ -282,217 +339,153 @@ Hard constraints:
 - No analyst shorthand
 - No dense compressed paragraphs
 - No unexplained acronyms
-- No smart-sounding but vague abstraction
-- No writing that assumes the reader already follows the topic easily
+- No vague prestige language
 
 Length target:
-- Roughly 3,800 to 5,500 Japanese characters
-- Must be short enough to finish comfortably
-- Must be long enough to teach the basics of today's stories clearly
-- If needed, reduce the number of stories instead of making the script too long
+- Roughly 3,500 to 5,500 Japanese characters
+- Keep it short enough to finish comfortably
+- Keep it long enough to make the news meaningful
+- If needed, reduce weak stories instead of bloating the script
 
-TTS and read-aloud formatting:
-- The final read_aloud_ja.md file must be TTS-friendly plain text even though the file extension is .md
+TTS and formatting rule:
+- The final read_aloud_ja.md file must be TTS-friendly plain text even though
+  the file extension is .md
 - The Google Document body must use the same TTS-friendly plain text
 - Do not use markdown heading markers such as #, ##, or ###
 - Do not use markdown bullet markers such as -, *, or numbered markdown lists
 - Do not use backticks
-- Avoid noisy symbols that a text-to-speech voice may read aloud awkwardly
-- Use plain readable Japanese section labels instead
-- For short lists, use short plain Japanese sentences on separate lines
-- If ordering is needed, use natural Japanese labels such as 「一つ目は、」「二つ目は、」 instead of markdown numbering
-- Repository reference artifacts may still use markdown when useful
+- Use plain Japanese section labels suitable for text-to-speech
+- Keep punctuation natural and not overly noisy
 
-Structure of the final daily study script:
-Use this exact structure and use plain Japanese section labels.
+Final content structure:
+Use this structure in the final read-aloud script.
+Do not add extra sections.
 
-Title line:
-YYYY年M月D日 朝の分析ブリーフ
+Title
+- Use a plain title line such as:
+  YYYY年M月D日 朝のデイリーブリーフ
 
-Then:
+今日の主要ニュース
 
-今日の全体像
-- 3 to 5 short plain Japanese lines
-- Do not prefix lines with markdown bullet markers
-- Focus on the main patterns of the day
+Main stories:
+- Use 6 stories by default
+- Use 7 only when clearly useful
+- Use 5 only on genuinely light days
 
-Then:
+For each main story, use this plain-label order:
 
-昨日から新しく分かったこと
-- 3 to 5 short plain Japanese lines
-- State the day's real deltas
-- Include only meaningful updates from the coverage window
-- Do not repeat general background here
+一つ目
+ニュースタイトル
+要点
+なぜ重要か
+日本への影響
+次の焦点
 
-Then:
+二つ目
+ニュースタイトル
+要点
+なぜ重要か
+日本への影響
+次の焦点
 
-まずこれだけ知っておくと分かりやすいこと
-- 2 to 4 short plain Japanese lines
-- Only the minimum background needed today
-- Very plain Japanese
-- Keep it short
-- For recurring topics, use only a short refresher unless there is a major phase change
+三つ目
+ニュースタイトル
+要点
+なぜ重要か
+日本への影響
+次の焦点
 
-Then:
+四つ目
+ニュースタイトル
+要点
+なぜ重要か
+日本への影響
+次の焦点
 
-今日のニュースはこの順番で考えると分かりやすい
-- 2 to 3 short plain Japanese lines
-- Explain the lens for reading today's selected stories
-- Very simple Japanese
-- Keep it practical
+五つ目
+ニュースタイトル
+要点
+なぜ重要か
+日本への影響
+次の焦点
 
-Then the main stories:
-Use 5 stories by default.
-Use 6 if one extra story is clearly useful for learning breadth or for understanding the day.
-Use 4 only if the day is genuinely light.
+六つ目
+ニュースタイトル
+要点
+なぜ重要か
+日本への影響
+次の焦点
 
-For each story, use this exact order with plain labels:
+七つ目
+Use only when clearly useful.
+Then use the same five labels.
 
-一つ目のニュース
-
-これは何の話か
-- Explain in 1 to 2 simple sentences
-- Assume the reader may still know almost nothing about the topic
-
-まず言葉の意味
-- Explain 1 to 3 key terms that appear in this story
-- Mandatory for every story
-- Use plain Japanese
-- Keep it short
-- If the topic appeared as a main story within the last 3 days, make this shorter than usual unless today is a major phase change
-
-何が起きたか
-- State the confirmed facts simply
-
-昨日から何が変わったか
-- Explicitly state what changed since yesterday or since the previous scheduled run
-- Focus on today's delta, not yesterday's background
-- If the change is not meaningful, reconsider whether this belongs as a main story
-
-なぜニュースになるのか
-- Explain why this is a meaningful development today
-
-誰が得して、誰が困るのか
-- Explain simply who benefits, who faces risk, or who bears the burden
-- If this framing does not fit perfectly, adapt it naturally without forcing it
-
-日本や自分たちとの関係
-- Explain what this means for Japan, Japanese politics, policy, economy, society, household life, work, or security
-- Mandatory for every story
-
-一時的な話か、構造的な話か
-- Say clearly whether this looks mostly short-term, mostly long-term / structural, or a mix of both
-- Explain why in simple Japanese
-
-今後の注目点
-- Explain what to watch next and why
-
-For later stories, use natural Japanese story labels such as:
-二つ目のニュース
-三つ目のニュース
-四つ目のニュース
-五つ目のニュース
-六つ目のニュース, only if a 6th story is clearly useful
-
-Important writing rules for each story:
-- Short paragraphs only
+Per-story writing rules:
+- Start with the headline clearly
+- Explain the story in simple Japanese
+- Make the day's delta clear
+- Give enough explanation for meaning, but do not re-teach old background at
+  full length
+- If a key term appears, explain it immediately and briefly inside the prose
+- Keep paragraphs short
 - One sentence should mainly carry one idea
-- If a difficult word appears, explain it immediately
-- If a mechanism matters, explain it in very simple terms
-- Do not assume the user remembers all background perfectly
-- Give enough explanation that the story still makes sense on its own
-- But do not turn every story into a mini textbook
-- Do not repeat yesterday's background explanation unless it is truly needed for understanding today's change
-- If a topic appeared as a main story within the last 3 days, background should usually be only one short refresher sentence unless there is a major phase change
-- Do not reuse near-identical wording from recent briefs
-- If a sentence sounds like a policy memo, rewrite it more simply
-- If a non-expert would only understand the mood but not the meaning, rewrite it
-- Prefer slightly repetitive clarity over compact difficulty, but avoid repeating the same explanation day after day
+- Do not repeat yesterday's explanation unless it is necessary for today's
+  understanding
+- Avoid near-identical wording from recent briefs
 
-After the main stories, include this section when relevant:
+短く追うニュース
+- Use this section for important follow-up items that still matter but do not
+  justify full main-story treatment today
+- Keep items short and plain
+- Focus on what is being watched and what would make the item rise again
 
-継続監視
-- 1 to 4 short plain Japanese monitoring items
-- Do not prefix items with markdown bullet markers
-- Use this for important continuing themes with limited updates
-- Do not repeat full background explanations here
-- Briefly state what is being watched, why it still matters, and what change would make it a main story again
-
-Then include all of these sections:
-
-今日のつながり
-- 3 to 5 short plain Japanese lines
-- Explain how today's stories connect to each other
-- Use plain Japanese
-- Focus on shared structure, not abstract theory
-
-今日わかったこと
-- 3 to 5 short plain Japanese lines
-- Explain concretely what the reader should now understand better than before
-- No vague reflections
-
-ことばのやさしい説明
-- Explain only 2 to 4 especially important terms from today
-- Very plain Japanese
-- This is supplemental only
-- Do not use this section as an excuse to delay explanation earlier in the story
-
-明日以降の見方
-- 3 to 5 short plain Japanese lines
-- Explain what to watch next
-- Explain what would change the interpretation
+最後に押さえるポイント
+- End with 3 to 5 short plain Japanese lines
+- Summarize the day's broad takeaways
+- Reinforce structure, priority, and what to watch next
 
 Strong style guidance:
-The reader has already studied the map.
-Your job is now to help them place today's events on that map.
-So:
-- keep reminding yourself that this is guided application
-- connect stories to categories and structure
-- emphasize what changed today
-- emphasize why it matters
-- emphasize how it connects to Japan and everyday life
-- emphasize whether it is short-term or structural
-- keep everything readable and calm
-
-Examples of desired writing:
-- Good: 「これは、中東の海の通り道をめぐる話である。ここが不安定になると、原油を運ぶコストが上がりやすい。」
-- Good: 「利上げとは、金利を上げることです。お金を借りる負担が重くなりやすくなります。」
-- Good: 「この話が日本に関係するのは、輸入コストや生活費に影響する可能性があるからです。」
-- Good: 「これは一日で終わる話ではなく、今後もしばらく続く構造的な問題として見たほうがよい。」
-- Bad: 「政策余地が縮小し、金融条件がタイト化する。」
-- Better: 「物価が上がると、中央銀行は金利を下げにくくなります。すると、お金を借りる条件が厳しくなりやすいです。」
+- The user has already studied the foundational map
+- Your job is to help them place today's events on that map
+- Emphasize what changed today
+- Emphasize why it matters
+- Emphasize Japan relevance
+- Emphasize breadth across fields over time
+- Keep the output easy to hear in one sitting
 
 Quality bar before finishing:
 - The script must be understandable to a beginner
-- It must be easier to understand than ordinary news writing
-- It must not feel intimidating
-- It must not feel like a compressed analyst memo
-- It must clearly connect today's stories to the user's foundational map
-- It must include a Japan-related angle every day
-- It must actively include true Japan domestic policy / institution / social system coverage when available
-- It may use art / culture as a rotating lens only when it meaningfully helps social understanding
-- It must raise art / culture priority after 7 daily runs without such a story, without forcing weak content
-- Every main story must clearly show what changed today
-- The brief must preserve meaningful day-level coverage from the previous scheduled run until now
-- It must avoid repeating the same main stories and background explanations on consecutive days unless there is a material update
-- It must suppress full repeated explanations for topics that appeared as main stories within the last 3 days unless there is a major phase change
-- Important continuing themes without material updates must be handled as 継続監視 items instead of full repeated stories
-- Weak-update business or technology stories must be moved to 継続監視 or excluded
-- The main stories should not over-concentrate in one broad causal cluster
-- It must clearly show whether each story is short-term or structural
-- The final read_aloud_ja.md and Google Document body must avoid noisy markdown symbols
-- It must be suitable for repeated daily morning learning
+- It must feel broader and fresher than a repetitive daily worksheet
+- It must give headline-first clarity
+- It must still provide enough explanation to make the news meaningful
+- It must not feel like a dense analyst memo
+- It must not over-repeat yesterday's background
+- It must include a true Japan domestic policy / institution / social-system
+  story when reasonably available
+- It must treat cyber as a real rotating main-story category when strong
+  candidates exist
+- It may use art / culture when the story reveals broader social meaning
+- It must not let art / culture disappear silently for long stretches
+- It must avoid overloading the lineup with the same broad cluster
+- Every main story must show why it is in today's lineup
+- Weak-update business stories must be demoted or excluded
+- The short secondary section must absorb important but weak-update follow-ups
+- The final read_aloud_ja.md and Google Document body must avoid noisy markdown
+  syntax
 - The fixed Google Document must be updated successfully
 
 At the end of the run, print a concise markdown summary with:
 - files created or updated
 - story count
 - top stories included
-- 継続監視 items included
-- any repeated story and the material update that justified repeating it
-- any topic from the last 3 days where the explanation was intentionally compressed
-- any cluster-overlap judgment that moved a candidate to 継続監視 or excluded it
-- whether art / culture was included, considered, or raised in priority because it had been absent recently
+- short secondary items included
+- any repeated main story and the material update that justified repeating it
+- any topic from the last 3 days where the explanation was intentionally
+  compressed
+- any cluster-overlap judgment that demoted or excluded a candidate
+- whether cyber was included or meaningfully considered
+- whether art / culture was included, considered, or raised in priority because
+  it had been absent recently
 - effective coverage window
 - whether the fixed Google Document was updated
 - the fixed Google Document title and URL if available

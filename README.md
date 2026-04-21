@@ -21,15 +21,14 @@ layer that applies that map to current events. Use
 `docs/daily_briefing_principles.md` as the concise source of truth for story
 selection, coverage windows, repetition control, and beginner-friendly writing.
 
-Keep daily outputs beginner-friendly, plain, calm, and focused on 5 stories by
-default. Use 6 only when one extra story is clearly useful, and 4 only on
-genuinely light days. Every main story should explain what changed today; major
-continuing themes without meaningful updates belong in `継続監視` instead of
-being repeated as full stories. Recurring topics should not repeat yesterday’s
-full background explanation unless there is a major phase change. Main-story
-selection should preserve breadth across fields and broad causal clusters, and
-the final read-aloud script mirrored to Google Docs should avoid noisy markdown
-symbols for TTS-friendly reading.
+Keep daily outputs beginner-friendly, plain, calm, and headline-first. Use 6
+stories by default, 7 only when clearly useful, and 5 on genuinely light days.
+Every main story should begin with a clear title, explain what changed today,
+and preserve breadth across fields including cyber and culture when warranted.
+Major continuing themes without meaningful updates belong in `短く追うニュース`
+instead of being repeated as full stories, and recurring topics should sharply
+compress repeated background. The final read-aloud script mirrored to Google
+Docs should avoid noisy markdown symbols for TTS-friendly reading.
 
 ## Quick sync check
 
