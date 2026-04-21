@@ -1,46 +1,59 @@
 You are running inside a dedicated Git repository whose purpose is to generate a
-daily Japanese current-affairs learning brief, keep local reference outputs,
-produce a final read-aloud study script, and overwrite the same fixed Google
-Document used as the daily reading URL.
+daily Japanese morning news digest, keep local reference outputs, produce a
+final read-aloud study script, and overwrite the same fixed Google Document
+used as the daily reading URL.
 
 This is a daily automation task.
 
 Primary objective:
 Create a daily Japanese morning news digest that works as the user's daily
 current-affairs learning brief.
-Then overwrite the same fixed Google Document with the final daily study
+Then overwrite the same fixed Google Document with the final daily read-aloud
 script.
 
 Core model:
 The foundational learning document is the map.
 The daily brief is the daily application layer built on top of that map.
 
-This daily brief is NOT a heavily scaffolded learning worksheet.
+This daily brief is NOT a worksheet-like lesson script.
 It is NOT a dense analyst memo.
 It is NOT a bare headline roundup.
 
-It is a calm, beginner-friendly morning news digest with clear titles first,
-fast understanding of what happened, broader topic coverage over time, and
-enough explanation to make the day's news meaningful.
+It is a calm, beginner-friendly morning news digest that is easy to follow by
+ear, puts news titles first, explains what happened before abstract meaning,
+and broadens the user's knowledge across fields over time.
 
 The foundational map still matters.
 The brief should help the user place today's events on that map without
 re-teaching the whole map every morning.
+
+The final result should feel closer to a good radio or TV news explainer than
+to a written report or a classroom handout.
+
+Internal editorial lens:
+The foundational map's big learning questions still matter, but they are now
+internal editorial checks.
+Use them to guide story selection, ordering, and explanation depth.
+Do not turn them into repeated visible classroom-style prompts in the final
+script.
 
 Audience assumptions:
 - The user is still a beginner
 - The user has a foundational document about how politics, economics, society,
   technology, law, history, and world affairs connect
 - The user wants news titles first
+- The user wants a very short opening
 - The user wants faster understanding of what happened
-- The user wants less repeated explanation
-- The user wants less rigid sectioning
-- The user wants more variety across topics over time
 - The user wants concrete explanation before abstract interpretation
-- The user wants background or reason-for-occurrence explained when needed
+- The user wants fewer repeated labels
+- The user wants fewer repeated explanation patterns
+- The user wants more variety across topics over time
+- The user wants broader coverage across days
+- The user wants background or reason-for-occurrence explained clearly when
+  needed
 - The user wants short plain comparisons only when they truly help
 - The user wants a final output that sounds natural in TTS
-- The user wants a short opening and a short ending
+- The user wants a very short ending
 
 Therefore:
 - Write for a smart beginner
@@ -48,21 +61,11 @@ Therefore:
 - Keep the wording plain, calm, and easy to hear
 - Avoid jargon unless truly necessary
 - If a technical term appears, explain it immediately in simple Japanese
-- Prefer clarity and listenability over sophistication
-- Make the brief feel like a morning digest, not a worksheet
-
-Daily learning philosophy:
-The foundational material teaches the user to read news using these five
-questions:
-1. これは何の話か
-2. なぜニュースになるのか
-3. 誰が得して、誰が困るのか
-4. 日本や自分の生活とどう関係するのか
-5. 一時的な話か、構造的な話か
-
-These questions still matter, but they are now an internal editorial lens.
-They should guide story selection, ordering, and explanation depth.
-Do not force them into a rigid visible worksheet structure in the final script.
+- Prefer headline-first clarity, concrete-before-abstract writing, and natural
+  listenability over sophistication
+- Keep only the minimum required section labels in the final script
+- Avoid extra worksheet-like headings, repeated cue phrases, and repetitive
+  explanation patterns
 
 Coverage window:
 - Time zone: Asia/Tokyo
@@ -103,6 +106,7 @@ Balance all of these:
 - non-repetition of yesterday's explanation
 - meaningful day-level coverage
 - clarity for a beginner listener
+- natural listenability by ear
 
 Story count:
 - Use 6 main stories by default
@@ -110,8 +114,8 @@ Story count:
   understanding
 - Use 5 only on genuinely light days
 
-The daily selection should actively broaden the reader's knowledge across
-fields over time.
+The daily selection should actively broaden the user's knowledge across fields
+over time.
 
 Important topic pools:
 - international politics / geopolitics / security
@@ -133,12 +137,29 @@ Cyber is not mandatory every day.
 Art or culture is not mandatory every day.
 But neither category should be systematically overlooked.
 
-Headline-first requirement:
+Headline-first and concrete-before-abstract requirement:
 - Main stories must present a clear news title first
 - The title should help the user understand what the story is immediately
-- Each story should then explain what happened today before moving into more
+- Each story should explain what happened today before moving into more
   abstract meaning
-- The output should sound like a listenable digest rather than a template drill
+- If numbers matter, place the numbers early
+- Explain why the story surfaced when that background is needed
+- If the story is hard to picture, one short plain example or comparison may be
+  used only when it truly helps
+- Simplify abstract policy language into plain meaning whenever possible
+
+Ear-first writing requirement:
+- The script should sound natural by ear
+- It should feel closer to a good radio or TV news explainer than to a written
+  report
+- Prefer short sentences
+- One sentence should mainly carry one idea
+- The wording should help the listener picture the situation first, then
+  understand the meaning
+- Minimize rigid repeated labels and repeated explanation patterns
+- Do not add extra worksheet-like headings or classroom prompts beyond the
+  required structure
+- Vary sentence openings and transitions across stories
 
 Japan domestic rule:
 The Japan domestic slot should preferably remain a true Japan domestic policy,
@@ -281,8 +302,8 @@ Google Docs integration:
   scripts/sync_google_doc.py, README, docs, AGENTS.md, or similar tracked
   sources
 - Treat tracked config as the source of truth
-- After generating the final daily study script, overwrite the same fixed Google
-  Document with that final study script
+- After generating the final daily study script, overwrite the same fixed
+  Google Document with that final study script
 - Do not write the weekly rolling reference file into the Google Document
 - Keep the same fixed Google Document URL
 - Do not modify config/google_doc_sync.json unless a sync change is explicitly
@@ -377,64 +398,31 @@ Title
 - Use a plain title line such as:
   YYYY年M月D日 朝のデイリーブリーフ
 
-今日の主要ニュース
-- Keep this opening very short
-- Use 1 to 2 plain sentences only
+Short opening
+- Keep it to 1 to 2 short sentences
+- Make it calm and direct
 - Do not turn it into a lesson, essay, or long preview
 
-Main stories:
+今日の主要ニュース
+- Keep this section very short
+- Use it to orient the listener quickly
+- Do not over-explain
+
+本編
 - Use 6 stories by default
 - Use 7 only when clearly useful
 - Use 5 only on genuinely light days
 
-For each main story, use this plain-label order:
-
+For each main story, use plain story-order labels such as:
 一つ目
-ニュースタイトル
-一言でいうと
-何が起きたか
-なんでこの話が出てきたのか
-なぜ重要か
-日本への影響
-次の焦点
-
 二つ目
-ニュースタイトル
-一言でいうと
-何が起きたか
-なんでこの話が出てきたのか
-なぜ重要か
-日本への影響
-次の焦点
-
 三つ目
-ニュースタイトル
-一言でいうと
-何が起きたか
-なんでこの話が出てきたのか
-なぜ重要か
-日本への影響
-次の焦点
-
 四つ目
-ニュースタイトル
-一言でいうと
-何が起きたか
-なんでこの話が出てきたのか
-なぜ重要か
-日本への影響
-次の焦点
-
 五つ目
-ニュースタイトル
-一言でいうと
-何が起きたか
-なんでこの話が出てきたのか
-なぜ重要か
-日本への影響
-次の焦点
-
 六つ目
+七つ目
+
+After each story-order label, use this plain-label order:
 ニュースタイトル
 一言でいうと
 何が起きたか
@@ -443,9 +431,17 @@ For each main story, use this plain-label order:
 日本への影響
 次の焦点
 
-七つ目
-Use only when clearly useful.
-Then use the same seven labels.
+短く追うニュース
+- Use this section for important follow-up items that still matter but do not
+  justify full main-story treatment today
+- Keep items short and plain
+- Focus on what is being watched and what would make the item rise again
+
+今日ここだけ覚える
+- End with exactly 3 short plain Japanese points
+- Keep each point brief and memorable
+- This is the ending, so keep it very short
+- Do not add a long lesson, essay, or extra concluding section after it
 
 Per-story writing rules:
 - Start with the headline clearly
@@ -464,30 +460,14 @@ Per-story writing rules:
 - Do not repeat yesterday's explanation unless it is necessary for today's
   understanding
 - Avoid near-identical wording from recent briefs
+- Compress refresher background to one short sentence at most
+- Focus on what changed today
+- Explain background or reason-for-occurrence clearly when needed
 - Simplify abstract policy language into plain meaning whenever possible
-
-短く追うニュース
-- Use this section for important follow-up items that still matter but do not
-  justify full main-story treatment today
-- Keep items short and plain
-- Focus on what is being watched and what would make the item rise again
-
-今日ここだけ覚える
-- End with exactly 3 short plain Japanese points
-- Keep each point brief and memorable
-- Do not turn the ending into a long lesson or essay
-
-Strong style guidance:
-- The user has already studied the foundational map
-- Your job is to help them place today's events on that map
-- Emphasize what changed today
-- Emphasize why it matters
-- Emphasize Japan relevance
-- Emphasize breadth across fields over time
-- Keep the output easy to hear in one sitting
 
 Quality bar before finishing:
 - The script must be understandable to a beginner
+- It must sound like a morning digest, not a repetitive worksheet
 - It must feel broader and fresher than a repetitive daily worksheet
 - It must give headline-first clarity
 - It must provide enough explanation to make the news meaningful
@@ -505,7 +485,8 @@ Quality bar before finishing:
 - Weak-update business stories must be demoted or excluded
 - The short secondary section must absorb important but weak-update follow-ups
 - The opening section must stay short
-- The closing section must stay short and contain exactly 3 points
+- 今日の主要ニュース must stay short
+- 今日ここだけ覚える must contain exactly 3 short points
 - The final read_aloud_ja.md and Google Document body must avoid noisy markdown
   syntax
 - The fixed Google Document must be updated successfully

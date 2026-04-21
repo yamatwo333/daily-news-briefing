@@ -10,35 +10,54 @@ The foundational learning document remains the map:
 
 The daily brief is the daily application layer built on top of that map.
 
-It is no longer a heavily scaffolded learning worksheet.
+It is no longer a worksheet-like learning handout or a classroom-style prompt
+set.
 
-It is now a daily morning news digest.
+It is now a daily morning news digest meant to be easy to follow by ear.
 
 It must still remain:
 
 - plain
 - calm
 - beginner-friendly
-- easy to understand by ear
+- easy to understand
+- easy to follow in TTS
 - broad enough to build knowledge over time
 
-The foundation still guides judgment, but the final output should not feel like
-a classroom handout or a repeated lesson script.
+The foundation still guides editorial judgment, but the final output should
+feel closer to a good radio or TV news explainer than to a written report or a
+lesson worksheet.
+
+## Internal Editorial Lens
+
+The foundation's learning questions still matter, but they now operate as an
+internal editorial lens.
+
+Use them to judge story selection, ordering, and explanation depth.
+
+Do not surface them as repeated visible classroom-style prompts in the final
+script.
 
 ## User Preference Shift
 
 The brief should now clearly optimize for:
 
 - news titles first
+- a very short opening
 - faster understanding of what happened
-- less repeated explanation
-- less rigid sectioning
+- concrete explanation before abstract interpretation
+- fewer repeated labels
+- fewer repeated explanation patterns
 - more variety across topics
-- concrete before abstract
-- background or reason-for-occurrence explained when needed
-- short plain examples or comparisons only when they truly help
+- broader coverage across days
 - TTS-friendly final output
-- short opening and short ending sections
+- a very short ending
+- background or reason-for-occurrence explained clearly when needed
+
+Keep only the minimum required section labels in the final script.
+
+Avoid extra worksheet-like prompts, repeated cue phrases, and repetitive
+transitions that make different stories sound mechanically alike.
 
 ## Coverage Window
 
@@ -52,9 +71,9 @@ Do not let a delayed or manual run collapse into only the last few visible
 hours unless the relevant news flow truly happened only then.
 
 Older developments may still appear if they remain materially important today.
-But if an older story has only weak updates inside the effective coverage
-window, move it to the short secondary section instead of reusing it as a main
-story.
+
+If an older story has only weak updates inside the effective coverage window,
+move it to the short secondary section instead of reusing it as a main story.
 
 ## Story Count And Breadth
 
@@ -64,7 +83,7 @@ Use 7 only when the extra story is clearly useful.
 
 Use 5 only on genuinely light days.
 
-The daily selection should actively broaden the reader's knowledge across
+The daily selection should actively broaden the listener's knowledge across
 fields over time.
 
 ## Topic Pools
@@ -86,8 +105,11 @@ These are editorial pools, not rigid quotas.
 
 Do not force weak stories just to fill a bucket.
 
-Cyber is not mandatory every day, and art or culture is not mandatory every
-day, but neither category should be systematically overlooked.
+Cyber is not mandatory every day.
+
+Art or culture is not mandatory every day.
+
+But neither category should be systematically overlooked.
 
 ## Main Story Selection Rules
 
@@ -100,17 +122,26 @@ Choose stories by balancing all of the following:
 - breadth across fields
 - diversity across broad causal clusters
 - non-repetition across consecutive days
+- non-repetition of yesterday's explanation
 - clarity for a beginner listener
+- natural listenability by ear
 
 Headline-first clarity matters.
 
-The reader should understand what the story is before hearing a long
+The listener should understand what the story is before hearing a long
 interpretation of it.
+
+What happened should come before abstract meaning.
 
 ## Anti-Repetition Rule
 
 The same major story should not be reused as a main story on consecutive days
 unless there is clearly meaningful new information.
+
+Treat "still important" and "new today" as separate tests.
+
+If updates are weak, move the story to the short secondary section instead of
+reusing it as a full main story.
 
 Meaningful update criteria should remain explicit.
 
@@ -124,9 +155,6 @@ such as:
 - a meaningful Japan-side response
 - infrastructure disruption, operational change, or security consequence
 - a materially different interpretation today because the facts changed
-
-If updates are weak, move the story to the short secondary section instead of
-reusing it as a full main story.
 
 ## Explanation Repetition Suppression
 
@@ -240,20 +268,6 @@ secondary section.
 The goal is broader understanding, not hearing the same crisis three different
 ways.
 
-## Concrete-Before-Abstract Writing Rule
-
-Within each story:
-
-- say what happened before abstract interpretation
-- place important numbers early when they matter
-- explain why the story surfaced when that background is needed
-- use one short plain example or comparison only if it truly helps the listener
-  imagine the issue
-- simplify abstract policy language into plain meaning whenever possible
-
-The brief should move from concrete facts to explanation, not the other way
-around.
-
 ## Secondary Section Rule
 
 Use the short secondary section for important follow-up items that still matter
@@ -268,6 +282,41 @@ Use it when:
 
 Keep these items concise and focused on what is being watched next.
 
+## Concrete-Before-Abstract Writing Rule
+
+Within each story:
+
+- say what happened before abstract interpretation
+- place important numbers early when they matter
+- explain why the story surfaced when that background is needed
+- use one short plain example or comparison only if it truly helps the listener
+  imagine the issue
+- simplify abstract policy language into plain meaning whenever possible
+
+The brief should move from concrete facts to explanation, not the other way
+around.
+
+## Ear-First Writing Rule
+
+The script should sound natural by ear.
+
+It should feel closer to a good radio or TV news explainer than to a written
+report.
+
+Prefer short sentences.
+
+One sentence should mainly carry one idea.
+
+The wording should help the listener picture the situation first, then
+understand the meaning.
+
+Use only the required section labels.
+
+Avoid extra worksheet-style prompts, repeated cue phrases, and near-identical
+explanation patterns.
+
+Vary sentence openings and transitions across stories.
+
 ## Final Read-Aloud And Google Docs Formatting
 
 The final `read_aloud_ja.md` file and Google Doc body must be TTS-friendly.
@@ -281,6 +330,8 @@ Do not use:
 
 Use plain Japanese section labels suitable for text-to-speech.
 
+Story order labels such as `一つ目` are acceptable as plain text.
+
 Repository reference artifacts may still use markdown when useful.
 
 ## Final Content Structure
@@ -288,14 +339,35 @@ Repository reference artifacts may still use markdown when useful.
 The tracked automation prompt should use this final read-aloud structure:
 
 1. title
-2. `今日の主要ニュース`
-3. 6 default main stories, or 7 when clearly useful, or 5 on genuinely light
+2. short opening
+3. `今日の主要ニュース`
+4. `本編`
+5. 6 default main stories, or 7 when clearly useful, or 5 on genuinely light
    days
-4. `短く追うニュース`
-5. `今日ここだけ覚える`
+6. `短く追うニュース`
+7. `今日ここだけ覚える`
 
-The opening section should be very short and should not become a lesson-style
-introduction.
+Title:
+
+- use a plain line such as `YYYY年M月D日 朝のデイリーブリーフ`
+
+Short opening:
+
+- at most 2 short sentences
+- calm and direct
+- not a lesson-style introduction
+
+`今日の主要ニュース`:
+
+- keep it very short
+- do not over-explain
+- use it to orient the listener quickly before the main stories
+
+`本編`:
+
+- use 6 main stories by default
+- use 7 only when clearly useful
+- use 5 only on genuinely light days
 
 Each main story should use this order:
 
@@ -307,9 +379,18 @@ Each main story should use this order:
 - `日本への影響`
 - `次の焦点`
 
-The closing section should contain only 3 short points.
+`短く追うニュース`:
 
-The ending should not become a long lesson or essay.
+- hold important follow-up items that still matter but do not justify full
+  treatment today
+- use this section when freshness is weak, repetition risk is high, or cluster
+  diversity requires demotion
+
+`今日ここだけ覚える`:
+
+- contain exactly 3 short points
+- keep each point brief and memorable
+- do not add a long concluding essay after it
 
 ## Reference Outputs And Sync Boundary
 
