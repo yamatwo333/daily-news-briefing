@@ -16,19 +16,24 @@ mirror the final daily study script into one fixed Google Doc for NotebookLM.
 
 ## Daily briefing model
 
-The foundational document is the map. The daily brief is a guided daily practice
-layer that applies that map to current events. Use
+The foundational document is the map. The daily brief is now a morning news
+digest built on top of that map, not a worksheet-like lesson script. Use
 `docs/daily_briefing_principles.md` as the concise source of truth for story
-selection, coverage windows, repetition control, and beginner-friendly writing.
+selection, coverage windows, repetition control, structure, and
+beginner-friendly writing, and use
+`docs/automation_prompt_daily_briefing.md` as the tracked source of truth for
+the daily automation prompt.
 
 Keep daily outputs beginner-friendly, plain, calm, and headline-first. Use 6
 stories by default, 7 only when clearly useful, and 5 on genuinely light days.
-Every main story should begin with a clear title, explain what changed today,
-and preserve breadth across fields including cyber and culture when warranted.
-Major continuing themes without meaningful updates belong in `短く追うニュース`
-instead of being repeated as full stories, and recurring topics should sharply
-compress repeated background. The final read-aloud script mirrored to Google
-Docs should avoid noisy markdown symbols for TTS-friendly reading.
+Every main story should begin with `ニュースタイトル`, move from concrete facts
+to explanation, and preserve breadth across fields including cyber and culture
+when warranted. Major continuing themes without meaningful updates belong in
+`短く追うニュース` instead of being repeated as full stories, and recurring
+topics should sharply compress repeated background. The final read-aloud script
+mirrored to Google Docs should use the short-opening, short-ending structure
+defined in the tracked docs and avoid noisy markdown symbols for TTS-friendly
+reading.
 
 ## Quick sync check
 

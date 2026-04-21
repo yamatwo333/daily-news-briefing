@@ -6,45 +6,50 @@ Document used as the daily reading URL.
 This is a daily automation task.
 
 Primary objective:
-Create a daily Japanese headline-first news digest that works as the user's
-daily current-affairs learning brief.
-Then overwrite the same fixed Google Document with the final daily study script.
+Create a daily Japanese morning news digest that works as the user's daily
+current-affairs learning brief.
+Then overwrite the same fixed Google Document with the final daily study
+script.
 
 Core model:
 The foundational learning document is the map.
 The daily brief is the daily application layer built on top of that map.
 
-This daily brief is NOT a heavily scaffolded beginner worksheet.
+This daily brief is NOT a heavily scaffolded learning worksheet.
 It is NOT a dense analyst memo.
 It is NOT a bare headline roundup.
 
-It is a broader, fresher, headline-first digest with enough explanation to make
-the day's news meaningful.
+It is a calm, beginner-friendly morning news digest with clear titles first,
+fast understanding of what happened, broader topic coverage over time, and
+enough explanation to make the day's news meaningful.
 
-The foundational map still matters. The brief should help the user place
-today's events on that map without re-teaching the whole map every morning.
-
-The reader remains a beginner, so the language must stay plain, calm, gentle,
-and easy to listen to.
+The foundational map still matters.
+The brief should help the user place today's events on that map without
+re-teaching the whole map every morning.
 
 Audience assumptions:
 - The user is still a beginner
 - The user has a foundational document about how politics, economics, society,
   technology, law, history, and world affairs connect
-- The user wants clearer titles first
-- The user wants more topic variety and more freshness
+- The user wants news titles first
+- The user wants faster understanding of what happened
 - The user wants less repeated explanation
-- The user wants broader coverage, including cyber and culture
+- The user wants less rigid sectioning
+- The user wants more variety across topics over time
+- The user wants concrete explanation before abstract interpretation
+- The user wants background or reason-for-occurrence explained when needed
+- The user wants short plain comparisons only when they truly help
 - The user wants a final output that sounds natural in TTS
+- The user wants a short opening and a short ending
 
 Therefore:
 - Write for a smart beginner
 - Assume some basic orientation exists, but do not assume fluency
-- Keep the wording plain and calm
+- Keep the wording plain, calm, and easy to hear
 - Avoid jargon unless truly necessary
 - If a technical term appears, explain it immediately in simple Japanese
 - Prefer clarity and listenability over sophistication
-- Make the brief feel like a daily digest, not a worksheet
+- Make the brief feel like a morning digest, not a worksheet
 
 Daily learning philosophy:
 The foundational material teaches the user to read news using these five
@@ -79,12 +84,12 @@ Coverage window:
 Before selecting stories:
 - Review the most recent daily output files if available
 - Check recent main stories, especially the last 3 daily runs
-- Check whether art or culture has appeared as a main story within the last 7
-  daily runs
 - Note recurring topics where background should be compressed today
 - Note continuing topics that should probably move to the short secondary
   section unless there is a material update
 - Note whether cyber has recently been underused despite meaningful candidates
+- Note whether art or culture has been absent for a long stretch despite
+  meaningful candidates
 
 Daily story selection framework:
 Balance all of these:
@@ -97,6 +102,7 @@ Balance all of these:
 - non-repetition across consecutive days
 - non-repetition of yesterday's explanation
 - meaningful day-level coverage
+- clarity for a beginner listener
 
 Story count:
 - Use 6 main stories by default
@@ -104,8 +110,8 @@ Story count:
   understanding
 - Use 5 only on genuinely light days
 
-The daily selection should actively broaden the reader's knowledge across fields
-over time.
+The daily selection should actively broaden the reader's knowledge across
+fields over time.
 
 Important topic pools:
 - international politics / geopolitics / security
@@ -123,10 +129,15 @@ These are editorial pools, not rigid quotas.
 Do not force a weak story just to fill a bucket.
 But do use these pools to preserve breadth over time.
 
+Cyber is not mandatory every day.
+Art or culture is not mandatory every day.
+But neither category should be systematically overlooked.
+
 Headline-first requirement:
 - Main stories must present a clear news title first
-- The title should tell the user what the story is before the explanation begins
-- Each story should then explain the meaning of today's change
+- The title should help the user understand what the story is immediately
+- Each story should then explain what happened today before moving into more
+  abstract meaning
 - The output should sound like a listenable digest rather than a template drill
 
 Japan domestic rule:
@@ -169,20 +180,22 @@ to the short secondary section or excluded.
 
 Cyber rule:
 Cyber security, ransomware, breaches, and infrastructure cyber risk are real
-rotating main-story categories.
+candidate categories for the main lineup.
 
 Do not systematically overlook them.
 
 Raise cyber priority when there is:
 - official disclosure
 - infrastructure disruption
-- regulatory or policy response
+- government, regulatory, or policy response
 - operational interruption
 - geopolitical linkage
 
+Do not force cyber every day.
+
 Art / culture rule:
-Art and culture remain valid rotating main-story categories when they help
-explain society, values, policy, diplomacy, identity, or structural change.
+Art and culture remain valid main-story categories when they help explain
+society, values, policy, diplomacy, identity, or structural change.
 
 Do not use celebrity gossip or low-value entertainment updates.
 
@@ -195,12 +208,8 @@ Examples that may qualify:
 - international cultural diplomacy
 - major cultural developments that illuminate broader social change
 
-Art / culture frequency logic:
-- Art and culture are not mandatory every day
-- But they should not silently disappear for long stretches
-- If art or culture has been absent as a main story for 7 daily runs, raise its
-  priority meaningfully on the next eligible day
-- Do not force weak content just to satisfy frequency
+Do not force culture every day.
+But do not let it disappear for long stretches if meaningful candidates exist.
 
 Cluster diversity rule:
 - Avoid overloading the main lineup with too many stories from the same broad
@@ -227,6 +236,7 @@ A story may return as a main story only if there is substance such as:
 - movement into a new phase
 - a meaningful Japan-side response
 - infrastructure disruption or operational change
+- a security consequence
 - a materially different interpretation today because facts changed
 
 Explanation repetition suppression:
@@ -235,11 +245,12 @@ Explanation repetition suppression:
 - Do not reuse near-identical wording across consecutive days
 - Compress recurring background sharply
 - Focus on what changed today
+- Keep any refresher background to one short sentence at most
 - The intended feeling is: 「今日、何が変わったかが分かった」
 - The user should not feel: 「昨日の説明をまた聞いた」
 - If a topic appeared as a main story within the last 3 daily runs, background
-  should usually be limited to a very short refresher unless the story has moved
-  into a clearly new phase
+  should usually be limited to a very short refresher unless the story has
+  moved into a clearly new phase
 
 What changed today requirement:
 - Every main story must clearly show what changed within the effective coverage
@@ -301,12 +312,13 @@ Reference daily briefing requirements:
 - It should explicitly note what changed inside the effective coverage window
 - It should note when a continuing story was demoted to the short secondary
   section because there was no material update
-- It should note when a recurring topic received compressed background because it
-  appeared recently
+- It should note when a recurring topic received compressed background because
+  it appeared recently
 - It should note any cluster-overlap judgment that moved a candidate out of the
   main lineup
-- It should note whether art / culture or cyber were considered or raised in
-  priority because of recent absence
+- It should note whether cyber was included or meaningfully considered
+- It should note whether art or culture was included, considered, or absent
+  despite meaningful candidates
 
 Final daily study script requirements:
 This is the most important artifact.
@@ -366,6 +378,9 @@ Title
   YYYY年M月D日 朝のデイリーブリーフ
 
 今日の主要ニュース
+- Keep this opening very short
+- Use 1 to 2 plain sentences only
+- Do not turn it into a lesson, essay, or long preview
 
 Main stories:
 - Use 6 stories by default
@@ -376,62 +391,80 @@ For each main story, use this plain-label order:
 
 一つ目
 ニュースタイトル
-要点
+一言でいうと
+何が起きたか
+なんでこの話が出てきたのか
 なぜ重要か
 日本への影響
 次の焦点
 
 二つ目
 ニュースタイトル
-要点
+一言でいうと
+何が起きたか
+なんでこの話が出てきたのか
 なぜ重要か
 日本への影響
 次の焦点
 
 三つ目
 ニュースタイトル
-要点
+一言でいうと
+何が起きたか
+なんでこの話が出てきたのか
 なぜ重要か
 日本への影響
 次の焦点
 
 四つ目
 ニュースタイトル
-要点
+一言でいうと
+何が起きたか
+なんでこの話が出てきたのか
 なぜ重要か
 日本への影響
 次の焦点
 
 五つ目
 ニュースタイトル
-要点
+一言でいうと
+何が起きたか
+なんでこの話が出てきたのか
 なぜ重要か
 日本への影響
 次の焦点
 
 六つ目
 ニュースタイトル
-要点
+一言でいうと
+何が起きたか
+なんでこの話が出てきたのか
 なぜ重要か
 日本への影響
 次の焦点
 
 七つ目
 Use only when clearly useful.
-Then use the same five labels.
+Then use the same seven labels.
 
 Per-story writing rules:
 - Start with the headline clearly
-- Explain the story in simple Japanese
+- Give fast understanding of what happened
+- Say what happened before abstract interpretation
+- If numbers matter, put the numbers early
+- Explain in simple Japanese
 - Make the day's delta clear
 - Give enough explanation for meaning, but do not re-teach old background at
   full length
 - If a key term appears, explain it immediately and briefly inside the prose
+- If the story is hard to picture, one short plain example or comparison may be
+  used only when it truly helps
 - Keep paragraphs short
 - One sentence should mainly carry one idea
 - Do not repeat yesterday's explanation unless it is necessary for today's
   understanding
 - Avoid near-identical wording from recent briefs
+- Simplify abstract policy language into plain meaning whenever possible
 
 短く追うニュース
 - Use this section for important follow-up items that still matter but do not
@@ -439,10 +472,10 @@ Per-story writing rules:
 - Keep items short and plain
 - Focus on what is being watched and what would make the item rise again
 
-最後に押さえるポイント
-- End with 3 to 5 short plain Japanese lines
-- Summarize the day's broad takeaways
-- Reinforce structure, priority, and what to watch next
+今日ここだけ覚える
+- End with exactly 3 short plain Japanese points
+- Keep each point brief and memorable
+- Do not turn the ending into a long lesson or essay
 
 Strong style guidance:
 - The user has already studied the foundational map
@@ -457,19 +490,22 @@ Quality bar before finishing:
 - The script must be understandable to a beginner
 - It must feel broader and fresher than a repetitive daily worksheet
 - It must give headline-first clarity
-- It must still provide enough explanation to make the news meaningful
+- It must provide enough explanation to make the news meaningful
 - It must not feel like a dense analyst memo
 - It must not over-repeat yesterday's background
+- It must keep refresher background to one short sentence when the topic is
+  recurring
 - It must include a true Japan domestic policy / institution / social-system
   story when reasonably available
-- It must treat cyber as a real rotating main-story category when strong
-  candidates exist
+- It must treat cyber as a real candidate category when strong stories exist
 - It may use art / culture when the story reveals broader social meaning
-- It must not let art / culture disappear silently for long stretches
+- It must not let art / culture disappear silently for long stretches if
+  meaningful candidates exist
 - It must avoid overloading the lineup with the same broad cluster
-- Every main story must show why it is in today's lineup
 - Weak-update business stories must be demoted or excluded
 - The short secondary section must absorb important but weak-update follow-ups
+- The opening section must stay short
+- The closing section must stay short and contain exactly 3 points
 - The final read_aloud_ja.md and Google Document body must avoid noisy markdown
   syntax
 - The fixed Google Document must be updated successfully
@@ -484,8 +520,8 @@ At the end of the run, print a concise markdown summary with:
   compressed
 - any cluster-overlap judgment that demoted or excluded a candidate
 - whether cyber was included or meaningfully considered
-- whether art / culture was included, considered, or raised in priority because
-  it had been absent recently
+- whether art / culture was included, considered, or absent despite meaningful
+  candidates
 - effective coverage window
 - whether the fixed Google Document was updated
 - the fixed Google Document title and URL if available
