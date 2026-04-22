@@ -24,6 +24,9 @@ It must remain:
 - easy to follow in TTS
 - broad enough to build knowledge over time
 
+The final read-aloud script should feel like a real morning news program, not
+like a templated explainer document being read aloud.
+
 ## Internal Editorial Lens
 
 The foundation's learning questions still matter, but they are now an internal
@@ -52,7 +55,7 @@ The brief should now clearly optimize for:
 
 Keep only the minimum required section labels in the final script.
 
-Avoid repeated mini-headings, repeated cue phrases, and repeated explanation
+Reduce repeated cue phrases, repeated mini-headings, and repeated explanation
 patterns that make different stories sound like the same template.
 
 ## Coverage Window
@@ -128,6 +131,8 @@ The listener should understand what the story is quickly, before hearing a
 long interpretation of it.
 
 What happened should come before abstract meaning.
+
+Main stories should prefer concrete news over abstract framing.
 
 ## Anti-Repetition Rule
 
@@ -337,10 +342,8 @@ The tracked automation prompt should use this final read-aloud structure:
 2. short opening
 3. `今日の主要ニュース`
 4. `本編`
-5. 6 default main stories, or 7 when clearly useful, or 5 on genuinely light
-   days
-6. `短く追うニュース`
-7. `今日ここだけ覚える`
+5. `短く追うニュース`
+6. `今日ここだけ覚える`
 
 Title:
 
@@ -355,6 +358,7 @@ Short opening:
 `今日の主要ニュース`:
 
 - keep it very short
+- put titles first
 - do not over-explain
 - use it to orient the listener quickly before the main stories
 

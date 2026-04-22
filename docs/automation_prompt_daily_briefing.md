@@ -23,22 +23,18 @@ It is a calm, beginner-friendly morning news digest that is easy to follow by
 ear, puts news titles first, explains concrete facts before abstract meaning,
 and broadens the user's knowledge across fields over time.
 
-The foundational map still matters.
-The brief should help the user place today's events on that map without
-re-teaching the whole map every morning.
-
 The final result should feel closer to a good radio or TV news explainer than
-to a structured handout.
+to a structured handout or a checklist being read aloud.
 
 Internal editorial lens:
 The foundational map's big learning questions still matter, but they are now
 internal editorial checks.
-Use them to guide story selection, ordering, and explanation depth.
+Use them to guide story selection, ordering, explanation depth, and breadth.
 Do not turn them into repeated visible classroom-style prompts in the final
 script.
 
 Audience assumptions:
-- The user is still a beginner
+- The user is a smart beginner
 - The user has a foundational document about how politics, economics, society,
   technology, law, history, and world affairs connect
 - The user wants news titles first
@@ -66,12 +62,14 @@ Therefore:
 - Keep only the minimum required section labels in the final script
 - Avoid extra worksheet-like headings, repeated cue phrases, repeated
   explanation patterns, and near-identical wording across days
+- Aim for a script that sounds like a real morning news program, not a
+  structured explainer document
 
 Coverage window:
 - Time zone: Asia/Tokyo
 - Treat this as a morning briefing
-- The effective coverage window should normally run from the previous scheduled
-  run until now
+- The effective coverage window should normally run from the previous
+  scheduled run until now
 - Preserve meaningful day-level understanding across that window
 - Do not bias story selection toward only the latest few visible hours unless
   the actual news flow really happened only then
@@ -81,8 +79,8 @@ Coverage window:
 - If an older development still matters but has only weak updates in the
   effective coverage window, move it to the short secondary section instead of
   reusing it as a full main story
-- Record the effective coverage window in the reference briefing and in the run
-  summary
+- Record the effective coverage window in the reference briefing and in the
+  run summary
 
 Before selecting stories:
 - Review the most recent daily output files if available
@@ -107,6 +105,10 @@ Balance all of these:
 - meaningful day-level coverage
 - clarity for a beginner listener
 - natural listenability by ear
+
+The listener should understand what the story is quickly.
+What happened should come before abstract meaning.
+Concrete facts should arrive before interpretation.
 
 Story count:
 - Use 6 main stories by default
@@ -219,11 +221,11 @@ Cluster diversity rule:
   controversy
 
 Anti-repetition rule:
-- The same major story should not be reused as a main story on consecutive days
-  unless there is clearly meaningful new information
+- The same major story should not be reused as a main story on consecutive
+  days unless there is clearly meaningful new information
 - Treat "still important" and "new today" as separate tests
-- If updates are weak, move the story to the short secondary section instead of
-  reusing it as a full main story
+- If updates are weak, move the story to the short secondary section instead
+  of reusing it as a full main story
 
 Meaningful update criteria:
 A story may return as a main story only if there is substance such as:
@@ -245,15 +247,15 @@ Explanation repetition suppression:
 - Keep any refresher background to one short sentence at most
 - The intended feeling is: 「今日、何が変わったかが分かった」
 - The user should not feel: 「昨日の説明をまた聞いた」
-- If a topic appeared as a main story within the last 3 daily runs, background
-  should usually be limited to a very short refresher unless the story has
-  moved into a clearly new phase
+- If a topic appeared as a main story within the last 3 daily runs,
+  background should usually be limited to a very short refresher unless the
+  story has moved into a clearly new phase
 
 What changed today requirement:
-- Every main story must clearly show what changed within the effective coverage
-  window
-- If the main value of a candidate is unchanged background, it does not belong
-  as a full main story today
+- Every main story must clearly show what changed within the effective
+  coverage window
+- If the main value of a candidate is unchanged background, it does not
+  belong as a full main story today
 
 Short secondary section rule:
 - Use the short secondary section for important follow-up items that still
@@ -269,8 +271,8 @@ Headline-first and concrete-before-abstract requirement:
 - Each story should explain what happened today before moving into more
   abstract meaning
 - If numbers matter, place the numbers early
-- If the story is hard to picture, one short plain example or comparison may be
-  used only when it truly helps
+- If the story is hard to picture, one short plain example or comparison may
+  be used only when it truly helps
 - Explain why the story surfaced when that background is needed
 - Simplify abstract policy language into plain meaning whenever possible
 
@@ -335,8 +337,8 @@ Reference daily briefing requirements:
   section because there was no material update
 - It should note when a recurring topic received compressed background because
   it appeared recently
-- It should note any cluster-overlap judgment that moved a candidate out of the
-  main lineup
+- It should note any cluster-overlap judgment that moved a candidate out of
+  the main lineup
 - It should note whether cyber was included or meaningfully considered
 - It should note whether art or culture was included, considered, or absent
   despite meaningful candidates
@@ -405,6 +407,7 @@ Short opening
 
 今日の主要ニュース
 - Keep this section very short
+- Put titles first
 - Use it to orient the listener quickly
 - Do not over-explain
 
@@ -431,7 +434,8 @@ After the story-order label, write the story in a natural spoken flow:
 - Japan or daily-life impact
 - what to watch next
 
-This flow should sound natural by ear, not like a checklist.
+These are internal flow checkpoints, not visible mini-headings.
+The output should sound natural by ear, not like a checklist.
 
 Do not use repeated mini-headings such as:
 ニュースタイトル
@@ -464,8 +468,8 @@ Per-story writing rules:
 - Give enough explanation for meaning, but do not re-teach old background at
   full length
 - If a key term appears, explain it immediately and briefly inside the prose
-- If the story is hard to picture, one short plain example or comparison may be
-  used only when it truly helps
+- If the story is hard to picture, one short plain example or comparison may
+  be used only when it truly helps
 - Keep paragraphs short
 - One sentence should mainly carry one idea
 - Do not repeat yesterday's explanation unless it is necessary for today's
@@ -498,8 +502,8 @@ Quality bar before finishing:
 - The opening section must stay short
 - 今日の主要ニュース must stay short
 - 今日ここだけ覚える must contain exactly 3 short points
-- The final read_aloud_ja.md and Google Document body must avoid noisy markdown
-  syntax
+- The final read_aloud_ja.md and Google Document body must avoid noisy
+  markdown syntax
 - The fixed Google Document must be updated successfully
 
 At the end of the run, print a concise markdown summary with:
