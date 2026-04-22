@@ -10,12 +10,12 @@ The foundational learning document remains the map:
 
 The daily brief is the daily application layer built on top of that map.
 
-It is no longer a worksheet-like learning handout or a classroom-style prompt
-set.
+It is a morning news digest meant to be easy to follow by ear.
 
-It is now a daily morning news digest meant to be easy to follow by ear.
+It should feel closer to a good radio or TV news explainer than to a
+worksheet, structured handout, or analyst memo.
 
-It must still remain:
+It must remain:
 
 - plain
 - calm
@@ -24,19 +24,14 @@ It must still remain:
 - easy to follow in TTS
 - broad enough to build knowledge over time
 
-The foundation still guides editorial judgment, but the final output should
-feel closer to a good radio or TV news explainer than to a written report or a
-lesson worksheet.
-
 ## Internal Editorial Lens
 
-The foundation's learning questions still matter, but they now operate as an
-internal editorial lens.
+The foundation's learning questions still matter, but they are now an internal
+editorial lens.
 
-Use them to judge story selection, ordering, and explanation depth.
+Use them to judge story selection, ordering, explanation depth, and breadth.
 
-Do not surface them as repeated visible classroom-style prompts in the final
-script.
+Do not surface them as repeated classroom-style prompts in the final script.
 
 ## User Preference Shift
 
@@ -53,11 +48,12 @@ The brief should now clearly optimize for:
 - TTS-friendly final output
 - a very short ending
 - background or reason-for-occurrence explained clearly when needed
+- less annoyance from repeated mini-headings
 
 Keep only the minimum required section labels in the final script.
 
-Avoid extra worksheet-like prompts, repeated cue phrases, and repetitive
-transitions that make different stories sound mechanically alike.
+Avoid repeated mini-headings, repeated cue phrases, and repeated explanation
+patterns that make different stories sound like the same template.
 
 ## Coverage Window
 
@@ -128,8 +124,8 @@ Choose stories by balancing all of the following:
 
 Headline-first clarity matters.
 
-The listener should understand what the story is before hearing a long
-interpretation of it.
+The listener should understand what the story is quickly, before hearing a
+long interpretation of it.
 
 What happened should come before abstract meaning.
 
@@ -229,7 +225,7 @@ to the short secondary section or excluded.
 Cyber security, ransomware, breaches, and infrastructure cyber risk should be
 treated as real candidate categories for the main lineup.
 
-They should not be systematically overlooked.
+Do not systematically overlook them.
 
 Raise cyber priority when there is:
 
@@ -265,13 +261,13 @@ Prefer not to use more than 2 main stories from the same broad cluster.
 Additional stories from the same cluster should usually move to the short
 secondary section.
 
-The goal is broader understanding, not hearing the same crisis three different
-ways.
+The goal is broader understanding, not hearing the same crisis three
+different ways.
 
 ## Secondary Section Rule
 
-Use the short secondary section for important follow-up items that still matter
-but do not justify full treatment today.
+Use the short secondary section for important follow-up items that still
+matter but do not justify full treatment today.
 
 Use it when:
 
@@ -288,9 +284,9 @@ Within each story:
 
 - say what happened before abstract interpretation
 - place important numbers early when they matter
-- explain why the story surfaced when that background is needed
-- use one short plain example or comparison only if it truly helps the listener
-  imagine the issue
+- use one short plain example or comparison only if it truly helps the
+  listener imagine the issue
+- explain why the story surfaced when background is needed
 - simplify abstract policy language into plain meaning whenever possible
 
 The brief should move from concrete facts to explanation, not the other way
@@ -307,13 +303,12 @@ Prefer short sentences.
 
 One sentence should mainly carry one idea.
 
+Rigid repeated labels should be minimized.
+
 The wording should help the listener picture the situation first, then
 understand the meaning.
 
 Use only the required section labels.
-
-Avoid extra worksheet-style prompts, repeated cue phrases, and near-identical
-explanation patterns.
 
 Vary sentence openings and transitions across stories.
 
@@ -353,7 +348,7 @@ Title:
 
 Short opening:
 
-- at most 2 short sentences
+- at most 2 very short sentences
 - calm and direct
 - not a lesson-style introduction
 
@@ -369,7 +364,19 @@ Short opening:
 - use 7 only when clearly useful
 - use 5 only on genuinely light days
 
-Each main story should use this order:
+Each main story should follow this spoken order:
+
+- title
+- one very short plain summary sentence
+- concrete fact
+- brief background or reason-for-occurrence when needed
+- why it matters
+- Japan or daily-life impact
+- what to watch next
+
+This flow should sound natural by ear, not like a checklist being read aloud.
+
+Do not use repeated mini-headings such as:
 
 - `ニュースタイトル`
 - `一言でいうと`
@@ -390,7 +397,8 @@ Each main story should use this order:
 
 - contain exactly 3 short points
 - keep each point brief and memorable
-- do not add a long concluding essay after it
+- treat this as the ending
+- do not add a lesson-style conclusion or long extra section after it
 
 ## Reference Outputs And Sync Boundary
 

@@ -20,7 +20,7 @@ It is NOT a dense analyst memo.
 It is NOT a bare headline roundup.
 
 It is a calm, beginner-friendly morning news digest that is easy to follow by
-ear, puts news titles first, explains what happened before abstract meaning,
+ear, puts news titles first, explains concrete facts before abstract meaning,
 and broadens the user's knowledge across fields over time.
 
 The foundational map still matters.
@@ -28,7 +28,7 @@ The brief should help the user place today's events on that map without
 re-teaching the whole map every morning.
 
 The final result should feel closer to a good radio or TV news explainer than
-to a written report or a classroom handout.
+to a structured handout.
 
 Internal editorial lens:
 The foundational map's big learning questions still matter, but they are now
@@ -47,13 +47,13 @@ Audience assumptions:
 - The user wants concrete explanation before abstract interpretation
 - The user wants fewer repeated labels
 - The user wants fewer repeated explanation patterns
-- The user wants more variety across topics over time
+- The user wants more variety across topics
 - The user wants broader coverage across days
+- The user wants a TTS-friendly final output
+- The user wants a very short ending
 - The user wants background or reason-for-occurrence explained clearly when
   needed
-- The user wants short plain comparisons only when they truly help
-- The user wants a final output that sounds natural in TTS
-- The user wants a very short ending
+- The user does not want repeated mini-headings to become annoying
 
 Therefore:
 - Write for a smart beginner
@@ -64,8 +64,8 @@ Therefore:
 - Prefer headline-first clarity, concrete-before-abstract writing, and natural
   listenability over sophistication
 - Keep only the minimum required section labels in the final script
-- Avoid extra worksheet-like headings, repeated cue phrases, and repetitive
-  explanation patterns
+- Avoid extra worksheet-like headings, repeated cue phrases, repeated
+  explanation patterns, and near-identical wording across days
 
 Coverage window:
 - Time zone: Asia/Tokyo
@@ -136,30 +136,6 @@ But do use these pools to preserve breadth over time.
 Cyber is not mandatory every day.
 Art or culture is not mandatory every day.
 But neither category should be systematically overlooked.
-
-Headline-first and concrete-before-abstract requirement:
-- Main stories must present a clear news title first
-- The title should help the user understand what the story is immediately
-- Each story should explain what happened today before moving into more
-  abstract meaning
-- If numbers matter, place the numbers early
-- Explain why the story surfaced when that background is needed
-- If the story is hard to picture, one short plain example or comparison may be
-  used only when it truly helps
-- Simplify abstract policy language into plain meaning whenever possible
-
-Ear-first writing requirement:
-- The script should sound natural by ear
-- It should feel closer to a good radio or TV news explainer than to a written
-  report
-- Prefer short sentences
-- One sentence should mainly carry one idea
-- The wording should help the listener picture the situation first, then
-  understand the meaning
-- Minimize rigid repeated labels and repeated explanation patterns
-- Do not add extra worksheet-like headings or classroom prompts beyond the
-  required structure
-- Vary sentence openings and transitions across stories
 
 Japan domestic rule:
 The Japan domestic slot should preferably remain a true Japan domestic policy,
@@ -252,7 +228,7 @@ Anti-repetition rule:
 Meaningful update criteria:
 A story may return as a main story only if there is substance such as:
 - a new official statement
-- a new disclosed number, forecast, or document
+- a newly disclosed number, forecast, or document
 - a meaningful policy, legal, or negotiation step
 - movement into a new phase
 - a meaningful Japan-side response
@@ -286,6 +262,30 @@ Short secondary section rule:
 - Use it when a candidate loses the freshness test
 - Use it when cluster diversity requires demotion
 - Keep these items concise and focused on what is being watched next
+
+Headline-first and concrete-before-abstract requirement:
+- Main stories must present a clear news title first
+- The title should help the user understand what the story is immediately
+- Each story should explain what happened today before moving into more
+  abstract meaning
+- If numbers matter, place the numbers early
+- If the story is hard to picture, one short plain example or comparison may be
+  used only when it truly helps
+- Explain why the story surfaced when that background is needed
+- Simplify abstract policy language into plain meaning whenever possible
+
+Ear-first writing requirement:
+- The script should sound natural by ear
+- It should feel closer to a good radio or TV news explainer than to a written
+  report
+- Prefer short sentences
+- One sentence should mainly carry one idea
+- The wording should help the listener picture the situation first, then
+  understand the meaning
+- Minimize rigid repeated labels and repeated explanation patterns
+- Do not add extra worksheet-like headings or classroom prompts beyond the
+  required structure
+- Vary sentence openings and transitions across stories
 
 Scope and sources:
 - Prefer primary or official sources whenever reasonably available
@@ -399,7 +399,7 @@ Title
   YYYY年M月D日 朝のデイリーブリーフ
 
 Short opening
-- Keep it to 1 to 2 short sentences
+- Keep it to 1 to 2 very short sentences
 - Make it calm and direct
 - Do not turn it into a lesson, essay, or long preview
 
@@ -422,7 +422,18 @@ For each main story, use plain story-order labels such as:
 六つ目
 七つ目
 
-After each story-order label, use this plain-label order:
+After the story-order label, write the story in a natural spoken flow:
+- title
+- one very short plain summary sentence
+- concrete fact
+- brief background or reason-for-occurrence when needed
+- why it matters
+- Japan or daily-life impact
+- what to watch next
+
+This flow should sound natural by ear, not like a checklist.
+
+Do not use repeated mini-headings such as:
 ニュースタイトル
 一言でいうと
 何が起きたか
@@ -468,7 +479,7 @@ Per-story writing rules:
 Quality bar before finishing:
 - The script must be understandable to a beginner
 - It must sound like a morning digest, not a repetitive worksheet
-- It must feel broader and fresher than a repetitive daily worksheet
+- It must feel broader and fresher than a structured explainer document
 - It must give headline-first clarity
 - It must provide enough explanation to make the news meaningful
 - It must not feel like a dense analyst memo

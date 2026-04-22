@@ -28,11 +28,11 @@ the daily automation prompt.
 
 Keep daily outputs beginner-friendly, plain, calm, headline-first, and easy to
 follow by ear. Use 6 stories by default, 7 only when clearly useful, and 5 on
-genuinely light days. Every main story should begin with `ニュースタイトル`,
-move from concrete facts to explanation, and preserve breadth across fields
-including cyber and culture when warranted. Major continuing themes without
-meaningful updates belong in `短く追うニュース` instead of being repeated as
-full stories, and recurring topics should sharply compress repeated background.
+genuinely light days. Main stories should sound like natural spoken explainers,
+with titles first, a fast plain summary, concrete facts before abstraction, and
+compressed refresher background on recurring topics. Preserve breadth across
+fields, including cyber and culture when warranted, and move weak-update
+follow-ups into `短く追うニュース` instead of repeating them as full stories.
 The final read-aloud script mirrored to Google Docs should use the short
 opening, brief `今日の主要ニュース`, `本編`, `短く追うニュース`, and
 `今日ここだけ覚える` structure defined in the tracked docs, while avoiding
