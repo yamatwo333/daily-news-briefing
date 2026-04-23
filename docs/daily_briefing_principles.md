@@ -15,7 +15,7 @@ It is a morning news digest meant to be easy to follow by ear.
 It should feel closer to a good radio or TV news explainer than to a
 worksheet, structured handout, or analyst memo.
 
-It must remain:
+The quality target is now closer to broadcast-level naturalness while staying:
 
 - plain
 - calm
@@ -59,6 +59,7 @@ The tracked model should now clearly optimize for:
 - less annoyance from repeated mini-headings
 - clear audible transitions between stories
 - each story's premise and category to become clear very early
+- stronger broadcast-like naturalness
 
 Keep only the minimum required section labels in the final script.
 
@@ -148,8 +149,8 @@ This is the main writing update.
 For each main story, the listener must understand very early:
 
 - what kind of news this is
-- why this issue is being talked about now
 - what changed today
+- why this issue is being talked about now
 
 Do this with one short natural sentence immediately after the news title.
 
@@ -160,11 +161,11 @@ Do not use worksheet-style prompts.
 That sentence should help the listener recognize whether the story is, for
 example:
 
+- a wage / statistics story
 - a policy / law / institutional story
-- a wage / macro / statistics story
 - a diplomatic negotiation
 - a disaster response story
-- a corporate results story
+- a corporate / earnings / industry story
 - an infrastructure / supply-chain story
 - a culture / diplomacy / education story
 - or another clearly legible category
@@ -357,7 +358,24 @@ Use only the required section labels.
 
 Vary sentence openings and transitions across stories.
 
-## Main Story Spoken Flow
+Avoid repeated explanation patterns that make the final digest sound like a
+worksheet.
+
+## Density Control Rule
+
+Each main story should usually stay within about 6 to 8 sentences total.
+
+Prefer slightly incomplete detail over overpacked density.
+
+The listener should understand the story on first listen.
+
+Long explanatory build-outs should be cut unless they are absolutely
+essential.
+
+If a story cannot stay clear inside that density target, simplify it or move
+it out of the main lineup.
+
+## Audible Transition Rule
 
 Each main story should begin with a short audible transition that makes the
 story change obvious by ear.
@@ -375,11 +393,13 @@ These transitions should remain short and natural.
 
 They should not become long meta-commentary.
 
+## Main Story Spoken Flow
+
 After the transition, use this spoken flow:
 
 - title
 - one short natural premise sentence that makes clear what kind of story this
-  is, why it surfaced now, and what changed today
+  is, what changed today, and why it surfaced now
 - concrete fact
 - brief background or reason-for-occurrence when needed
 - why it matters
@@ -399,6 +419,8 @@ Do not use repeated mini-headings such as:
 - `なぜ重要か`
 - `日本への影響`
 - `次の焦点`
+
+The output should sound natural by ear, not like a checklist being read aloud.
 
 ## Final Read-Aloud And Google Docs Formatting
 
@@ -476,6 +498,22 @@ Do not add extra trailing sections such as:
 - `聞き方のコツ`
 - `加えて`
 - `この流れを押さえると`
+
+## No Editorial-Process Leakage
+
+Do not include editorial or selection-process notes in the final user-facing
+digest.
+
+Avoid lines such as:
+
+- `候補として確認しましたが`
+- `採用を見送りました`
+- `短報扱いにしました`
+
+The final digest should present the news, not the internal newsroom process.
+
+Reference artifacts may still record editorial judgments when they help the
+tracked workflow.
 
 ## Reference Outputs And Sync Boundary
 

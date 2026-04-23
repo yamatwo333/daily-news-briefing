@@ -11,6 +11,13 @@ current-affairs learning brief.
 Then overwrite the same fixed Google Document with the final daily read-aloud
 script.
 
+Latest operating target:
+The daily briefing has been redesigned again.
+It is now easier to listen to, but the target is closer to a real
+broadcast-level news explainer.
+The script should make each story easier to identify, easier to picture, and
+easier to retain on first listen.
+
 Core model:
 The foundational learning document is the map.
 The daily brief is the daily application layer built on top of that map.
@@ -63,6 +70,7 @@ Audience assumptions:
 - The user wants less annoyance from repeated mini-headings
 - The user wants clear audible transitions between stories
 - The user wants each story's premise and category to become clear very early
+- The user wants stronger broadcast-like naturalness
 
 Therefore:
 - Write for a smart beginner
@@ -277,8 +285,8 @@ This is the main writing rule.
 
 For every main story, the listener must understand very early:
 - what kind of news this is
-- why this issue is being talked about now
 - what changed today
+- why this issue is being talked about now
 
 Do this with one short natural sentence immediately after the news title.
 Do not use classroom labels.
@@ -286,11 +294,11 @@ Do not use worksheet-style prompts.
 
 That sentence should help the listener recognize whether the story is, for
 example:
+- a wage / statistics story
 - a policy / law / institutional story
-- a wage / macro / statistics story
 - a diplomatic negotiation
 - a disaster response story
-- a corporate results story
+- a corporate / earnings / industry story
 - an infrastructure / supply-chain story
 - a culture / diplomacy / education story
 - or another clearly legible category
@@ -328,6 +336,17 @@ Ear-first writing requirement:
   understand the meaning
 - Minimize rigid repeated labels and repeated explanation patterns
 - Vary sentence openings and transitions across stories
+- Aim for broadcast-like naturalness, not a structured explainer that happens
+  to be organized well on paper
+
+Density control rule:
+- Each main story should usually stay within about 6 to 8 sentences total
+- Prefer slightly incomplete detail over overpacked density
+- The listener should understand the story on first listen
+- Long explanatory build-outs should be cut unless they are absolutely
+  essential
+- If a story cannot stay clear inside that density target, simplify it or move
+  it out of the main lineup
 
 Audible transition rule:
 - Each main story must begin with a short spoken transition that makes the
@@ -347,7 +366,7 @@ For each main story, use this natural spoken order:
 - short audible transition
 - title
 - one short natural premise sentence that makes clear what kind of story this
-  is, why it surfaced now, and what changed today
+  is, what changed today, and why it surfaced now
 - concrete fact
 - brief background or reason-for-occurrence when needed
 - why it matters
@@ -452,6 +471,7 @@ Hard constraints:
 - No dense compressed paragraphs
 - No unexplained acronyms
 - No vague prestige language
+- No editorial-process leakage
 
 Length target:
 - Roughly 3,500 to 5,500 Japanese characters
@@ -504,7 +524,7 @@ For each main story, begin with a short spoken transition such as:
 After that transition, write the story in a natural spoken flow:
 - title
 - one short natural premise sentence that makes clear what kind of story this
-  is, why it surfaced now, and what changed today
+  is, what changed today, and why it surfaced now
 - concrete fact
 - brief background or reason-for-occurrence when needed
 - why it matters
@@ -547,6 +567,16 @@ No extra trailing teaching sections:
   加えて
   この流れを押さえると
 
+No editorial-process leakage:
+- Do not include editorial or selection-process notes in the final user-facing
+  digest
+- Avoid lines such as:
+  候補として確認しましたが
+  採用を見送りました
+  短報扱いにしました
+- The final digest should present the news, not the internal newsroom process
+- Internal selection logic belongs only in the reference artifacts when needed
+
 Per-story writing rules:
 - Start with the headline clearly
 - Give fast understanding of what happened
@@ -564,6 +594,8 @@ Per-story writing rules:
   be used only when it truly helps
 - Keep paragraphs short
 - One sentence should mainly carry one idea
+- Keep each main story to about 6 to 8 sentences when possible
+- Prefer slightly incomplete detail over overpacked density
 - Do not repeat yesterday's explanation unless it is necessary for today's
   understanding
 - Avoid near-identical wording from recent briefs
@@ -598,6 +630,7 @@ Quality bar before finishing:
 - 今日ここだけ覚える must contain exactly 3 short points
 - The final read_aloud_ja.md and Google Document body must avoid noisy
   markdown syntax
+- The final digest must not leak editorial-process notes
 - The fixed Google Document must be updated successfully
 
 At the end of the run, print a concise markdown summary with:
