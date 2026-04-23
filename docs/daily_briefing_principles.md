@@ -24,21 +24,26 @@ It must remain:
 - easy to follow in TTS
 - broad enough to build knowledge over time
 
-The final read-aloud script should feel like a real morning news program, not
-like a templated explainer document being read aloud.
+The script should help the listener picture the situation first, then
+understand why it matters.
 
 ## Internal Editorial Lens
 
-The foundation's learning questions still matter, but they are now an internal
-editorial lens.
+The foundation's learning questions still matter, but they are now internal
+editorial checks.
 
-Use them to judge story selection, ordering, explanation depth, and breadth.
+Use them to guide:
+
+- story selection
+- ordering
+- explanation depth
+- breadth across fields
 
 Do not surface them as repeated classroom-style prompts in the final script.
 
 ## User Preference Shift
 
-The brief should now clearly optimize for:
+The tracked model should now clearly optimize for:
 
 - news titles first
 - a very short opening
@@ -52,6 +57,7 @@ The brief should now clearly optimize for:
 - a very short ending
 - background or reason-for-occurrence explained clearly when needed
 - less annoyance from repeated mini-headings
+- clear audible transitions between stories
 
 Keep only the minimum required section labels in the final script.
 
@@ -317,6 +323,46 @@ Use only the required section labels.
 
 Vary sentence openings and transitions across stories.
 
+## Main Story Spoken Flow
+
+Each main story should begin with a short audible transition that makes the
+story change obvious by ear.
+
+Prefer short transitions such as:
+
+- `一つ目です。`
+- `次のニュースです。`
+- `三つ目です。`
+- `四つ目です。`
+- `次です。`
+- `最後はこの話です。`
+
+These transitions should remain short and natural.
+
+They should not become long meta-commentary.
+
+After the transition, use this spoken flow:
+
+- title
+- one very short plain summary sentence
+- concrete fact
+- brief background or reason-for-occurrence when needed
+- why it matters
+- Japan or daily-life impact
+- what to watch next
+
+This flow is an internal writing order, not a visible checklist.
+
+Do not use repeated mini-headings such as:
+
+- `ニュースタイトル`
+- `一言でいうと`
+- `何が起きたか`
+- `なんでこの話が出てきたのか`
+- `なぜ重要か`
+- `日本への影響`
+- `次の焦点`
+
 ## Final Read-Aloud And Google Docs Formatting
 
 The final `read_aloud_ja.md` file and Google Doc body must be TTS-friendly.
@@ -329,8 +375,6 @@ Do not use:
 - backticks
 
 Use plain Japanese section labels suitable for text-to-speech.
-
-Story order labels such as `一つ目` are acceptable as plain text.
 
 Repository reference artifacts may still use markdown when useful.
 
@@ -368,27 +412,7 @@ Short opening:
 - use 7 only when clearly useful
 - use 5 only on genuinely light days
 
-Each main story should follow this spoken order:
-
-- title
-- one very short plain summary sentence
-- concrete fact
-- brief background or reason-for-occurrence when needed
-- why it matters
-- Japan or daily-life impact
-- what to watch next
-
-This flow should sound natural by ear, not like a checklist being read aloud.
-
-Do not use repeated mini-headings such as:
-
-- `ニュースタイトル`
-- `一言でいうと`
-- `何が起きたか`
-- `なんでこの話が出てきたのか`
-- `なぜ重要か`
-- `日本への影響`
-- `次の焦点`
+Each main story should follow the spoken flow in the previous section.
 
 `短く追うニュース`:
 
@@ -403,6 +427,18 @@ Do not use repeated mini-headings such as:
 - keep each point brief and memorable
 - treat this as the ending
 - do not add a lesson-style conclusion or long extra section after it
+
+## No Extra Trailing Teaching Sections
+
+Once the digest reaches `今日ここだけ覚える`, it should end cleanly.
+
+Do not add extra trailing sections such as:
+
+- `補足です`
+- `状況の見取り図`
+- `聞き方のコツ`
+- `加えて`
+- `この流れを押さえると`
 
 ## Reference Outputs And Sync Boundary
 

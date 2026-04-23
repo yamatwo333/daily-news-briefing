@@ -1,7 +1,7 @@
 You are running inside a dedicated Git repository whose purpose is to generate a
 daily Japanese morning news digest, keep local reference outputs, produce a
-final read-aloud study script, and overwrite the same fixed Google Document
-used as the daily reading URL.
+final read-aloud script, and overwrite the same fixed Google Document used as
+the daily reading URL.
 
 This is a daily automation task.
 
@@ -15,16 +15,16 @@ Core model:
 The foundational learning document is the map.
 The daily brief is the daily application layer built on top of that map.
 
-This daily brief is NOT a worksheet-like lesson script.
-It is NOT a dense analyst memo.
-It is NOT a bare headline roundup.
+This daily brief is not a worksheet-like lesson script.
+It is not a dense analyst memo.
+It is not a bare headline roundup.
 
 It is a calm, beginner-friendly morning news digest that is easy to follow by
 ear, puts news titles first, explains concrete facts before abstract meaning,
 and broadens the user's knowledge across fields over time.
 
 The final result should feel closer to a good radio or TV news explainer than
-to a structured handout or a checklist being read aloud.
+to a structured handout, checklist, or written report being read aloud.
 
 Internal editorial lens:
 The foundational map's big learning questions still matter, but they are now
@@ -49,7 +49,8 @@ Audience assumptions:
 - The user wants a very short ending
 - The user wants background or reason-for-occurrence explained clearly when
   needed
-- The user does not want repeated mini-headings to become annoying
+- The user wants less annoyance from repeated mini-headings
+- The user wants clear audible transitions between stories
 
 Therefore:
 - Write for a smart beginner
@@ -285,9 +286,43 @@ Ear-first writing requirement:
 - The wording should help the listener picture the situation first, then
   understand the meaning
 - Minimize rigid repeated labels and repeated explanation patterns
-- Do not add extra worksheet-like headings or classroom prompts beyond the
-  required structure
 - Vary sentence openings and transitions across stories
+
+Audible transition rule:
+- Each main story must begin with a short spoken transition that makes the
+  story change obvious by ear
+- Prefer short transitions such as:
+  一つ目です。
+  次のニュースです。
+  三つ目です。
+  四つ目です。
+  次です。
+  最後はこの話です。
+- These transitions should stay short and natural
+- They should not become long meta-commentary
+
+Main-story spoken flow:
+For each main story, use this natural spoken order:
+- short audible transition
+- title
+- one very short plain summary sentence
+- concrete fact
+- brief background or reason-for-occurrence when needed
+- why it matters
+- Japan or daily-life impact
+- what to watch next
+
+These are internal writing checkpoints, not visible mini-headings.
+The output should sound natural by ear, not like a checklist being read aloud.
+
+Do not use repeated mini-headings such as:
+- ニュースタイトル
+- 一言でいうと
+- 何が起きたか
+- なんでこの話が出てきたのか
+- なぜ重要か
+- 日本への影響
+- 次の焦点
 
 Scope and sources:
 - Prefer primary or official sources whenever reasonably available
@@ -304,8 +339,8 @@ Google Docs integration:
   scripts/sync_google_doc.py, README, docs, AGENTS.md, or similar tracked
   sources
 - Treat tracked config as the source of truth
-- After generating the final daily study script, overwrite the same fixed
-  Google Document with that final study script
+- After generating the final daily read-aloud script, overwrite the same fixed
+  Google Document with that final script
 - Do not write the weekly rolling reference file into the Google Document
 - Keep the same fixed Google Document URL
 - Do not modify config/google_doc_sync.json unless a sync change is explicitly
@@ -322,7 +357,7 @@ Required output files:
    output/daily/YYYY/YYYY-MM/YYYY-MM-DD_manifest.json
 4. Weekly rolling reference file
    output/weekly/YYYY/YYYY-Www_notebooklm_feed_ja.md
-5. Final study script
+5. Final read-aloud script
    output/daily/YYYY/YYYY-MM/YYYY-MM-DD_read_aloud_ja.md
 
 Reference daily briefing requirements:
@@ -343,7 +378,7 @@ Reference daily briefing requirements:
 - It should note whether art or culture was included, considered, or absent
   despite meaningful candidates
 
-Final daily study script requirements:
+Final daily read-aloud script requirements:
 This is the most important artifact.
 This is the version that must be written into the fixed Google Document.
 
@@ -416,16 +451,15 @@ Short opening
 - Use 7 only when clearly useful
 - Use 5 only on genuinely light days
 
-For each main story, use plain story-order labels such as:
-一つ目
-二つ目
-三つ目
-四つ目
-五つ目
-六つ目
-七つ目
+For each main story, begin with a short spoken transition such as:
+一つ目です。
+次のニュースです。
+三つ目です。
+四つ目です。
+次です。
+最後はこの話です。
 
-After the story-order label, write the story in a natural spoken flow:
+After that transition, write the story in a natural spoken flow:
 - title
 - one very short plain summary sentence
 - concrete fact
@@ -458,6 +492,15 @@ Do not use repeated mini-headings such as:
 - This is the ending, so keep it very short
 - Do not add a long lesson, essay, or extra concluding section after it
 
+No extra trailing teaching sections:
+- Once the digest reaches 今日ここだけ覚える, end cleanly
+- Do not add sections such as:
+  補足です
+  状況の見取り図
+  聞き方のコツ
+  加えて
+  この流れを押さえると
+
 Per-story writing rules:
 - Start with the headline clearly
 - Give fast understanding of what happened
@@ -483,7 +526,8 @@ Per-story writing rules:
 Quality bar before finishing:
 - The script must be understandable to a beginner
 - It must sound like a morning digest, not a repetitive worksheet
-- It must feel broader and fresher than a structured explainer document
+- It must feel shorter, fresher, and more natural by ear than a structured
+  explainer document
 - It must give headline-first clarity
 - It must provide enough explanation to make the news meaningful
 - It must not feel like a dense analyst memo
