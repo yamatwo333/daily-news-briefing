@@ -58,6 +58,7 @@ The tracked model should now clearly optimize for:
 - background or reason-for-occurrence explained clearly when needed
 - less annoyance from repeated mini-headings
 - clear audible transitions between stories
+- each story's premise and category to become clear very early
 
 Keep only the minimum required section labels in the final script.
 
@@ -139,6 +140,37 @@ long interpretation of it.
 What happened should come before abstract meaning.
 
 Main stories should prefer concrete news over abstract framing.
+
+## Early-Premise Rule
+
+This is the main writing update.
+
+For each main story, the listener must understand very early:
+
+- what kind of news this is
+- why this issue is being talked about now
+- what changed today
+
+Do this with one short natural sentence immediately after the news title.
+
+Do not use classroom labels.
+
+Do not use worksheet-style prompts.
+
+That sentence should help the listener recognize whether the story is, for
+example:
+
+- a policy / law / institutional story
+- a wage / macro / statistics story
+- a diplomatic negotiation
+- a disaster response story
+- a corporate results story
+- an infrastructure / supply-chain story
+- a culture / diplomacy / education story
+- or another clearly legible category
+
+The listener should never enter detailed facts without first understanding the
+premise of the story.
 
 ## Anti-Repetition Rule
 
@@ -319,6 +351,8 @@ Rigid repeated labels should be minimized.
 The wording should help the listener picture the situation first, then
 understand the meaning.
 
+Make the premise legible before detailed facts begin to stack up.
+
 Use only the required section labels.
 
 Vary sentence openings and transitions across stories.
@@ -344,7 +378,8 @@ They should not become long meta-commentary.
 After the transition, use this spoken flow:
 
 - title
-- one very short plain summary sentence
+- one short natural premise sentence that makes clear what kind of story this
+  is, why it surfaced now, and what changed today
 - concrete fact
 - brief background or reason-for-occurrence when needed
 - why it matters
@@ -352,6 +387,8 @@ After the transition, use this spoken flow:
 - what to watch next
 
 This flow is an internal writing order, not a visible checklist.
+
+That premise sentence should sound like natural speech, not a label.
 
 Do not use repeated mini-headings such as:
 

@@ -20,11 +20,22 @@ It is not a dense analyst memo.
 It is not a bare headline roundup.
 
 It is a calm, beginner-friendly morning news digest that is easy to follow by
-ear, puts news titles first, explains concrete facts before abstract meaning,
+ear, keeps news titles first, explains concrete facts before abstract meaning,
 and broadens the user's knowledge across fields over time.
 
 The final result should feel closer to a good radio or TV news explainer than
 to a structured handout, checklist, or written report being read aloud.
+
+It must remain:
+- plain
+- calm
+- beginner-friendly
+- easy to understand
+- easy to follow in TTS
+- broad enough to build knowledge over time
+
+The script should help the listener picture the situation first, then
+understand why it matters.
 
 Internal editorial lens:
 The foundational map's big learning questions still matter, but they are now
@@ -51,6 +62,7 @@ Audience assumptions:
   needed
 - The user wants less annoyance from repeated mini-headings
 - The user wants clear audible transitions between stories
+- The user wants each story's premise and category to become clear very early
 
 Therefore:
 - Write for a smart beginner
@@ -108,6 +120,8 @@ Balance all of these:
 - natural listenability by ear
 
 The listener should understand what the story is quickly.
+The listener should understand what kind of story it is before detailed facts
+begin to stack up.
 What happened should come before abstract meaning.
 Concrete facts should arrive before interpretation.
 
@@ -258,6 +272,32 @@ What changed today requirement:
 - If the main value of a candidate is unchanged background, it does not
   belong as a full main story today
 
+Early-premise rule:
+This is the main writing rule.
+
+For every main story, the listener must understand very early:
+- what kind of news this is
+- why this issue is being talked about now
+- what changed today
+
+Do this with one short natural sentence immediately after the news title.
+Do not use classroom labels.
+Do not use worksheet-style prompts.
+
+That sentence should help the listener recognize whether the story is, for
+example:
+- a policy / law / institutional story
+- a wage / macro / statistics story
+- a diplomatic negotiation
+- a disaster response story
+- a corporate results story
+- an infrastructure / supply-chain story
+- a culture / diplomacy / education story
+- or another clearly legible category
+
+The listener should never enter detailed facts without first understanding the
+premise of the story.
+
 Short secondary section rule:
 - Use the short secondary section for important follow-up items that still
   matter but do not justify full treatment today
@@ -274,7 +314,8 @@ Headline-first and concrete-before-abstract requirement:
 - If numbers matter, place the numbers early
 - If the story is hard to picture, one short plain example or comparison may
   be used only when it truly helps
-- Explain why the story surfaced when that background is needed
+- Explain background or reason-for-occurrence clearly when that context is
+  needed
 - Simplify abstract policy language into plain meaning whenever possible
 
 Ear-first writing requirement:
@@ -305,7 +346,8 @@ Main-story spoken flow:
 For each main story, use this natural spoken order:
 - short audible transition
 - title
-- one very short plain summary sentence
+- one short natural premise sentence that makes clear what kind of story this
+  is, why it surfaced now, and what changed today
 - concrete fact
 - brief background or reason-for-occurrence when needed
 - why it matters
@@ -461,15 +503,19 @@ For each main story, begin with a short spoken transition such as:
 
 After that transition, write the story in a natural spoken flow:
 - title
-- one very short plain summary sentence
+- one short natural premise sentence that makes clear what kind of story this
+  is, why it surfaced now, and what changed today
 - concrete fact
 - brief background or reason-for-occurrence when needed
 - why it matters
 - Japan or daily-life impact
 - what to watch next
 
+That premise sentence should not sound like a label.
+It should sound like natural spoken explanation.
+The listener should know the premise before detailed facts arrive.
 These are internal flow checkpoints, not visible mini-headings.
-The output should sound natural by ear, not like a checklist.
+The output should sound natural by ear, not like a checklist being read aloud.
 
 Do not use repeated mini-headings such as:
 ニュースタイトル
@@ -504,6 +550,9 @@ No extra trailing teaching sections:
 Per-story writing rules:
 - Start with the headline clearly
 - Give fast understanding of what happened
+- Make the premise and category legible very early
+- Use the sentence immediately after the title to signal what kind of story
+  this is without classroom labels
 - Say what happened before abstract interpretation
 - If numbers matter, put the numbers early
 - Explain in simple Japanese
@@ -529,6 +578,7 @@ Quality bar before finishing:
 - It must feel shorter, fresher, and more natural by ear than a structured
   explainer document
 - It must give headline-first clarity
+- It must make each story's premise legible very early
 - It must provide enough explanation to make the news meaningful
 - It must not feel like a dense analyst memo
 - It must not over-repeat yesterday's background
