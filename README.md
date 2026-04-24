@@ -27,17 +27,15 @@ beginner-friendly writing, and use
 the daily automation prompt.
 
 Keep daily outputs beginner-friendly, plain, calm, headline-first, and easy to
-follow by ear. Use 6 stories by default, 7 only when clearly useful, and 5 on
-genuinely light days. Main stories should sound like natural spoken explainers,
-with titles first, a fast early premise sentence that makes the story category
-and today's change legible, concrete facts before abstraction, and compressed
-refresher background on recurring topics. Preserve breadth across fields,
-including cyber and culture when warranted, and move weak-update follow-ups
-into `短く追うニュース` instead of repeating them as full stories.
-The final read-aloud script mirrored to Google Docs should use the short
-opening, brief `今日の主要ニュース`, `本編`, `短く追うニュース`, and
-`今日ここだけ覚える` structure defined in the tracked docs, while avoiding
-noisy markdown symbols for TTS-friendly reading.
+follow by ear. Build the final read-aloud script around the five core sections
+defined in `docs/daily_briefing_principles.md` (`政治・行政・司法`,
+`国際・安全保障`, `経済・家計`, `社会・暮らし・インフラ`,
+`産業・企業・テクノロジー`) and add one rotating sixth section only when
+meaningful. The synced read-aloud body should start with a very short greeting,
+move directly into the section-based digest, then use `そのほか、短く確認します。`
+and `今日ここだけ覚える`, while avoiding noisy markdown symbols for
+TTS-friendly reading. Use the two tracked docs above as the source of truth
+for structure, prioritization, repetition control, and sync behavior.
 
 ## Quick sync check
 

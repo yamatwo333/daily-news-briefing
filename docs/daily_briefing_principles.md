@@ -12,10 +12,10 @@ The daily brief is the daily application layer built on top of that map.
 
 It is a morning news digest meant to be easy to follow by ear.
 
-It should feel closer to a good radio or TV news explainer than to a
-worksheet, structured handout, or analyst memo.
+It should feel closer to radio flash news with short explanation than to a
+worksheet, structured report, or analyst memo.
 
-The quality target is now closer to broadcast-level naturalness while staying:
+The quality target remains:
 
 - plain
 - calm
@@ -24,49 +24,10 @@ The quality target is now closer to broadcast-level naturalness while staying:
 - easy to follow in TTS
 - broad enough to build knowledge over time
 
-The script should help the listener picture the situation first, then
-understand why it matters.
+The listener should quickly understand what kind of news they are hearing,
+what changed today, and why it matters.
 
-## Internal Editorial Lens
-
-The foundation's learning questions still matter, but they are now internal
-editorial checks.
-
-Use them to guide:
-
-- story selection
-- ordering
-- explanation depth
-- breadth across fields
-
-Do not surface them as repeated classroom-style prompts in the final script.
-
-## User Preference Shift
-
-The tracked model should now clearly optimize for:
-
-- news titles first
-- a very short opening
-- faster understanding of what happened
-- concrete explanation before abstract interpretation
-- fewer repeated labels
-- fewer repeated explanation patterns
-- more variety across topics
-- broader coverage across days
-- TTS-friendly final output
-- a very short ending
-- background or reason-for-occurrence explained clearly when needed
-- less annoyance from repeated mini-headings
-- clear audible transitions between stories
-- each story's premise and category to become clear very early
-- stronger broadcast-like naturalness
-
-Keep only the minimum required section labels in the final script.
-
-Reduce repeated cue phrases, repeated mini-headings, and repeated explanation
-patterns that make different stories sound like the same template.
-
-## Coverage Window
+## Coverage Window And Sync Boundary
 
 The effective coverage window should normally run from the previous scheduled
 run until now.
@@ -80,454 +41,405 @@ hours unless the relevant news flow truly happened only then.
 Older developments may still appear if they remain materially important today.
 
 If an older story has only weak updates inside the effective coverage window,
-move it to the short secondary section instead of reusing it as a main story.
+move it to short secondary tracking instead of reusing it as a main section.
 
-## Story Count And Breadth
+Keep the existing Google Docs sync workflow intact.
 
-Use 6 main stories by default.
+Do not modify `config/google_doc_sync.json` unless a sync change is clearly
+required.
 
-Use 7 only when the extra story is clearly useful.
+Do not modify `scripts/sync_google_doc.py` unless an actual sync bug fix is
+required.
 
-Use 5 only on genuinely light days.
+## Final Read-Aloud Structure
 
-The daily selection should actively broaden the listener's knowledge across
-fields over time.
+The final `read_aloud_ja.md` file and Google Doc body should begin with a very
+short greeting and then move directly into the section-based body.
 
-## Topic Pools
+Acceptable opening example:
 
-The daily brief should rotate across these important pools as the news allows:
+`おはようございます。4月24日朝のニュースです。`
 
-- international politics / geopolitics / security
-- economy / prices / rates / macro
-- Japan domestic politics / policy / institution / social system
-- business / industry / technology
-- society / justice / healthcare / education / labor
-- cyber security / ransomware / breaches / infrastructure cyber risk
-- art / culture / cultural policy / heritage / content industries
-- energy / resources / environment / logistics
-- disaster / public health / infrastructure / resilience
-- media / information space / misinformation / narrative
+Do not add a separate `今日の主要ニュース` headline list.
 
-These are editorial pools, not rigid quotas.
+Do not add a title line before the greeting in the read-aloud body.
 
-Do not force weak stories just to fill a bucket.
+Do not add long introductory framing or explanation about how the digest is
+organized.
 
-Cyber is not mandatory every day.
+Do not add meta-guidance lines such as:
 
-Art or culture is not mandatory every day.
+- `数字が出た話は数字を先に`
+- `制度の話は実施時期を意識して`
+- `今日の聞き方は`
 
-But neither category should be systematically overlooked.
+The final script should use section-based flow, not a flat story list.
 
-## Main Story Selection Rules
+The section label should help the listener understand what kind of news they
+are now hearing.
 
-Choose stories by balancing all of the following:
+Acceptable section transitions include:
 
-- importance
-- freshness
-- learning value
-- Japan relevance
-- breadth across fields
-- diversity across broad causal clusters
-- non-repetition across consecutive days
-- non-repetition of yesterday's explanation
-- clarity for a beginner listener
-- natural listenability by ear
+- `まずは政治・行政・司法のニュースです。`
+- `続いては国際・安全保障のニュースです。`
+- `次は経済・家計のニュースです。`
+- `次は社会・暮らし・インフラのニュースです。`
+- `続いては産業・企業・テクノロジーのニュースです。`
+- `最後は文化・地域のニュースです。`
+- `最後は科学のニュースです。`
+- `最後は環境・資源のニュースです。`
+- `最後は国際協力のニュースです。`
+- `最後はメディア・情報空間のニュースです。`
 
-Headline-first clarity matters.
+After the main sections, add:
 
-The listener should understand what the story is quickly, before hearing a
-long interpretation of it.
+`そのほか、短く確認します。`
 
-What happened should come before abstract meaning.
+End with:
 
-Main stories should prefer concrete news over abstract framing.
+`今日ここだけ覚える`
 
-## Early-Premise Rule
+That closing section must contain exactly 3 short points and then end cleanly.
 
-This is the main writing update.
+## Core Section Model
 
-For each main story, the listener must understand very early:
+Build the digest around these five core sections:
 
-- what kind of news this is
-- what changed today
-- why this issue is being talked about now
+1. `政治・行政・司法`
+2. `国際・安全保障`
+3. `経済・家計`
+4. `社会・暮らし・インフラ`
+5. `産業・企業・テクノロジー`
 
-Do this with one short natural sentence immediately after the news title.
+`政治・行政・司法` is the highest-priority domestic section.
 
-Do not use classroom labels.
+`経済・家計` should be household-oriented, not market-only.
 
-Do not use worksheet-style prompts.
+`社会・暮らし・インフラ` is a core section, not an optional bucket.
 
-That sentence should help the listener recognize whether the story is, for
-example:
+`産業・企業・テクノロジー` remains important, but it should require
+substantive updates.
 
-- a wage / statistics story
-- a policy / law / institutional story
-- a diplomatic negotiation
-- a disaster response story
-- a corporate / earnings / industry story
-- an infrastructure / supply-chain story
-- a culture / diplomacy / education story
-- or another clearly legible category
+Use one rotating sixth section only when it is meaningful:
 
-The listener should never enter detailed facts without first understanding the
-premise of the story.
+- `文化・地域`
+- `科学`
+- `環境・資源`
+- `国際協力`
+- `メディア・情報空間`
 
-## Anti-Repetition Rule
+Do not force the rotating sixth section every day when the candidates are
+weak.
 
-The same major story should not be reused as a main story on consecutive days
-unless there is clearly meaningful new information.
+## Story Selection Priorities
 
-Treat "still important" and "new today" as separate tests.
+Story selection must explicitly prioritize:
 
-If updates are weak, move the story to the short secondary section instead of
-reusing it as a full main story.
+- public importance
+- genuine freshness today
+- domestic relevance for Japan
+- effect on daily life, rights, money, work, security, or social systems
+- political or institutional weight
+- explanatory value
+- topic diversity
+- whether the story was already over-covered in recent outputs
+- source reliability
 
-Meaningful update criteria should remain explicit.
+Penalize candidates when:
 
-A continuing story should return as a main story only when there is substance
-such as:
+- they are only `a meeting was held` with little decision or substance
+- they are only market noise without broader household or real-economy
+  relevance
+- they duplicate another story in the same causal chain
+- they were already main stories recently and today adds little
+- they are official but minor
+- they are easy to write about but not actually one of the day's more
+  important stories
 
-- a new official statement
-- a newly disclosed number, forecast, or document
-- a meaningful policy, legal, or negotiation step
-- a new phase in the situation
-- a meaningful Japan-side response
-- infrastructure disruption, operational change, or security consequence
-- a materially different interpretation today because the facts changed
+If there is a meaningful domestic politics, justice, or institutional story,
+it should usually outrank a minor market-data story or a procedural
+international agreement.
 
-## Explanation Repetition Suppression
+## Mandatory Candidate Checks
 
-Even if a topic reappears, do not re-explain the same background at full
+Before final story selection, explicitly check whether there are material
+updates in:
+
+- constitutional revision / `憲法改正`
+- retrial system / `再審制度`
+- major Diet deliberations
+- cabinet decisions
+- tax, budget, social security
+- education, healthcare, labor, childcare, pensions
+- major justice or court developments
+- disaster response
+- cyber or digital safety
+- major international or security developments
+- wages, prices, employment, consumption, rates
+- important business, technology, or industry developments
+- culture, regional policy, science, environment, or international cooperation
+
+Record these checks in the reference daily briefing when they materially affect
+selection.
+
+## Section-Specific Rules
+
+### Politics, Administration, And Justice
+
+This is the highest-priority domestic section.
+
+Prioritize:
+
+- constitutional revision
+- retrial system reform
+- criminal justice
+- major bills
+- Diet developments
+- cabinet decisions
+- tax, budget, or social security
+- healthcare, education, or labor
+- administrative reform
+- court decisions or judicial-system changes
+- rights, governance, transparency, and accountability
+
+Do not let this section be displaced by minor market stories when meaningful
+political, administrative, or judicial updates exist.
+
+### International And Security
+
+Prioritize:
+
+- wars, ceasefires, or negotiations
+- sanctions
+- alliances
+- sea lanes
+- hostage, evacuation, or citizen protection
+- major diplomatic talks
+- defense and security frameworks
+- international legal or institutional changes
+
+Do not split one international causal chain into too many separate main
+stories.
+
+### Economy And Household
+
+Prioritize:
+
+- wages
+- prices
+- employment
+- consumption
+- household burden
+- interest rates
+- housing or loans
+- key macro indicators
+- government measures affecting living costs
+- small-business profitability when it affects local employment or price
+  pass-through
+
+Do not overuse stock-market-only stories.
+
+A stock-market story should become a main story only if it strongly affects
+household behavior, company investment, financial conditions, pensions, or the
+broader economy.
+
+If both a stock index and foreign investor flow are candidates, usually
+combine them or choose one, not both.
+
+### Society, Daily Life, And Infrastructure
+
+Prioritize:
+
+- disasters
+- healthcare safety
+- education
+- cyber incidents or official cyber statistics
+- public safety
+- infrastructure
+- transport
+- local operational issues
+- environment and public health
+- consumer safety
+
+Cyber belongs here when it is strong, but it is not mandatory every day.
+
+### Industry, Business, And Technology
+
+Prioritize:
+
+- earnings with meaningful numbers
+- M&A
+- factory or capex announcements
+- semiconductors or AI with concrete numbers or deals
+- supply-chain changes
+- energy or infrastructure investment
+- policy-linked industrial developments
+- major product, safety, or platform changes
+
+Do not promote scheduled events without substantive new information.
+
+Do not use `meeting held` or `forum held` as a main story unless there is a
+concrete decision, project, investment, agreement, number, or implementation
+step.
+
+### Rotating Sixth Section
+
+Use the rotating sixth section only when it is meaningful.
+
+Good candidates include:
+
+- culture policy
+- regional revitalization
+- cultural heritage
+- tourism with regional or economic significance
+- ODA or international cooperation
+- science policy
+- environment or resource policy
+- media or information-space policy
+
+Culture should not be celebrity gossip.
+
+The rotating section should help explain society, policy, values, region,
+identity, diplomacy, or economic change.
+
+## Repetition And Cluster Control
+
+Do not reuse the same major story as a main story day after day unless there
+is clearly meaningful new information.
+
+If a story remains important but has no meaningful update, move it to short
+secondary tracking.
+
+If a topic appeared recently, do not re-explain the same background at full
 length.
 
-Do not reuse near-identical wording across consecutive days.
+Do not use more than 2 main stories from the same broad causal cluster across
+the whole digest.
 
-Compress recurring background sharply.
+Examples of broad clusters include:
 
-Focus on what changed today.
+- Middle East conflict -> sea lanes -> oil -> inflation -> IMF forecast
+- AI boom -> semiconductors -> suppliers -> capex
+- fiscal strain -> bonds -> budget debate
+- cyber incident -> outage -> cyber regulation
+- domestic fiscal policy -> market rates -> bond auction
 
-Keep any refresher background to one short sentence at most.
+If a third candidate from the same cluster is strong but overlapping, merge it
+into the stronger story or move it to short secondary tracking.
 
-The intended feeling is:
+## Per-Story Spoken Flow
 
-- 「今日、何が変わったかが分かった」
+Within each main section, the lead story should follow this natural spoken
+flow:
 
-not:
-
-- 「昨日の説明をまた聞いた」
-
-For topics that appeared as main stories within the last 3 daily runs,
-background should usually be reduced to a brief refresher unless the story has
-moved into a clearly new phase.
-
-## Japan Domestic Rule
-
-The Japan domestic slot should preferably remain a true Japan domestic policy,
-institution, or social-system story.
-
-Actively prioritize:
-
-- laws and bills
-- policy design
-- regulation
-- justice
-- healthcare
-- labor
-- education
-- tax
-- budget
-- social security
-- administrative or institutional change
-
-Do not let this slot drift too often into only market data unless market data
-is truly the strongest Japan domestic development that day.
-
-## Business And Technology Freshness Rule
-
-Do not elevate a business or technology story only because:
-
-- a date arrived
-- an event is expected later
-- a company may announce something soon
-
-Require real substantive information such as:
-
-- released earnings
-- guidance changes
-- official investment decisions
-- production, demand, or supply changes
-- signed agreements
-- policy-linked industrial developments
-- materially new results or documents
-
-Weak-update business stories should be pushed out of the main lineup and moved
-to the short secondary section or excluded.
-
-## Cyber Rule
-
-Cyber security, ransomware, breaches, and infrastructure cyber risk should be
-treated as real candidate categories for the main lineup.
-
-Do not systematically overlook them.
-
-Raise cyber priority when there is:
-
-- official disclosure
-- infrastructure disruption
-- government, regulatory, or policy response
-- operational interruption
-- geopolitical linkage
-
-Do not force cyber every day.
-
-## Art And Culture Rule
-
-Art and culture remain valid main-story categories when they help explain
-society, values, policy, diplomacy, identity, or structural change.
-
-Celebrity gossip remains excluded.
-
-Qualifying angles can include cultural policy, heritage, arts institutions,
-content industries, diplomacy, or broader social change.
-
-Do not force culture every day.
-
-But do not let it disappear for long stretches if meaningful candidates exist.
-
-## Cluster Diversity Rule
-
-Avoid overloading the main lineup with too many stories from the same broad
-causal cluster.
-
-Prefer not to use more than 2 main stories from the same broad cluster.
-
-Additional stories from the same cluster should usually move to the short
-secondary section.
-
-The goal is broader understanding, not hearing the same crisis three
-different ways.
-
-## Secondary Section Rule
-
-Use the short secondary section for important follow-up items that still
-matter but do not justify full treatment today.
-
-Use it when:
-
-- a major continuing story has weak updates
-- a candidate is meaningful but loses the freshness test
-- a candidate would create excessive cluster concentration
-- a recurring story still matters, but today's value is mainly "still ongoing"
-
-Keep these items concise and focused on what is being watched next.
-
-## Concrete-Before-Abstract Writing Rule
-
-Within each story:
-
-- say what happened before abstract interpretation
-- place important numbers early when they matter
-- use one short plain example or comparison only if it truly helps the
-  listener imagine the issue
-- explain why the story surfaced when background is needed
-- simplify abstract policy language into plain meaning whenever possible
-
-The brief should move from concrete facts to explanation, not the other way
-around.
-
-## Ear-First Writing Rule
-
-The script should sound natural by ear.
-
-It should feel closer to a good radio or TV news explainer than to a written
-report.
-
-Prefer short sentences.
-
-One sentence should mainly carry one idea.
-
-Rigid repeated labels should be minimized.
-
-The wording should help the listener picture the situation first, then
-understand the meaning.
-
-Make the premise legible before detailed facts begin to stack up.
-
-Use only the required section labels.
-
-Vary sentence openings and transitions across stories.
-
-Avoid repeated explanation patterns that make the final digest sound like a
-worksheet.
-
-## Density Control Rule
-
-Each main story should usually stay within about 6 to 8 sentences total.
-
-Prefer slightly incomplete detail over overpacked density.
-
-The listener should understand the story on first listen.
-
-Long explanatory build-outs should be cut unless they are absolutely
-essential.
-
-If a story cannot stay clear inside that density target, simplify it or move
-it out of the main lineup.
-
-## Audible Transition Rule
-
-Each main story should begin with a short audible transition that makes the
-story change obvious by ear.
-
-Prefer short transitions such as:
-
-- `一つ目です。`
-- `次のニュースです。`
-- `三つ目です。`
-- `四つ目です。`
-- `次です。`
-- `最後はこの話です。`
-
-These transitions should remain short and natural.
-
-They should not become long meta-commentary.
-
-## Main Story Spoken Flow
-
-After the transition, use this spoken flow:
-
-- title
-- one short natural premise sentence that makes clear what kind of story this
-  is, what changed today, and why it surfaced now
-- concrete fact
-- brief background or reason-for-occurrence when needed
+- headline
+- one short natural sentence that tells the listener what kind of news this is
+- concrete new fact
+- short background or reason why this issue surfaced now
 - why it matters
 - Japan or daily-life impact
 - what to watch next
 
-This flow is an internal writing order, not a visible checklist.
+Per-story rules:
 
-That premise sentence should sound like natural speech, not a label.
+- The title should sound like a real news heading
+- The sentence immediately after the title is crucial
+- It must tell the listener what kind of story this is
+- Never let the listener enter detailed facts without understanding the
+  premise
+- Explain the concrete fact in 2 to 3 short sentences
+- If numbers matter, show the numbers early
+- Explain background or reason-for-occurrence in 1 to 2 short sentences when
+  needed
+- Use at most one short plain comparison or example when helpful
+- Explain why it matters in 1 to 2 short sentences
+- Explain Japan or daily-life impact briefly and concretely
+- End with 1 short sentence about what to watch next
+- Each main story should usually stay within 6 to 8 sentences total
 
-Do not use repeated mini-headings such as:
+Prefer short sentences and one main idea per sentence.
 
-- `ニュースタイトル`
-- `一言でいうと`
-- `何が起きたか`
-- `なんでこの話が出てきたのか`
-- `なぜ重要か`
-- `日本への影響`
-- `次の焦点`
+The writing should sound natural by ear and remain calm, plain, and
+beginner-friendly.
 
-The output should sound natural by ear, not like a checklist being read aloud.
+## Short Secondary Tracking
 
-## Final Read-Aloud And Google Docs Formatting
+After the main sections, add:
 
-The final `read_aloud_ja.md` file and Google Doc body must be TTS-friendly.
+`そのほか、短く確認します。`
+
+Use 2 to 4 brief items.
+
+Use this section for:
+
+- important themes with weak updates
+- worthy but non-leading stories
+- stories pushed out because of cluster overlap
+
+Do not include editorial-process notes.
+
+Do not write lines such as:
+
+- `候補として確認しましたが`
+- `採用を見送りました`
+- `短報扱いにしました`
+- `今日は主枠にしませんでした`
+
+## Closing
+
+Finish with:
+
+`今日ここだけ覚える`
+
+Use exactly 3 short points.
+
+Do not add a fourth point.
+
+Do not add a lesson after it.
+
+End cleanly after this section.
+
+## TTS And Hard Constraints
+
+The final `read_aloud_ja.md` file and Google Doc body should avoid noisy
+markdown syntax.
 
 Do not use:
 
-- markdown heading markers such as `#`, `##`, `###`
-- markdown bullet markers such as `-` or `*`
-- numbered markdown lists
+- markdown heading markers such as `#`, `##`, or `###`
+- markdown bullet markers such as `-`, `*`, or numbered markdown lists
 - backticks
 
 Use plain Japanese section labels suitable for text-to-speech.
 
-Repository reference artifacts may still use markdown when useful.
+The final read-aloud script must not contain:
 
-## Final Content Structure
-
-The tracked automation prompt should use this final read-aloud structure:
-
-1. title
-2. short opening
-3. `今日の主要ニュース`
-4. `本編`
-5. `短く追うニュース`
-6. `今日ここだけ覚える`
-
-Title:
-
-- use a plain line such as `YYYY年M月D日 朝のデイリーブリーフ`
-
-Short opening:
-
-- at most 2 very short sentences
-- calm and direct
-- not a lesson-style introduction
-
-`今日の主要ニュース`:
-
-- keep it very short
-- put titles first
-- do not over-explain
-- use it to orient the listener quickly before the main stories
-
-`本編`:
-
-- use 6 main stories by default
-- use 7 only when clearly useful
-- use 5 only on genuinely light days
-
-Each main story should follow the spoken flow in the previous section.
-
-`短く追うニュース`:
-
-- hold important follow-up items that still matter but do not justify full
-  treatment today
-- use this section when freshness is weak, repetition risk is high, or cluster
-  diversity requires demotion
-
-`今日ここだけ覚える`:
-
-- contain exactly 3 short points
-- keep each point brief and memorable
-- treat this as the ending
-- do not add a lesson-style conclusion or long extra section after it
-
-## No Extra Trailing Teaching Sections
-
-Once the digest reaches `今日ここだけ覚える`, it should end cleanly.
-
-Do not add extra trailing sections such as:
-
+- `今日の主要ニュース`
+- `本編`
 - `補足です`
 - `状況の見取り図`
 - `聞き方のコツ`
 - `加えて`
 - `この流れを押さえると`
+- editorial process notes
+- long explanation about how the digest is organized
 
-## No Editorial-Process Leakage
+## Reference Artifacts
 
-Do not include editorial or selection-process notes in the final user-facing
-digest.
+The reference daily briefing may be more structured and source-oriented than
+the read-aloud version.
 
-Avoid lines such as:
+It may use markdown when useful.
 
-- `候補として確認しましたが`
-- `採用を見送りました`
-- `短報扱いにしました`
+It should record:
 
-The final digest should present the news, not the internal newsroom process.
+- the effective coverage window
+- why each main section was selected today
+- what materially changed inside the coverage window
+- when a continuing story was demoted because there was no material update
+- any cluster-overlap judgment
+- whether recent over-coverage affected selection
+- source reliability or uncertainty when that matters
 
-Reference artifacts may still record editorial judgments when they help the
-tracked workflow.
-
-## Reference Outputs And Sync Boundary
-
-The repository should continue to generate:
-
-- a reference daily briefing
-- a source log CSV
-- a manifest JSON
-- a weekly rolling reference file
-- a final read-aloud study script
-
-Keep the Google Docs sync workflow unchanged unless a sync-specific change is
-explicitly required.
-
-Do not modify `config/google_doc_sync.json` unless necessary.
-
-Do not regress `scripts/sync_google_doc.py`.
+The final read-aloud script and Google Doc body should present only the news
+itself and should not leak the internal newsroom process.
