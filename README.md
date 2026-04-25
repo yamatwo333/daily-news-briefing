@@ -20,8 +20,9 @@ for NotebookLM.
 The foundational document is the map. The daily brief is now an ear-first
 morning news digest built on top of that map, not a worksheet-like lesson
 script. Use
-`docs/daily_briefing_principles.md` as the concise source of truth for story
-selection, coverage windows, repetition control, structure, and
+`docs/daily_briefing_principles.md` as the concise source of truth for
+newsworthiness-first story selection, coverage windows, repetition control,
+structure, and
 beginner-friendly writing, and use
 `docs/automation_prompt_daily_briefing.md` as the tracked source of truth for
 the daily automation prompt.

@@ -27,6 +27,35 @@ The quality target remains:
 The listener should quickly understand what kind of news they are hearing,
 what changed today, and why it matters.
 
+## Newsworthiness-First Agenda
+
+The briefing must behave like a radio flash-news editor, not like an
+official-document collector.
+
+Do not start from ministry releases, white papers, regular statistics,
+councils, forums, or scheduled meetings.
+
+First identify the actual public news agenda of the day from major news
+coverage.
+
+Scan and compare major coverage across:
+
+- NHK major news
+- Reuters Japan
+- Nikkei
+- Kyodo or Jiji when available
+- major national newspapers
+- major TV or radio-style news agendas when available
+
+Only after candidate stories are identified should official sources be used
+for verification, numbers, dates, legal wording, and implementation detail.
+
+Official documents should support selection, not define it by default.
+
+If an item is visible mainly because an official body published it, but it is
+not meaningfully part of the broader public news agenda, it should usually not
+lead a main section.
+
 ## Coverage Window And Sync Boundary
 
 The effective coverage window should normally run from the previous scheduled
@@ -131,6 +160,67 @@ Use one rotating sixth section only when it is meaningful:
 Do not force the rotating sixth section every day when the candidates are
 weak.
 
+## Main-Story Gate
+
+Before a story becomes a main story, apply all of the following checks.
+
+### Routine Official Release Demotion
+
+The following should not become main stories by default:
+
+- regular monthly statistics
+- white papers
+- routine ministry meetings
+- advisory council meetings
+- ministerial press conferences
+- forums or symposiums
+- routine adoption or grant selections
+- JIS updates
+- routine diplomatic agreements
+- weekly investment flow statistics
+- regularly scheduled reports
+
+These may become main stories only if at least one of the following is true:
+
+- the number is a major surprise, record, sharp reversal, or changes the
+  interpretation of the economy or society
+- it directly affects household burden, wages, employment, rights, safety, or
+  daily life
+- it represents an actual policy decision, law change, enforcement action,
+  court decision, budget change, or regulatory change
+- it is strongly connected to a major political, judicial, social, or
+  international issue already in the public agenda
+- it would plausibly be covered in a mainstream radio or TV flash-news segment
+- it has exceptional explanatory value for the user
+
+If none of those conditions is met, move the item to short secondary tracking
+or omit it.
+
+### Radio Agenda Alignment
+
+Ask:
+
+`Would a serious morning radio flash-news program plausibly include this as one of its main items today?`
+
+If the answer is no, the story should usually not be a main story unless it
+has exceptional explanatory value for the user.
+
+### Main-Story Strength Test
+
+Each main story must pass at least two of these tests:
+
+- important to many people
+- new today
+- changes policy, rights, money, safety, work, or social systems
+- likely to appear in mainstream news broadcasts
+- helps explain a major ongoing issue
+- has strong Japan relevance
+- has a reliable factual basis
+- is not merely a routine official update
+
+If a story passes only because it has an official source, reject it as a main
+story.
+
 ## Story Selection Priorities
 
 Story selection must explicitly prioritize:
@@ -159,6 +249,30 @@ Penalize candidates when:
 If there is a meaningful domestic politics, justice, or institutional story,
 it should usually outrank a minor market-data story or a procedural
 international agreement.
+
+## Domestic Public-Agenda Priority
+
+For `政治・行政・司法`, actively check major public-agenda topics before
+using narrow administrative enforcement stories.
+
+Give priority to:
+
+- constitutional revision
+- retrial system reform
+- criminal justice
+- major Diet deliberations
+- major bills
+- party negotiations
+- cabinet decisions with broad impact
+- tax, pension, healthcare, education, childcare, labor
+- major court rulings
+- criminal justice reform
+- scandals or accountability issues with institutional importance
+- national security policy decisions
+
+A narrow administrative enforcement item should not be the main politics story
+if a broader political, judicial, or institutional story has meaningful
+movement.
 
 ## Mandatory Candidate Checks
 
@@ -201,6 +315,8 @@ Prioritize:
 - administrative reform
 - court decisions or judicial-system changes
 - rights, governance, transparency, and accountability
+- scandals or accountability issues with institutional importance
+- national security policy decisions
 
 Do not let this section be displaced by minor market stories when meaningful
 political, administrative, or judicial updates exist.
@@ -239,6 +355,14 @@ Prioritize:
 
 Do not overuse stock-market-only stories.
 
+Do not use stock index moves, foreign investor flow, or market positioning as
+main stories unless they clearly connect to household impact, company
+investment, pensions, financial stability, or a major macro turning point.
+
+If the choice is between a routine market or statistical item and a major
+politics, justice, social, disaster, security, or household-impact story,
+choose the latter.
+
 A stock-market story should become a main story only if it strongly affects
 household behavior, company investment, financial conditions, pensions, or the
 broader economy.
@@ -260,6 +384,7 @@ Prioritize:
 - local operational issues
 - environment and public health
 - consumer safety
+- school, hospital, local government, or essential service disruptions
 
 Cyber belongs here when it is strong, but it is not mandatory every day.
 
@@ -275,6 +400,7 @@ Prioritize:
 - energy or infrastructure investment
 - policy-linked industrial developments
 - major product, safety, or platform changes
+- business decisions with employment, investment, consumer, or regional impact
 
 Do not promote scheduled events without substantive new information.
 
@@ -296,6 +422,7 @@ Good candidates include:
 - science policy
 - environment or resource policy
 - media or information-space policy
+- misinformation, platform governance, or speech regulation
 
 Culture should not be celebrity gossip.
 
@@ -356,6 +483,8 @@ Per-story rules:
 - Explain Japan or daily-life impact briefly and concretely
 - End with 1 short sentence about what to watch next
 - Each main story should usually stay within 6 to 8 sentences total
+- After the sentence beginning with `次に見るべき点は`, do not add more
+  explanation for that story
 
 Prefer short sentences and one main idea per sentence.
 
@@ -369,6 +498,8 @@ After the main sections, add:
 `そのほか、短く確認します。`
 
 Use 2 to 4 brief items.
+
+Each item should be 1 sentence only.
 
 Use this section for:
 
@@ -384,6 +515,9 @@ Do not write lines such as:
 - `採用を見送りました`
 - `短報扱いにしました`
 - `今日は主枠にしませんでした`
+- `短報として扱った理由は`
+- `主枠との重複を避けて`
+- `今後の主枠候補として`
 
 ## Closing
 
@@ -421,8 +555,21 @@ The final read-aloud script must not contain:
 - `聞き方のコツ`
 - `加えて`
 - `この流れを押さえると`
+- `数字と制度の両方で見ていきましょう`
 - editorial process notes
 - long explanation about how the digest is organized
+
+## Fact-Checking Safeguards
+
+Before the final read-aloud script is written:
+
+- if a date range includes a date later than the current briefing date,
+  verify it against the source before including it
+- do not output future-looking date ranges as past facts unless the source
+  clearly states them
+- if a claim sounds unusually precise, cross-check it
+- if source uncertainty remains, phrase cautiously or omit the detail from the
+  read-aloud script
 
 ## Reference Artifacts
 
