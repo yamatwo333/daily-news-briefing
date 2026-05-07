@@ -36,7 +36,7 @@ Do not start from ministry releases, white papers, regular statistics,
 councils, forums, or scheduled meetings.
 
 First identify the actual public news agenda of the day from major news
-coverage.
+sources and socially salient coverage.
 
 Scan and compare major coverage across:
 
@@ -46,6 +46,10 @@ Scan and compare major coverage across:
 - Kyodo or Jiji when available
 - major national newspapers
 - major TV or radio-style news agendas when available
+- reputable specialist sources for health, cybersecurity, finance,
+  technology, law, science, and public safety
+- credible reports of socially salient incidents that affect health, safety,
+  privacy, money, work, trust, or daily behavior
 
 Only after candidate stories are identified should official sources be used
 for verification, numbers, dates, legal wording, and implementation detail.
@@ -55,6 +59,57 @@ Official documents should support selection, not define it by default.
 If an item is visible mainly because an official body published it, but it is
 not meaningfully part of the broader public news agenda, it should usually not
 lead a main section.
+
+## Public-Agenda And Social-Salience Scan
+
+Before final story selection, explicitly scan for stories that are socially
+salient even when they are not classic politics, economy, or hard-news stories.
+
+Check for:
+
+- public health and infectious disease
+- travel and quarantine risks
+- consumer safety
+- corporate scandals or misconduct
+- information leaks and privacy incidents
+- SNS-origin incidents with real-world institutional impact
+- workplace, school, hospital, bank, local-government, transport, or
+  infrastructure incidents
+- platform and digital-behavior issues
+- cyber incidents, ransomware, data breaches, and non-cyber information leaks
+- product recalls, service outages, fraud, scams, and account abuse
+- stories widely covered by TV, radio, or web news
+- stories strongly circulating in public conversation because they affect
+  trust, safety, privacy, health, money, institutions, or daily behavior
+
+Do not dismiss these stories as soft news when they affect trust, safety,
+privacy, health, money, institutions, or daily behavior.
+
+A bank employee posting workplace footage that exposes customer information is
+a financial-institution trust and information-management story, not mere
+social-media gossip.
+
+A cruise-ship or travel-related infectious-disease cluster may be a
+public-health, travel, quarantine, and risk-communication story, not just
+overseas health trivia.
+
+Do not force public-health, SNS, or privacy stories every day.
+
+Do not overlook them when they would plausibly appear in mainstream radio or
+TV flash news.
+
+## SNS-Origin Source Handling
+
+SNS trends, viral posts, or platform discussion may be used as discovery
+signals, but never as the sole source for final factual claims.
+
+For SNS-origin or viral stories:
+
+- verify with reputable media, official statements, company statements,
+  agency releases, or primary documents
+- avoid repeating unverified claims
+- if a claim remains uncertain, phrase cautiously or omit the contested detail
+- focus on confirmed institutional impact, not gossip
 
 ## Coverage Window And Sync Boundary
 
@@ -184,12 +239,13 @@ These may become main stories only if at least one of the following is true:
 
 - the number is a major surprise, record, sharp reversal, or changes the
   interpretation of the economy or society
-- it directly affects household burden, wages, employment, rights, safety, or
-  daily life
+- it directly affects household burden, wages, employment, rights, safety,
+  health, privacy, or daily life
 - it represents an actual policy decision, law change, enforcement action,
   court decision, budget change, or regulatory change
-- it is strongly connected to a major political, judicial, social, or
-  international issue already in the public agenda
+- it is strongly connected to a major political, judicial, social,
+  public-health, digital-safety, or international issue already in the public
+  agenda
 - it would plausibly be covered in a mainstream radio or TV flash-news segment
 - it has exceptional explanatory value for the user
 
@@ -211,8 +267,11 @@ Each main story must pass at least two of these tests:
 
 - important to many people
 - new today
-- changes policy, rights, money, safety, work, or social systems
+- changes policy, rights, money, safety, health, privacy, work, or social
+  systems
 - likely to appear in mainstream news broadcasts
+- strongly discussed in public because it affects trust, daily behavior, or
+  institutional credibility
 - helps explain a major ongoing issue
 - has strong Japan relevance
 - has a reliable factual basis
@@ -228,7 +287,8 @@ Story selection must explicitly prioritize:
 - public importance
 - genuine freshness today
 - domestic relevance for Japan
-- effect on daily life, rights, money, work, security, or social systems
+- effect on daily life, rights, money, work, security, health, safety,
+  privacy, trust, or social systems
 - political or institutional weight
 - explanatory value
 - topic diversity
@@ -246,9 +306,10 @@ Penalize candidates when:
 - they are easy to write about but not actually one of the day's more
   important stories
 
-If there is a meaningful domestic politics, justice, or institutional story,
-it should usually outrank a minor market-data story or a procedural
-international agreement.
+If there is a meaningful domestic politics, justice, institutional,
+public-health, privacy, or trust-related story, it should usually outrank a
+minor market-data story, routine statistic, narrow administrative enforcement
+story, procedural international agreement, or routine ministry update.
 
 ## Domestic Public-Agenda Priority
 
@@ -282,19 +343,30 @@ updates in:
 - constitutional revision / `憲法改正`
 - retrial system / `再審制度`
 - major Diet deliberations
-- cabinet decisions
+- cabinet decisions with broad impact
+- party negotiations
 - tax, budget, social security
-- education, healthcare, labor, childcare, pensions
+- healthcare, education, labor, childcare, pensions
 - major justice or court developments
+- criminal justice reform
+- scandals or accountability issues with institutional importance
+- national security policy decisions
 - disaster response
+- public health and infectious disease
+- travel, quarantine, and international movement risks
+- consumer safety
+- corporate scandals, misconduct, and privacy incidents
+- SNS-origin incidents with institutional impact
 - cyber or digital safety
+- cyber incidents, ransomware, data breaches, and non-cyber information leaks
 - major international or security developments
 - wages, prices, employment, consumption, rates
 - important business, technology, or industry developments
-- culture, regional policy, science, environment, or international cooperation
+- culture, regional policy, science, environment, international cooperation, or
+  media and information-space issues
 
 Record these checks in the reference daily briefing when they materially affect
-selection.
+selection or omission.
 
 ## Section-Specific Rules
 
@@ -309,9 +381,10 @@ Prioritize:
 - criminal justice
 - major bills
 - Diet developments
-- cabinet decisions
+- cabinet decisions with broad impact
+- party negotiations
 - tax, budget, or social security
-- healthcare, education, or labor
+- healthcare, education, labor, childcare, or pensions
 - administrative reform
 - court decisions or judicial-system changes
 - rights, governance, transparency, and accountability
@@ -333,6 +406,8 @@ Prioritize:
 - major diplomatic talks
 - defense and security frameworks
 - international legal or institutional changes
+- public-health events with cross-border travel, quarantine, or
+  international-agency relevance
 
 Do not split one international causal chain into too many separate main
 stories.
@@ -376,17 +451,25 @@ Prioritize:
 
 - disasters
 - healthcare safety
+- infectious disease and public health
 - education
 - cyber incidents or official cyber statistics
+- non-cyber information leaks and privacy incidents
+- SNS-origin incidents with real-world institutional impact
 - public safety
 - infrastructure
 - transport
 - local operational issues
 - environment and public health
 - consumer safety
-- school, hospital, local government, or essential service disruptions
+- school, hospital, bank, local government, or essential service disruptions
+- scams, fraud, and digital-behavior risks that affect ordinary people
 
 Cyber belongs here when it is strong, but it is not mandatory every day.
+
+Information leaks caused by human behavior, workplace filming, SNS posts, or
+misdirected communications may be main-worthy even if they are not
+cyberattacks.
 
 ### Industry, Business, And Technology
 
@@ -400,7 +483,10 @@ Prioritize:
 - energy or infrastructure investment
 - policy-linked industrial developments
 - major product, safety, or platform changes
-- business decisions with employment, investment, consumer, or regional impact
+- business decisions with employment, investment, consumer, regional, privacy,
+  or trust impact
+- corporate misconduct or governance issues when they affect customers or
+  public trust
 
 Do not promote scheduled events without substantive new information.
 
@@ -456,8 +542,7 @@ into the stronger story or move it to short secondary tracking.
 
 ## Per-Story Spoken Flow
 
-Within each main section, the lead story should follow this natural spoken
-flow:
+Within each section, each main story should follow this natural spoken flow:
 
 - headline
 - one short natural sentence that tells the listener what kind of news this is
@@ -507,7 +592,8 @@ Use this section for:
 - worthy but non-leading stories
 - stories pushed out because of cluster overlap
 
-Do not include editorial-process notes.
+Do not include analysis, teaching comments, listening advice, or
+editorial-process notes.
 
 Do not write lines such as:
 
@@ -570,6 +656,11 @@ Before the final read-aloud script is written:
 - if a claim sounds unusually precise, cross-check it
 - if source uncertainty remains, phrase cautiously or omit the detail from the
   read-aloud script
+- for SNS-origin or viral stories, verify with reliable media, official
+  statements, company statements, or primary documents before treating them as
+  factual
+- if a viral claim is unverified but socially salient, frame it cautiously or
+  omit the contested detail
 
 ## Reference Artifacts
 
@@ -583,6 +674,7 @@ It should record:
 - the effective coverage window
 - why each main section was selected today
 - what materially changed inside the coverage window
+- the public-agenda and social-salience scan when it affected selection
 - when a continuing story was demoted because there was no material update
 - any cluster-overlap judgment
 - whether recent over-coverage affected selection
