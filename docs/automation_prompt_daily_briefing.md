@@ -15,13 +15,26 @@ current-affairs learning brief.
 Then overwrite the same fixed Google Document with the final daily read-aloud
 script by using the existing repository sync workflow.
 
+The target is a near-100-point daily result:
+
+- real newsworthiness
+- public salience
+- strong story selection
+- radio-style section flow
+- compact main stories
+- flexible social and daily-life coverage
+- no official-release filler
+- no editorial leakage in the read-aloud script
+
 ## Core Model
 
 The foundational learning document is the map.
+
 The daily brief is the daily application layer built on top of that map.
 
 This daily brief is not a worksheet-like lesson script.
 It is not a dense analyst memo.
+It is not a policy briefing.
 It is not a bare official-release roundup.
 It is not a hard-news-only wire digest.
 
@@ -41,9 +54,10 @@ It must remain:
 - broad enough to build knowledge over time
 
 The listener should quickly understand what kind of news they are hearing,
-what changed today, and why it matters.
+what changed today, why it matters, how it may affect Japan or daily life, and
+what to watch next.
 
-## Workflow
+## Required Workflow
 
 1. Review the tracked operating documents first, especially:
    - docs/daily_briefing_principles.md
@@ -62,7 +76,7 @@ what changed today, and why it matters.
 7. Verify selected candidate stories with reliable media, official sources,
    company statements, agency releases, primary documents, or specialist
    sources as appropriate.
-8. Select the main sections using the rules below.
+8. Select the main lineup using the flexible section rules below.
 9. Write the reference daily briefing and supporting output files.
 10. Write the final read-aloud script in TTS-friendly plain Japanese.
 11. Overwrite the fixed Google Document with the final read-aloud script using
@@ -86,7 +100,9 @@ what changed today, and why it matters.
 
 The briefing must behave like a radio flash-news editor.
 
-First identify the actual public news agenda of the day.
+First identify the actual public news agenda of the day from major news
+sources and socially salient coverage.
+
 Then verify and sharpen selected stories with reliable sources.
 
 Do not start the briefing agenda from:
@@ -105,13 +121,14 @@ Scan and compare major coverage across:
 - NHK major news
 - Reuters Japan
 - Nikkei
-- Kyodo or Jiji when available
+- Kyodo / Jiji if available
 - major national newspapers
-- major TV or radio-style news agendas when available
+- major TV/radio-style news agendas when available
 - reputable specialist sources for health, cybersecurity, finance,
   technology, law, science, and public safety
 - credible reports of socially salient incidents that affect health, safety,
   privacy, money, work, trust, or daily behavior
+- official sources only after candidate stories are identified
 
 Official material is a verification layer, not the default agenda-setting
 mechanism.
@@ -123,7 +140,7 @@ Use official sources after candidate stories are identified, mainly for:
 - dates
 - legal or policy wording
 - implementation detail
-- company or agency position
+- agency, company, or institutional position
 
 If a story is visible mainly because an agency published a document, but it is
 not meaningfully present in the broader public news agenda, it should usually
@@ -131,8 +148,8 @@ not lead a main section.
 
 ## Public-Agenda And Social-Salience Scan
 
-Before final story selection, explicitly scan for stories that are socially
-salient even if they are not classic politics, economy, or hard-news stories.
+Before final story selection, explicitly scan for socially salient stories
+even if they are not classic politics, economy, or hard-news stories.
 
 Check for:
 
@@ -147,7 +164,7 @@ Check for:
 - platform and digital-behavior issues
 - cyber incidents, ransomware, data breaches, and non-cyber information leaks
 - product recalls, service outages, fraud, scams, and account abuse
-- stories widely covered by TV, radio, or web news
+- stories widely covered by TV/radio/web news
 - stories strongly circulating in public conversation because they affect
   trust, safety, privacy, health, money, institutions, or daily behavior
 
@@ -162,10 +179,14 @@ A cruise-ship or travel-related infectious-disease cluster may be a
 public-health, travel, quarantine, and risk-communication story, not just
 overseas health trivia.
 
-Do not force public-health, SNS, or privacy stories every day.
+Do not force public-health, SNS, privacy, cyber, culture, or consumer-safety
+stories every day.
 
 Do not overlook them when they would plausibly appear in mainstream radio or
 TV flash news.
+
+Record meaningful social-salience judgments in the reference briefing only.
+Do not leak these judgments into the final read-aloud script.
 
 ## SNS-Origin Source Handling
 
@@ -177,7 +198,7 @@ They must never be the sole source for final factual claims.
 For SNS-origin or viral stories:
 
 - verify with reputable media, official statements, company statements,
-  agency releases, or primary documents
+  agency releases, primary documents, or other reliable reporting
 - avoid repeating unverified claims
 - if a claim remains uncertain, phrase cautiously or omit the contested detail
 - focus on confirmed institutional impact, not gossip
@@ -195,7 +216,7 @@ The following should not become main stories by default:
 - advisory council meetings
 - ministerial press conferences
 - forums or symposiums
-- routine adoption or grant selections
+- routine adoption / grant selections
 - JIS updates
 - routine diplomatic agreements
 - weekly investment flow statistics
@@ -257,9 +278,9 @@ Story selection must explicitly prioritize:
 - effect on daily life, rights, money, work, security, health, safety,
   privacy, trust, or social systems
 - political or institutional weight
-- public salience and broadcast plausibility
 - explanatory value
 - topic diversity
+- broadcast plausibility
 - whether the story was already over-covered in recent outputs
 - source reliability
 
@@ -275,7 +296,8 @@ Penalize candidates when:
   important stories
 
 If there is a meaningful domestic politics, justice, institutional,
-public-health, privacy, or trust-related story, it should usually outrank:
+public-health, privacy, safety, or trust-related story, it should usually
+outrank:
 
 - minor market-data stories
 - routine statistics
@@ -306,22 +328,25 @@ updates in:
 - corporate scandals, misconduct, and privacy incidents
 - SNS-origin incidents with institutional impact
 - cyber or digital safety
-- cyber incidents, ransomware, data breaches, and non-cyber information leaks
-- major international or security developments
+- major international/security developments
 - wages, prices, employment, consumption, rates
-- important business, technology, or industry developments
-- culture, regional policy, science, environment, international cooperation, or
-  media and information-space issues
+- important business / technology / industry developments
+- culture, regional policy, science, environment, international cooperation,
+  or media / information-space issues
 
 Record the meaningful checks in the reference daily briefing when they affect
 selection or omission.
 
-## Core Section Model
+Do not include candidate-check notes or omission rationales in the final
+read-aloud script.
 
-The final read-aloud script must use section-based flow, not a flat story
-list.
+## Flexible Section Rule
 
-Build every digest around these five core sections:
+The section model is a guide, not a prison.
+
+Do not mechanically fill categories with weak items.
+
+The five core agenda lanes are:
 
 - 政治・行政・司法
 - 国際・安全保障
@@ -329,15 +354,7 @@ Build every digest around these five core sections:
 - 社会・暮らし・インフラ
 - 産業・企業・テクノロジー
 
-These section assumptions are mandatory:
-
-- 政治・行政・司法 is the highest-priority domestic section
-- 経済・家計 must be household-oriented, not market-only
-- 社会・暮らし・インフラ is a core section
-- 産業・企業・テクノロジー remains important but requires substantive
-  updates
-
-Use one rotating sixth section only when it is meaningful:
+The rotating sixth section may be one of:
 
 - 文化・地域
 - 科学
@@ -345,8 +362,31 @@ Use one rotating sixth section only when it is meaningful:
 - 国際協力
 - メディア・情報空間
 
-Do not force the rotating sixth section every day when the candidates are
-weak.
+These section assumptions are mandatory:
+
+- 政治・行政・司法 is the highest-priority domestic section
+- 経済・家計 must be household-oriented, not market-only
+- 社会・暮らし・インフラ is a core section, not an optional bucket
+- 産業・企業・テクノロジー remains important but requires substantive
+  updates
+
+Use one rotating sixth section only when it is meaningful.
+
+If the rotating sixth section is weak, skip it rather than forcing a low-value
+story.
+
+If 社会・暮らし・インフラ has multiple genuinely strong stories on the same
+day, such as infection/public-health and SNS/privacy/information-leak, it may
+use 2 main stories.
+
+If 国際・安全保障 and 国際協力 overlap through the same supply-chain,
+energy, or geopolitical crisis, compress one into short secondary tracking.
+
+If a core lane has no main-worthy update, do not fill it with official-release
+filler. Use short secondary tracking or omit the weak item.
+
+The final lineup should feel like a serious radio news editor chose it, not
+like every category was filled mechanically.
 
 The section label should help the listener understand what kind of news they
 are now hearing.
@@ -364,13 +404,11 @@ Acceptable section transitions include:
 - 最後は国際協力のニュースです。
 - 最後はメディア・情報空間のニュースです。
 
-Use "最後は..." for the final included section.
+Use "最後は..." for the final included main section.
 
 ## Section-Specific Selection Rules
 
 ### Politics / Administration / Justice
-
-This is the highest-priority domestic section.
 
 Prioritize:
 
@@ -413,6 +451,10 @@ Prioritize:
 
 Do not split one international causal chain into too many separate main
 stories.
+
+If a supply-chain, energy, or geopolitical crisis also fits another section,
+choose the strongest main angle and compress the weaker overlapping angle into
+short secondary tracking.
 
 ### Economy / Household
 
@@ -473,6 +515,11 @@ Information leaks caused by human behavior, workplace filming, SNS posts, or
 misdirected communications may be main-worthy even if they are not
 cyberattacks.
 
+On strong days, this section may use more than one main slot when distinct
+stories separately affect health, safety, privacy, money, schools, hospitals,
+banks, local government, infrastructure, consumer protection, or daily
+behavior.
+
 ### Industry / Business / Technology
 
 Prioritize:
@@ -517,6 +564,9 @@ Culture should not be celebrity gossip.
 Use the rotating section only when it helps explain society, policy, values,
 region, identity, diplomacy, or economic change.
 
+If the rotating sixth section overlaps with an already selected international,
+energy, supply-chain, or technology story, compress it or skip it.
+
 ## Repetition And Cluster Control
 
 - Do not reuse the same major story as a main story day after day unless
@@ -535,13 +585,16 @@ Examples of broad clusters:
 - fiscal strain -> bonds -> budget debate
 - cyber incident -> outage -> cyber regulation
 - domestic fiscal policy -> market rates -> bond auction
+- wages -> price pass-through -> small-business profitability
+- SNS incident -> information leak -> corporate apology -> privacy regulation
+- critical minerals -> G7 coordination -> ASEAN supply chain -> energy prices
 
 If a third candidate from the same cluster is strong but overlapping, merge it
 into the stronger story or move it to short secondary tracking.
 
-## Main-Section Writing Rules
+## Main-Story Writing Rules
 
-Within each section, each story should follow this natural spoken flow:
+Within each section, each main story should follow this natural spoken flow:
 
 - headline
 - one short natural sentence that tells the listener what kind of news this is
@@ -560,15 +613,22 @@ Per-story rules:
   premise
 - Explain the concrete fact in 2 to 3 short sentences
 - If numbers matter, show the numbers early
-- Explain background or reason-for-occurrence in 1 to 2 short sentences when
+- Explain background / reason-for-occurrence in 1 to 2 short sentences when
   needed
 - Use at most one short plain comparison or example when helpful
 - Explain why it matters in 1 to 2 short sentences
 - Explain Japan / daily-life impact briefly and concretely
 - End with 1 short sentence about what to watch next
 - Each main story should usually stay within 6 to 8 sentences total
+- Strict cap: do not exceed 8 sentences for a main story unless absolutely
+  necessary for accuracy
 - After the sentence beginning with 次に見るべき点は, do not add more
   explanation for that story
+
+Prefer slightly incomplete detail over overpacked density.
+
+The listener should understand the story on first listen without being
+overloaded.
 
 Writing style:
 
@@ -578,12 +638,14 @@ Writing style:
 - short sentences
 - one main idea per sentence
 - concrete facts before abstract interpretation
+- radio flash-news explainer, not policy briefing
 - no classroom-style prompts
 - no repeated mini-headings inside stories
 
 ## Final Read-Aloud Script Requirements
 
 This is the most important artifact.
+
 This is the version that must be written into the fixed Google Document.
 
 Audience:
@@ -617,12 +679,15 @@ Hard content constraints:
 - No unexplained acronyms
 - No vague prestige language
 - No editorial-process leakage
+- No teaching comments
 
 Length target:
 
-- Roughly 3,500 to 5,500 Japanese characters
+- Roughly 3,600 to 4,800 Japanese characters
 - Keep it short enough to finish comfortably
 - Keep it long enough to make the news meaningful
+- If 7 main stories are selected, shorten each story further rather than
+  exceeding the listening comfort target
 - Reduce weak stories instead of bloating the script
 
 Opening:
@@ -640,11 +705,16 @@ Opening:
 
 Main body:
 
-- Use the five core sections every day
+- Use section-based flow, not a flat story list
+- Use the five core agenda lanes as checks, not mechanical quotas
 - Add one rotating sixth section only when it is meaningful
-- The body should therefore usually have five or six section blocks
-- Each section should begin with a clear section transition line
+- Allow 2 society / daily-life / infrastructure main stories on strong days
+- Compress overlapping international, supply-chain, energy, or cooperation
+  clusters into short secondary tracking when needed
+- Skip weak categories rather than filling them with low-value items
+- Each included section should begin with a clear section transition line
 - Each section label should tell the listener what kind of news follows
+- The final lineup should feel like a serious radio editor selected it
 
 Short secondary tracking:
 
@@ -656,6 +726,7 @@ Short secondary tracking:
   important themes with weak updates
   worthy but non-leading stories
   stories pushed out because of cluster overlap
+- Keep this section truly short
 - Do not include analysis, teaching comments, listening advice, or
   editorial-process notes
 - Do not include editorial-process lines such as:
@@ -686,6 +757,7 @@ Forbidden phrases or sections in the final read-aloud script:
 - 加えて
 - この流れを押さえると
 - 数字と制度の両方で見ていきましょう
+- きょうも分野ごとに要点だけ短く整理します
 - editorial process notes
 - long explanation about how the digest is organized
 
@@ -714,9 +786,7 @@ TTS and formatting rule:
 - If a viral claim is unverified but socially salient, frame it cautiously or
   omit the contested detail
 
-## Reference Outputs
-
-Required output files:
+## Required Output Files
 
 1. Reference daily briefing
    output/daily/YYYY/YYYY-MM/YYYY-MM-DD_morning_brief_ja.md
@@ -729,27 +799,31 @@ Required output files:
 5. Final read-aloud script
    output/daily/YYYY/YYYY-MM/YYYY-MM-DD_read_aloud_ja.md
 
-Reference daily briefing requirements:
+## Reference Daily Briefing Requirements
 
-- This is the repository reference artifact
-- It may be more structured and source-oriented than the final read-aloud
-  version
-- It may use markdown when useful
-- It should record the effective coverage window
-- It should record the major-news-agenda comparison when that materially
-  affected what led the digest
-- It should record the public-agenda and social-salience scan when it affected
-  selection or omission
-- It should record why each main section was selected today
-- It should explicitly note what changed inside the effective coverage window
-- It should note when a continuing story was demoted because there was no
-  material update
-- It should note any cluster-overlap judgment
-- It should note whether recent over-coverage changed prioritization
-- It should note source reliability or uncertainty when that matters
-- It should record when a routine official item was demoted because it did not
-  clear the newsworthiness-first tests
-- It should distinguish fact, background, and inference
+The reference daily briefing is the repository reference artifact.
+
+It may be more structured and source-oriented than the final read-aloud
+version.
+
+It may use markdown when useful.
+
+It should record:
+
+- the effective coverage window
+- the major-news-agenda comparison when that materially affected what led the
+  digest
+- the public-agenda and social-salience scan when it affected selection or
+  omission
+- why each main story or section was selected today
+- what changed inside the effective coverage window
+- when a continuing story was demoted because there was no material update
+- any cluster-overlap judgment
+- whether recent over-coverage changed prioritization
+- source reliability or uncertainty when that matters
+- when a routine official item was demoted because it did not clear the
+  newsworthiness-first tests
+- the distinction between fact, background, and inference when that matters
 
 The final read-aloud script and Google Doc body should present only the news
 itself and should not leak the internal newsroom process.

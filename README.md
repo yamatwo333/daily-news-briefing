@@ -20,23 +20,24 @@ for NotebookLM.
 The foundational document is the map. The daily brief is now an ear-first
 morning news digest built on top of that map, not a worksheet-like lesson
 script. Use
-`docs/daily_briefing_principles.md` as the concise source of truth for
-newsworthiness-first, public-salience-aware story selection, coverage windows,
-repetition control, structure, and
+`docs/daily_briefing_principles.md` as the concise source of truth for the
+near-100-point, newsworthiness-first, public-salience-aware briefing model,
+coverage windows, repetition control, flexible section flow, and
 beginner-friendly writing, and use
 `docs/automation_prompt_daily_briefing.md` as the tracked source of truth for
 the daily automation prompt.
 
 Keep daily outputs beginner-friendly, plain, calm, headline-first, and easy to
-follow by ear. Build the final read-aloud script around the five core sections
-defined in `docs/daily_briefing_principles.md` (`政治・行政・司法`,
-`国際・安全保障`, `経済・家計`, `社会・暮らし・インフラ`,
-`産業・企業・テクノロジー`) and add one rotating sixth section only when
-meaningful. The synced read-aloud body should start with a very short greeting,
-move directly into the section-based digest, then use `そのほか、短く確認します。`
-and `今日ここだけ覚える`, while avoiding noisy markdown symbols for
-TTS-friendly reading. Use the two tracked docs above as the source of truth
-for structure, prioritization, repetition control, and sync behavior.
+follow by ear. Treat the five core sections in
+`docs/daily_briefing_principles.md` as agenda lanes, not mechanical quotas;
+skip weak rotating sections and allow extra `社会・暮らし・インフラ` coverage
+on strong public-health, privacy, consumer-safety, or institutional-trust days.
+The synced read-aloud body should start with a very short greeting, move
+directly into the section-based digest, then use
+`そのほか、短く確認します。` and `今日ここだけ覚える`, while avoiding noisy
+markdown symbols for TTS-friendly reading. Use the two tracked docs above as
+the source of truth for structure, prioritization, repetition control, and
+sync behavior.
 
 ## Quick sync check
 
