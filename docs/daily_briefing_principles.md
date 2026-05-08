@@ -149,6 +149,78 @@ required.
 Do not modify `scripts/sync_google_doc.py` unless an actual sync bug fix is
 required.
 
+## Importance-First, Not Forced Variety
+
+The daily brief should select the most important public news in each run.
+
+Do not avoid a topic merely because it appeared yesterday.
+
+If the topic is still one of the most important public news items today, it is
+acceptable and correct to include it again.
+
+Do not repeat yesterday's explanation mechanically.
+
+When a continuing story remains important, explain at least one of:
+
+- what is newly confirmed today
+- what is newly uncertain today
+- what decision, negotiation, number, deadline, or reaction moved today
+- why it still deserves a main slot today
+
+The goal is not forced variety.
+
+The goal is correct editorial priority.
+
+Do not replace an important continuing story with a weaker story just to create
+variety.
+
+Do not over-prioritize novelty. A new but minor story should not displace a
+continuing story that remains more important.
+
+## Recurring Stories And Anti-Staleness
+
+A topic may appear as a main story on consecutive days if it remains one of the
+most important news items today.
+
+This is allowed for:
+
+- major political stories
+- judicial and legal reform
+- international crises
+- economic and market-moving events
+- disaster and accident follow-up
+- public-health and infection stories
+- social-risk and trust-related stories
+- major corporate or technology stories with public impact
+
+For a recurring story to remain in a main section, the script must show at
+least one of:
+
+- a new decision
+- a new negotiation step
+- a new deadline
+- a new official position
+- a new confirmed fact
+- a new market or household impact
+- a new legal or procedural stage
+- a new reaction from key actors
+- a meaningful clarification of uncertainty
+- a reason why the issue still dominates today's agenda
+
+Do not keep using the same major story as a main story out of habit.
+
+A recurring story is acceptable only if it is still one of the strongest
+stories today.
+
+If a recurring story has only weak movement, move it to short secondary
+tracking.
+
+If another story has become more important, promote the new story even if the
+previous story was important yesterday.
+
+When a recurring story stays in the main lineup, give only the minimum
+refresher needed for first-time listeners.
+
 ## Flexible Section Rule
 
 The section model is a guide, not a prison.
@@ -184,8 +256,11 @@ sixth section is weak, skip it rather than forcing a low-value story.
 substantive updates.
 
 If `社会・暮らし・インフラ` has multiple genuinely strong stories on the same
-day, such as infection or public-health and SNS, privacy, or information-leak
-incidents, it may use 2 main stories.
+day, such as an accident, infectious-disease story, privacy or SNS
+information-leak story, or consumer-safety story, it may use 2 main stories.
+
+If `政治・行政・司法` has two genuinely major and distinct stories, it may use
+2 main stories, but only if both are main-news level.
 
 If `国際・安全保障` and `国際協力` overlap through the same supply-chain,
 energy, or geopolitical crisis, compress one into short secondary tracking.
@@ -322,7 +397,7 @@ has exceptional explanatory value for the user.
 Each main story must pass at least two of these tests:
 
 - important to many people
-- new today
+- new today or still one of the most important continuing stories today
 - changes policy, rights, money, safety, health, privacy, work, or social
   systems
 - likely to appear in mainstream news broadcasts
@@ -342,15 +417,24 @@ Story selection must explicitly prioritize:
 
 - public importance
 - genuine freshness today
+- whether the story remains one of the most important topics today even if it
+  appeared recently
+- likelihood of being covered in a serious radio or TV flash-news segment
 - domestic relevance for Japan
 - effect on daily life, rights, money, work, security, health, safety,
   privacy, trust, or social systems
-- political or institutional weight
+- political, judicial, institutional, or social weight
 - explanatory value
-- topic diversity
+- public salience
+- section balance when it does not override importance
 - broadcast plausibility
-- whether the story was already over-covered in recent outputs
+- whether recent coverage makes the story stale or still clearly dominant
 - source reliability
+
+Do not over-prioritize novelty.
+
+A new but minor story should not displace a continuing story that remains more
+important.
 
 Penalize candidates when:
 
@@ -563,16 +647,27 @@ region, identity, diplomacy, or economic change.
 If the rotating sixth section overlaps with an already selected international,
 energy, supply-chain, or technology story, compress it or skip it.
 
-## Repetition And Cluster Control
+## Repetition, Recurring-Story, And Cluster Control
 
-Do not reuse the same major story as a main story day after day unless there
-is clearly meaningful new information.
+Apply the importance-first recurring-story rule before rejecting a topic as
+repetitive.
 
-If a story remains important but has no meaningful update, move it to short
+Do not avoid a topic only because it appeared recently.
+
+Do not reuse the same major story as a main story out of habit.
+
+A recurring story may remain a main story only when it is still one of the
+strongest stories today and the script shows fresh movement, fresh uncertainty,
+or a clear reason why it still dominates the day's agenda.
+
+If a story remains important but has only weak movement, move it to short
 secondary tracking or omit it.
 
+If a stronger new story has emerged, promote the new story even if yesterday's
+story was important.
+
 If a topic appeared recently, do not re-explain the same background at full
-length.
+length. Give only the minimum refresher needed for first-time listeners.
 
 Do not use more than 2 main stories from the same broad causal cluster across
 the whole digest.
@@ -642,7 +737,12 @@ After the main sections, add:
 
 Use 2 to 4 brief items.
 
-Each item should be 1 sentence only.
+Each item should be one short breath, not merely one grammatical sentence.
+
+Target each secondary item at roughly 60 to 90 Japanese characters.
+
+If an item needs more than that, either promote it to a main story or omit
+details.
 
 Use this section for:
 
@@ -737,9 +837,11 @@ It should record:
 - why each main section was selected today
 - what materially changed inside the coverage window
 - the public-agenda and social-salience scan when it affected selection
+- recurring-story evaluation when a recent topic was kept, demoted, or
+  replaced
 - when a continuing story was demoted because there was no material update
 - any cluster-overlap judgment
-- whether recent over-coverage affected selection
+- whether recent coverage was stale or still justified as recurring
 - source reliability or uncertainty when that matters
 - when a routine official item was demoted because it did not clear the
   newsworthiness-first tests

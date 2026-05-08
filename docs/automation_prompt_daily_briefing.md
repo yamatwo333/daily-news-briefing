@@ -65,8 +65,8 @@ what to watch next.
    - README.md
    - docs/google-doc-sync.md when sync behavior needs confirmation
 2. Review the most recent daily outputs if available, especially the last 3
-   daily runs, so you can suppress repetition and avoid over-covering the same
-   story.
+   daily runs, so you can distinguish acceptable recurring major stories from
+   stale repetition.
 3. Determine the effective coverage window from the previous scheduled run
    until now.
 4. Build the public news agenda from major news coverage and socially salient
@@ -76,7 +76,8 @@ what to watch next.
 7. Verify selected candidate stories with reliable media, official sources,
    company statements, agency releases, primary documents, or specialist
    sources as appropriate.
-8. Select the main lineup using the flexible section rules below.
+8. Select the main lineup using the importance-first and flexible section
+   rules below.
 9. Write the reference daily briefing and supporting output files.
 10. Write the final read-aloud script in TTS-friendly plain Japanese.
 11. Overwrite the fixed Google Document with the final read-aloud script using
@@ -92,9 +93,86 @@ what to watch next.
 - Do not bias story selection toward only the latest few visible hours unless
   the actual news flow really happened only then
 - Older developments may appear only if they remain materially important today
-- If an older development still matters but has only weak updates in the
-  effective coverage window, move it to short secondary tracking instead of
-  reusing it as a main section
+- If an older or recurring development is still one of the strongest stories
+  today, it may remain a main story
+- If an older or recurring development still matters but has only weak updates
+  in the effective coverage window, move it to short secondary tracking
+  instead of reusing it as a main section
+
+## Importance-First, Not Forced Variety
+
+The daily brief should select the most important public news in each run
+across politics, economy, international affairs, society, technology, and
+daily-life topics.
+
+Do not avoid a topic merely because it appeared yesterday.
+
+If the topic is still one of the most important public news items today, it is
+acceptable and correct to include it again.
+
+Do not repeat yesterday's explanation mechanically.
+
+When a continuing story remains important, explain at least one of:
+
+- what is newly confirmed today
+- what is newly uncertain today
+- what decision, negotiation, number, deadline, or reaction moved today
+- why it still deserves a main slot today
+
+The goal is not forced variety.
+
+The goal is correct editorial priority.
+
+Do not replace an important continuing story with a weaker story just to create
+variety.
+
+Do not over-prioritize novelty. A new but minor story should not displace a
+continuing story that remains more important.
+
+## Recurring-Story Rule
+
+A topic may appear as a main story on consecutive days if it remains one of the
+most important news items.
+
+This is allowed for:
+
+- major political stories
+- judicial and legal reform
+- international crises
+- economic and market-moving events
+- disaster and accident follow-up
+- public-health and infection stories
+- social-risk and trust-related stories
+- major corporate or technology stories with public impact
+
+For a recurring story to remain in the main section, the script must show at
+least one of:
+
+- a new decision
+- a new negotiation step
+- a new deadline
+- a new official position
+- a new confirmed fact
+- a new market or household impact
+- a new legal or procedural stage
+- a new reaction from key actors
+- a meaningful clarification of uncertainty
+- a reason why the issue still dominates today's agenda
+
+Do not keep using the same major story as a main story out of habit.
+
+A recurring story is acceptable only if it is still one of the strongest
+stories today.
+
+If a recurring story has only weak movement, move it to short secondary
+tracking.
+
+If another story has become more important, promote the new story even if the
+previous story was important yesterday.
+
+Do not repeat the same background explanation at full length.
+
+Give only the minimum refresher needed for first-time listeners.
 
 ## Newsworthiness-First Agenda Rule
 
@@ -254,7 +332,7 @@ has exceptional explanatory value for the user.
 Each main story must pass at least two of these tests:
 
 - important to many people
-- new today
+- new today or still one of the most important continuing stories today
 - changes policy, rights, money, safety, health, privacy, work, or social
   systems
 - likely to appear in mainstream news broadcasts
@@ -274,15 +352,23 @@ Story selection must explicitly prioritize:
 
 - public importance
 - genuine freshness today
+- whether the story remains one of the most important topics today even if it
+  appeared recently
+- likelihood of being covered in a serious radio or TV flash-news segment
+- public salience
 - domestic relevance for Japan
 - effect on daily life, rights, money, work, security, health, safety,
   privacy, trust, or social systems
-- political or institutional weight
+- political, judicial, institutional, or social weight
 - explanatory value
-- topic diversity
 - broadcast plausibility
-- whether the story was already over-covered in recent outputs
+- whether recent coverage makes the story stale or still clearly dominant
 - source reliability
+
+Do not over-prioritize novelty.
+
+A new but minor story should not displace a continuing story that remains more
+important.
 
 Penalize candidates when:
 
@@ -376,8 +462,11 @@ If the rotating sixth section is weak, skip it rather than forcing a low-value
 story.
 
 If 社会・暮らし・インフラ has multiple genuinely strong stories on the same
-day, such as infection/public-health and SNS/privacy/information-leak, it may
-use 2 main stories.
+day, such as an accident, infectious-disease story, privacy/SNS
+information-leak story, or consumer-safety story, it may use 2 main stories.
+
+If 政治・行政・司法 has two genuinely major and distinct stories, it may use
+2 main stories, but only if both are main-news level.
 
 If 国際・安全保障 and 国際協力 overlap through the same supply-chain,
 energy, or geopolitical crisis, compress one into short secondary tracking.
@@ -569,12 +658,19 @@ energy, supply-chain, or technology story, compress it or skip it.
 
 ## Repetition And Cluster Control
 
-- Do not reuse the same major story as a main story day after day unless
-  there is clearly meaningful new information
-- If a story remains important but has no meaningful update, move it to short
+- Apply the importance-first recurring-story rule before rejecting a topic as
+  repetitive
+- Do not avoid a topic only because it appeared recently
+- Do not reuse the same major story as a main story out of habit
+- A recurring story may remain a main story only when it is still one of the
+  strongest stories today and the script shows fresh movement, fresh
+  uncertainty, or a clear reason why it still dominates the day's agenda
+- If a story remains important but has only weak movement, move it to short
   secondary tracking or omit it
+- If a stronger new story has emerged, promote the new story even if
+  yesterday's story was important
 - If a topic appeared recently, do not re-explain the same background at full
-  length
+  length; give only the minimum refresher needed for first-time listeners
 - Do not use more than 2 main stories from the same broad causal cluster
   across the whole digest
 
@@ -721,7 +817,10 @@ Short secondary tracking:
 - After the main sections, add this exact line:
   そのほか、短く確認します。
 - Use 2 to 4 brief items
-- Each item must be 1 sentence only
+- Each item should be one short breath, not merely one grammatical sentence
+- Target each secondary item at roughly 60 to 90 Japanese characters
+- If an item needs more than that, either promote it to a main story or omit
+  details
 - Use this section for:
   important themes with weak updates
   worthy but non-leading stories
@@ -817,9 +916,11 @@ It should record:
   omission
 - why each main story or section was selected today
 - what changed inside the effective coverage window
+- recurring-story evaluation when a recent topic was kept, demoted, or
+  replaced
 - when a continuing story was demoted because there was no material update
 - any cluster-overlap judgment
-- whether recent over-coverage changed prioritization
+- whether recent coverage was stale or still justified as recurring
 - source reliability or uncertainty when that matters
 - when a routine official item was demoted because it did not clear the
   newsworthiness-first tests
