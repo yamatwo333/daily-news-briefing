@@ -160,16 +160,16 @@ def render(data, audio, directory):
     duration = round(audio["duration_seconds"])
     html_text = f'''<!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex"><title>NEWS 試験配信</title>
+<meta name="robots" content="noindex"><title>NEWS</title>
 <style>body{{max-width:760px;margin:40px auto;padding:0 20px;font:18px/1.9 system-ui,sans-serif;color:#202731;background:#faf9f6}}h1{{font-size:2rem}}audio{{width:100%;margin:18px 0}}.meta{{font-size:.9rem;color:#57616d}}.notice{{padding:12px 16px;border-left:4px solid #577b76;background:#edf2ee}}p{{margin:1.5em 0}}a{{color:#275c68}}button{{font:inherit}}summary{{cursor:pointer}}</style>
-<h1>NEWS</h1><div class="notice">試験配信</div>
+<h1>NEWS</h1><div class="notice">毎朝のニュース</div>
 <p class="meta">ニュース確認の基準：{cutoff}（日本時間）<br>音声作成：{completed}（日本時間）<br>玄野武宏・1.3倍 ／ {duration // 60}分{duration % 60:02d}秒</p>
 <audio controls preload="metadata" src="audio.mp3?{esc(data['id'])}">音声を再生できません。</audio>
 <p><a href="audio.mp3" download>音声を保存</a> · <a href="script.txt">原稿を開く</a></p>
 <details><summary>原稿を読む</summary>{paragraphs}</details>
 <details><summary>出典</summary><ul>{sources}</ul></details>
 <p class="meta">合成音声：{VOICE}<br>取得に失敗した回は更新されません。上記の日付を確認してください。</p>
-<p class="meta">テストID：{esc(data['id'])}</p></html>'''
+<p class="meta">配信ID：{esc(data['id'])}</p></html>'''
     (directory / "index.html").write_text(html_text)
     (directory / "script.txt").write_text(data["manuscript"])
     manifest = dict(schema_version=1, id=data["id"], cutoff_at=data["cutoff_at"],
