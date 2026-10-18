@@ -29,19 +29,25 @@ jobs:
             sudo apt-get update -qq
             sudo apt-get install -y ffmpeg
           fi
-          docker run --rm -d --name news-voicevox \
+          docker run -d --name news-voicevox \
             -p 127.0.0.1:50021:50021 \
             voicevox/voicevox_engine@sha256:148b7ade1e698893d8722b6bbd92c059f8796b4ab45449cf45e0601369e63455 \
+            gosu user /opt/voicevox_engine/run \
             --host 0.0.0.0 --port 50021 --cpu_num_threads 2 --disable_mutable_api
           python3 - <<'PY'
-          import time, urllib.request
+          import subprocess, time, urllib.request
           for _ in range(180):
               try:
                   urllib.request.urlopen('http://127.0.0.1:50021/version', timeout=2).close()
                   break
               except OSError:
+                  running = subprocess.check_output(['docker', 'inspect', '--format={{.State.Running}}', 'news-voicevox'], text=True).strip()
+                  if running != 'true':
+                      subprocess.run(['docker', 'logs', 'news-voicevox'])
+                      raise RuntimeError('音声エンジンが終了しました')
                   time.sleep(1)
           else:
+              subprocess.run(['docker', 'logs', 'news-voicevox'])
               raise RuntimeError('音声エンジンが起動しませんでした')
           PY
       - name: Synthesize and build the test page
@@ -62,7 +68,7 @@ jobs:
           retention-days: 1
       - name: Stop the temporary engine
         if: always()
-        run: docker stop news-voicevox || true
+        run: docker rm -f news-voicevox || true
 
   deploy:
     needs: build
