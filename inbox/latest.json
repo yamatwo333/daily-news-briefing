@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "id": "test-20261018T094454Z",
-  "cutoff_at": "2026-10-18T18:43:50.491365+09:00",
-  "written_at": "2026-10-18T18:44:54.468433+09:00",
-  "manuscript": "ヨルダン川西岸のタイベ村で10月17日、欧州の外交団が覆面をしたイスラエル人入植者に襲われたとBBCが報じました。ベルギー当局によると、領事館の車の窓が割られ、同行していたフランスの市長が暴行を受けました。外交団は、オリーブの収穫をするパレスチナ人への襲撃が相次ぐ中、現地の状況を調べるために訪れていました。イスラエル軍は暴力を非難して調査すると表明する一方、首相府は事件の全容や個人の責任はまだ確定していないとして、結論を急がないよう求めています。\n\nカナダ西部アルバータ州のウェインライト軍事基地で大規模な火災が起き、国防相は複数の死傷者が出たと明らかにしました。国防相は、火災の原因や死傷者の人数は確認していないとして、軍と地元当局が対応していると説明しています。地元自治体によると、17日に発生した火災は強風で急速に広がりましたが、地元当局は消防隊が延焼を食い止めたとしています。この基地は実弾を使う訓練に利用されていて、周辺の住民には現場を避け、緊急車両の通行を優先するよう呼びかけられています。\n\nアルバニアの首都ティラナで10月17日、反政府デモの参加者と警察が衝突し、激しい衝突は5日連続となりました。BBCによると、高校生や大学生を多く含む参加者が石や火炎瓶を投げ、警察は放水や催涙ガスで対応しました。双方に多数の負傷者が出ていて、これまでに80人が騒乱に関する罪で訴追されています。夏に始まった抗議活動は、政権に関連する汚職疑惑を背景に、ラマ首相の辞任を求める運動へ広がっています。首相は違法な取引を知っていたことを否定しています。\n",
+  "id": "test-20261018T102931Z",
+  "cutoff_at": "2026-10-18T19:28:27.977186+09:00",
+  "written_at": "2026-10-18T19:29:31.490071+09:00",
+  "manuscript": "フランスで10月17日に行われたデモの後、パリなどでは車や建物が焼かれ、商店が略奪される被害が広がりました。BBCによると、デモの参加者はおよそ55万人で、大半は平和的でしたが、一部の集団が暴徒化し、警察はおよそ1800人を逮捕しました。ルコルニュ首相は、警察官150人が負傷したと述べています。抗議の背景には燃料価格や生活費の上昇、学校を含む公共サービスの悪化があり、パリでは18日朝、店の人たちが割れたガラスなどの片付けを始めました。\n\nアメリカのトランプ大統領が、発動を控えていたロシアへの制裁の一部を停止しました。BBCによると、制裁は9月に議会を通過して法律となりましたが、大統領は10月16日夜の大統領令で、一部の停止はアメリカの国益にかなうとしています。ルビオ国務長官は、アメリカや世界の経済への影響を分析するため、60日間停止すると説明しました。ウクライナのゼレンスキー大統領は、制裁は戦争を終わらせるための圧力になるはずだったと批判し、アメリカの与野党議員からも反発が出ています。\n\n中国・甘粛省天水市の幼稚園で、鉛を含む食品によって200人を超える子どもが被害を受けた事件をめぐり、経営者に無期懲役が言い渡されました。BBCが伝えた中国の国営メディアの報道によると、有毒で有害な食品を製造、販売した罪に問われ、ほかの職員5人にも実刑判決が出ました。2025年7月には、園児や職員247人の血中鉛濃度が異常に高いことが確認されていました。調査では、食事の見栄えをよくして園児を集めるため、食用ではない塗料が使われていたことが明らかになりました。\n",
   "sources": [
     {
-      "title": "European diplomats attacked by Israeli settlers in West Bank",
-      "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss"
+      "title": "Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting",
+      "url": "https://www.bbc.co.uk/news/articles/c574pdzl0k4no?at_medium=RSS&at_campaign=rss"
     },
     {
-      "title": "Several dead or injured in major fire at Canada military base",
-      "url": "https://www.bbc.co.uk/news/articles/cr86z0w4lxdxo?at_medium=RSS&at_campaign=rss"
+      "title": "Trump waives several Russia sanctions as row with Zelensky intensifies",
+      "url": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "title": "Anti-government protesters battle with police in Albania",
-      "url": "https://www.bbc.co.uk/news/articles/crwydey50xeno?at_medium=RSS&at_campaign=rss"
+      "title": "Nursery owner in China jailed for life after hundreds of children poisoned",
+      "url": "https://www.bbc.co.uk/news/articles/cqe9lx54g7x9o?at_medium=RSS&at_campaign=rss"
     }
   ]
 }
