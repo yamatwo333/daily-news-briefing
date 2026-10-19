@@ -68,11 +68,11 @@ class TestNews(unittest.TestCase):
             self.assertNotIn('audio.mp3?v='+'a'*64,second)
 
     @unittest.skipUnless(shutil.which('node'), 'Node is optional for this browser-script test')
-    def test_staleness_notice_uses_jst_and_turns_on_at_7am(self):
+    def test_staleness_notice_uses_jst_and_allows_30_minutes_after_7am_start(self):
         with tempfile.TemporaryDirectory() as temp:
             path=Path(temp)
-            self.data['cutoff_at']='2026-10-19T06:35:00+09:00'
-            self.data['written_at']='2026-10-19T06:40:00+09:00'
+            self.data['cutoff_at']='2026-10-19T07:05:00+09:00'
+            self.data['written_at']='2026-10-19T07:10:00+09:00'
             # render validates dates; use the actual test date for input validation,
             # then substitute only the embedded clock-independent fixture cutoff.
             fixture=self.data['cutoff_at']
@@ -87,7 +87,7 @@ const results=input.times.map(t=>{const status={};const RealDate=Date;
 class Clock extends RealDate{constructor(...args){super(...(args.length?args:[t]));}}
 vm.runInNewContext(input.script,{Date:Clock,Intl,document:{getElementById:()=>status},setInterval:()=>{}});
 return status;});process.stdout.write(JSON.stringify(results));"""
-            times=['2026-10-19T21:59:00Z','2026-10-19T22:00:00Z','2026-10-19T01:00:00Z']
+            times=['2026-10-19T22:29:00Z','2026-10-19T22:30:00Z','2026-10-19T01:00:00Z']
             out=subprocess.run(['node','-e',code],input=json.dumps(dict(script=script,times=times)),text=True,capture_output=True,check=True)
             before,after,today=json.loads(out.stdout)
             self.assertTrue(before['hidden'])

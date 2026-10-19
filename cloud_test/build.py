@@ -178,9 +178,9 @@ def render(data, audio, directory):
 function updateFreshness() {{
   const now = new Date();
   const date = new Intl.DateTimeFormat('sv-SE', {{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}}).format(now);
-  const due = new Date(date + 'T07:00:00+09:00');
+  const due = new Date(date + 'T07:30:00+09:00');
   const cutoff = new Date({freshness_cutoff});
-  const expected = new Date(date + 'T06:30:00+09:00');
+  const expected = new Date(date + 'T07:00:00+09:00');
   const stale = now >= due && cutoff < expected;
   const status = document.getElementById('freshness');
   status.hidden = !stale;

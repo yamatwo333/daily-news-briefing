@@ -1,7 +1,7 @@
 # NEWS daily delivery contract — 2026-10-19
 
 This is the current daily procedure, not a request to restart past tests. The
-existing schedule stays daily 06:30 Asia/Tokyo, aiming for about 07:00. GPT does
+existing schedule starts daily at 07:00 Asia/Tokyo; completion follows processing. GPT does
 the research and Japanese writing using the existing subscription. No paid API,
 other model, new schedule, Google Docs sync, credential access, or permission
 expansion. Public destination and repository remain unchanged.
@@ -41,7 +41,7 @@ denied operation, with no repeated call, alternate path or permission expansion.
 
 ## 3. Time, checkpoint and research
 
-Get actual UTC/JST time. Before 06:30 wait only if at most 10 minutes early; other
+Get actual UTC/JST time. Before 07:00 wait only if at most 10 minutes early; other
 cases stop with the real time. Save the starting branch HEAD and inbox SHA/ID.
 Use `daily_guard.py delivery` with actual time, current inbox cutoff and the
 matching workflow's status. An inbox for today is **not** evidence of successful
@@ -102,8 +102,9 @@ verification is reported as such, not silently patched by a parent chat.
 
 End with one concise Japanese completion or failure report in this existing
 chat: actual JST cutoff/completion, stories/characters/audio length, fixed URL,
-verified stages, limitations and actionable failures. Do not claim 07:00 completion
-after a late run. Do not publish stale material as today's news. No routine
+verified stages, limitations and actionable failures. 07:00 is the scheduled start, not a fixed completion deadline.
+The page's stale-edition notice allows a 30-minute processing grace period;
+that display threshold is not a completion guarantee. Do not publish stale material as today's news. No routine
 unchanged progress notifications, new schedules, or external message destinations.
 
 ## Evidence and limits

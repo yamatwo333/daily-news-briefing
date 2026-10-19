@@ -57,7 +57,7 @@ def delivery_decision(now, current_cutoff=None, pipeline=None):
     now = datetime.fromisoformat(now.replace("Z", "+00:00"))
     if now.tzinfo is None:
         raise ValueError("now requires timezone")
-    target = datetime.combine(now.astimezone(JST).date(), time(6, 30), JST)
+    target = datetime.combine(now.astimezone(JST).date(), time(7, 0), JST)
     if now < target:
         seconds = (target - now).total_seconds()
         return {"action": "wait_until_schedule" if seconds <= 600 else "stop",

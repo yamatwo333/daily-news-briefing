@@ -40,7 +40,7 @@ class GuardTests(unittest.TestCase):
         self.assertEqual(classify_fetch_error(dict(message="unknown error"))["action"], "stop_operation")
 
     def test_existing_input_is_not_success_without_pipeline_verification(self):
-        now, cutoff = "2026-10-19T07:01:00+09:00", "2026-10-19T06:35:00+09:00"
+        now, cutoff = "2026-10-19T07:20:00+09:00", "2026-10-19T07:05:00+09:00"
         for pipeline, expected in [({}, "inspect_existing_pipeline"),
             ({"status": "in_progress"}, "monitor_existing_pipeline"),
             ({"status": "completed", "conclusion": "failure"}, "report_pipeline_failure"),
@@ -51,9 +51,9 @@ class GuardTests(unittest.TestCase):
             self.assertFalse(result["write_input"])
 
     def test_jst_day_and_early_start_are_not_confused_with_utc(self):
-        self.assertEqual(delivery_decision("2026-10-18T21:27:00Z")["action"], "wait_until_schedule")
+        self.assertEqual(delivery_decision("2026-10-18T21:57:00Z")["action"], "wait_until_schedule")
         self.assertEqual(delivery_decision("2026-10-18T20:00:00Z")["action"], "stop")
-        self.assertEqual(delivery_decision("2026-10-18T21:35:00Z", "2026-10-18T19:00:00+09:00")["action"], "prepare_new_edition")
+        self.assertEqual(delivery_decision("2026-10-18T22:05:00Z", "2026-10-18T19:00:00+09:00")["action"], "prepare_new_edition")
 
 
 class PublicationTests(unittest.TestCase):
