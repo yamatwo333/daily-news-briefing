@@ -67,8 +67,12 @@ def check_once(data, fetch):
         raise PublicationPending("Published manuscript or its hash differs")
     if json.loads(fetch("sources.json")) != data["sources"]:
         raise PublicationPending("Published sources differ")
-    if data["id"] not in fetch("index.html").decode("utf-8"):
+    page = fetch("index.html").decode("utf-8")
+    if data["id"] not in page:
         raise PublicationPending("Published HTML belongs to another edition")
+    if (f'src="audio.mp3?v={manifest.get("audio_sha256")}"' not in page or
+            f'href="script.txt?v={manifest.get("manuscript_sha256")}"' not in page):
+        raise PublicationPending("Published page still references another asset revision")
     audio = fetch("audio.mp3")
     if (len(audio) != manifest.get("mp3_bytes") or
             hashlib.sha256(audio).hexdigest() != manifest.get("audio_sha256")):

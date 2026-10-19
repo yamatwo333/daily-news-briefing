@@ -65,7 +65,10 @@ class PublicationTests(unittest.TestCase):
         self.manifest.update(manuscript_sha256=hashlib.sha256(self.data["manuscript"].encode()).hexdigest(),
             audio_sha256=hashlib.sha256(self.audio).hexdigest(), mp3_bytes=len(self.audio), duration_seconds=12)
         self.files = {"manifest.json": json.dumps(self.manifest).encode(), "script.txt": self.data["manuscript"].encode(),
-            "sources.json": b"[]", "index.html": self.data["id"].encode(), "audio.mp3": self.audio}
+            "sources.json": b"[]", "index.html": (self.data["id"] +
+                f'<audio src="audio.mp3?v={self.manifest["audio_sha256"]}"></audio>' +
+                f'<a href="script.txt?v={self.manifest["manuscript_sha256"]}">原稿</a>').encode(),
+            "audio.mp3": self.audio}
 
     def test_exact_publication_is_verified(self):
         self.assertEqual(check_once(self.data, self.files.__getitem__)["result"], "verified")
@@ -90,6 +93,12 @@ class PublicationTests(unittest.TestCase):
         def missing(name): raise PublicationPending("always stale")
         with self.assertRaises(PublicationPending):
             verify(self.data, budget_seconds=20, fetch=missing, clock=lambda:ticks[0], sleep=sleep)
+
+    def test_same_edition_page_cannot_reference_a_cached_old_audio(self):
+        self.files['index.html']=self.files['index.html'].replace(
+            self.manifest['audio_sha256'].encode(), b'old-audio')
+        with self.assertRaises(PublicationPending):
+            check_once(self.data,self.files.__getitem__)
 
     def test_access_denial_is_never_retried(self):
         calls=[]
