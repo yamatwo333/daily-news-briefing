@@ -1,8 +1,8 @@
-name: NEWS cloud test
+name: NEWS delivery
 on:
   push:
     branches: [news-cloud-test]
-    paths: [inbox/latest.json]
+    paths: [inbox/latest.json, 'cloud_test/**', 'tests/**', docs/news_daily_runbook.md, .github/workflows/news-cloud-test.yml]
 
 permissions:
   contents: read
@@ -11,8 +11,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  checks:
     if: github.repository == 'yamatwo333/daily-news-briefing' && github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      input_changed: ${{ steps.changes.outputs.input_changed }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Run delivery regression tests without network or audio
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Decide whether this commit contains a new news input
+        id: changes
+        run: |
+          python3 - <<'PY'
+          import os, subprocess
+          paths=subprocess.check_output(['git','diff-tree','--root','--no-commit-id','--name-only','-r',os.environ['GITHUB_SHA']],text=True).splitlines()
+          changed='true' if 'inbox/latest.json' in paths else 'false'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write('input_changed='+changed+'\n')
+          PY
+
+  build:
+    needs: checks
+    if: needs.checks.outputs.input_changed == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -21,7 +46,6 @@ jobs:
           persist-credentials: false
       - name: Validate the incoming manuscript
         run: |
-          python3 -m unittest discover -s tests -p 'test_cloud_news.py'
           python3 cloud_test/build.py inbox/latest.json site --validate-only
       - name: Prepare ffmpeg and the official CPU voice engine
         run: |
@@ -50,7 +74,7 @@ jobs:
               subprocess.run(['docker', 'logs', 'news-voicevox'])
               raise RuntimeError('音声エンジンが起動しませんでした')
           PY
-      - name: Synthesize and build the test page
+      - name: Synthesize and build the page
         run: python3 cloud_test/build.py inbox/latest.json site
       - name: Save the result summary
         run: |
@@ -59,7 +83,7 @@ jobs:
           from pathlib import Path
           data=json.loads(Path('site/manifest.json').read_text())
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
-              summary.write('## NEWS cloud test\n\n```json\n' + json.dumps(data,ensure_ascii=False,indent=2) + '\n```\n')
+              summary.write('## NEWS delivery\n\n```json\n' + json.dumps(data,ensure_ascii=False,indent=2) + '\n```\n')
           PY
       - name: Upload only the finished site for one day
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
@@ -81,6 +105,29 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Publish the successful test
+      - name: Publish the successful edition
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+
+  verify-publication:
+    needs: [build, deploy]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Verify the actual public manuscript, sources, page and audio
+        run: python3 cloud_test/verify_publication.py inbox/latest.json --output publication-check.json
+      - name: Save publication verification result
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          path=Path('publication-check.json')
+          report=path.read_text() if path.exists() else '{"result":"unconfirmed","reason":"verification did not produce a result"}'
+          print(report)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out:
+              out.write('## NEWS public verification\n\n```json\n'+report+'\n```\n')
+          PY
