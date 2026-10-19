@@ -158,18 +158,37 @@ def render(data, audio, directory):
     sources = "\n".join(f'<li><a href="{esc(s["url"], quote=True)}" rel="noreferrer">'
                          f'{esc(s["title"])}</a></li>' for s in data["sources"])
     duration = round(audio["duration_seconds"])
+    audio_version = esc(audio.get("audio_sha256", data["id"]), quote=True)
+    text_version = hashlib.sha256(data["manuscript"].encode()).hexdigest()
+    freshness_cutoff = json.dumps(data["cutoff_at"])
     html_text = f'''<!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>NEWS</title>
 <style>body{{max-width:760px;margin:40px auto;padding:0 20px;font:18px/1.9 system-ui,sans-serif;color:#202731;background:#faf9f6}}h1{{font-size:2rem}}audio{{width:100%;margin:18px 0}}.meta{{font-size:.9rem;color:#57616d}}.notice{{padding:12px 16px;border-left:4px solid #577b76;background:#edf2ee}}p{{margin:1.5em 0}}a{{color:#275c68}}button{{font:inherit}}summary{{cursor:pointer}}</style>
 <h1>NEWS</h1><div class="notice">毎朝のニュース</div>
+<p id="freshness" class="notice" role="status" hidden></p>
 <p class="meta">ニュース確認の基準：{cutoff}（日本時間）<br>音声作成：{completed}（日本時間）<br>玄野武宏・1.3倍 ／ {duration // 60}分{duration % 60:02d}秒</p>
-<audio controls preload="metadata" src="audio.mp3?{esc(data['id'])}">音声を再生できません。</audio>
-<p><a href="audio.mp3" download>音声を保存</a> · <a href="script.txt">原稿を開く</a></p>
+<audio controls preload="metadata" src="audio.mp3?v={audio_version}">音声を再生できません。</audio>
+<p><a href="audio.mp3?v={audio_version}" download>音声を保存</a> · <a href="script.txt?v={text_version}">原稿を開く</a></p>
 <details><summary>原稿を読む</summary>{paragraphs}</details>
 <details><summary>出典</summary><ul>{sources}</ul></details>
 <p class="meta">合成音声：{VOICE}<br>取得に失敗した回は更新されません。上記の日付を確認してください。</p>
-<p class="meta">配信ID：{esc(data['id'])}</p></html>'''
+<p class="meta">配信ID：{esc(data['id'])}</p>
+<script>
+function updateFreshness() {{
+  const now = new Date();
+  const date = new Intl.DateTimeFormat('sv-SE', {{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}}).format(now);
+  const due = new Date(date + 'T07:00:00+09:00');
+  const cutoff = new Date({freshness_cutoff});
+  const expected = new Date(date + 'T06:30:00+09:00');
+  const stale = now >= due && cutoff < expected;
+  const status = document.getElementById('freshness');
+  status.hidden = !stale;
+  status.textContent = stale ? '本日分はまだ更新されていません。表示中の原稿・音声は前回分です。下記の確認日時をご覧ください。' : '';
+}}
+updateFreshness();
+setInterval(updateFreshness, 60000);
+</script></html>'''
     (directory / "index.html").write_text(html_text)
     (directory / "script.txt").write_text(data["manuscript"])
     manifest = dict(schema_version=1, id=data["id"], cutoff_at=data["cutoff_at"],
