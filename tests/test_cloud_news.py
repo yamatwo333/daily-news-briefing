@@ -2,6 +2,9 @@ import copy
 from datetime import datetime, timedelta, timezone
 import json
 from pathlib import Path
+import re
+import shutil
+import subprocess
 import tempfile
 import unittest
 from cloud_test.build import validate, render
@@ -52,6 +55,45 @@ class TestNews(unittest.TestCase):
             self.assertEqual(set(p.name for p in directory.iterdir()),
                 {'index.html','script.txt','manifest.json','sources.json','.nojekyll'})
             self.assertEqual(json.loads((directory/'manifest.json').read_text())['id'],self.data['id'])
+
+    def test_audio_cache_key_changes_when_same_edition_is_rebuilt(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path=Path(temp)
+            render(self.data,dict(duration_seconds=70,audio_sha256='a'*64),path)
+            first=(path/'index.html').read_text()
+            render(self.data,dict(duration_seconds=70,audio_sha256='b'*64),path)
+            second=(path/'index.html').read_text()
+            self.assertIn('audio.mp3?v='+'a'*64,first)
+            self.assertIn('audio.mp3?v='+'b'*64,second)
+            self.assertNotIn('audio.mp3?v='+'a'*64,second)
+
+    @unittest.skipUnless(shutil.which('node'), 'Node is optional for this browser-script test')
+    def test_staleness_notice_uses_jst_and_turns_on_at_7am(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path=Path(temp)
+            self.data['cutoff_at']='2026-10-19T06:35:00+09:00'
+            self.data['written_at']='2026-10-19T06:40:00+09:00'
+            # render validates dates; use the actual test date for input validation,
+            # then substitute only the embedded clock-independent fixture cutoff.
+            fixture=self.data['cutoff_at']
+            self.data['cutoff_at']=self.now.isoformat()
+            self.data['written_at']=self.now.isoformat()
+            render(self.data,dict(duration_seconds=70),path)
+            script=re.search(r'<script>(.*?)</script>',(path/'index.html').read_text(),re.S)[1]
+            script=script.replace(json.dumps(self.data['cutoff_at']),json.dumps(fixture))
+            code="""const vm=require('node:vm');
+const input=JSON.parse(require('node:fs').readFileSync(0,'utf8'));
+const results=input.times.map(t=>{const status={};const RealDate=Date;
+class Clock extends RealDate{constructor(...args){super(...(args.length?args:[t]));}}
+vm.runInNewContext(input.script,{Date:Clock,Intl,document:{getElementById:()=>status},setInterval:()=>{}});
+return status;});process.stdout.write(JSON.stringify(results));"""
+            times=['2026-10-19T21:59:00Z','2026-10-19T22:00:00Z','2026-10-19T01:00:00Z']
+            out=subprocess.run(['node','-e',code],input=json.dumps(dict(script=script,times=times)),text=True,capture_output=True,check=True)
+            before,after,today=json.loads(out.stdout)
+            self.assertTrue(before['hidden'])
+            self.assertFalse(after['hidden'])
+            self.assertIn('本日分はまだ更新されていません',after['textContent'])
+            self.assertTrue(today['hidden'])
 
 
 if __name__ == '__main__':
