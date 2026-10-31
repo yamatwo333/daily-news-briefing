@@ -24,6 +24,29 @@ ENGINE_VERSION = "0.25.2"
 SETTINGS = dict(speedScale=1.3, intonationScale=0.8, pauseLengthScale=0.9,
                 volumeScale=1.0, prePhonemeLength=0.1,
                 postPhonemeLength=0.12, outputStereo=False)
+GENRE_CUE = r"(?:まずは|続いては|続いて|次は|最後は)[、，\s]*[^。\n]{1,40}のニュースです。"
+
+
+def validate_spoken_structure(text):
+    """Check new daily scripts without rejecting historical schema-1 inputs."""
+    genres, stories, section_stories = 0, 0, 0
+    for block in text.strip().split("\n\n"):
+        if re.fullmatch(GENRE_CUE, block.strip()):
+            if genres and not section_stories:
+                raise ValueError("本文のないジャンル案内です")
+            genres += 1
+            section_stories = 0
+            continue
+        headline, separator, body = block.partition("\n")
+        if (not genres or not separator or not body.strip() or
+                not headline.endswith("。") or headline.count("。") != 1 or
+                not 2 <= len(headline) <= 80):
+            raise ValueError("各記事にはジャンル案内と独立した短い見出し行が必要です")
+        stories += 1
+        section_stories += 1
+    if not genres or not section_stories:
+        raise ValueError("ジャンル案内と記事が必要です")
+    return dict(genres=genres, stories=stories)
 
 
 def timestamp(value):
@@ -91,6 +114,22 @@ def measurements(stderr):
     return json.loads(re.findall(r'\{\s*"input_i".*?\}', stderr, re.S)[-1])
 
 
+def pause_seconds(chunks, index):
+    """Audible boundaries for genre cues, stories, headlines and sentences."""
+    if index + 1 >= len(chunks):
+        return 0.0
+    text, paragraph = chunks[index]
+    next_text, next_paragraph = chunks[index + 1]
+    if paragraph != next_paragraph:
+        if any(re.fullmatch(GENRE_CUE, value.strip()) for value in (text, next_text)):
+            return 1.8
+        return 1.2
+    # A headline ends with 。 and its body starts on the next single line.
+    if next_text.lstrip(" \t").startswith("\n"):
+        return 0.6
+    return 0.08
+
+
 def synthesize(chunks, base, directory):
     check_engine(base)
     start, parts, dimensions = time.monotonic(), [], None
@@ -105,7 +144,7 @@ def synthesize(chunks, base, directory):
             dimensions = actual
             parts.append(wav.readframes(wav.getnframes()))
         if n + 1 < len(chunks):
-            pause = 0.45 if paragraph != chunks[n + 1][1] else 0.08
+            pause = pause_seconds(chunks, n)
             channels, width, rate = dimensions
             parts.append(b"\0" * round(rate * pause) * channels * width)
         print(f"音声合成 {n + 1}/{len(chunks)}", flush=True)

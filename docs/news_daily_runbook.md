@@ -58,6 +58,48 @@ No quotas, weak filler, invented background, copied old manuscript or unverified
 numbers. Broaden candidate discovery across general news and the user's business,
 marketing, franchise, self-employed and AI interests. Verify actual bodies.
 
+### Audible genres and individual headlines — user update 2026-10-31
+
+Group the selected stories into contiguous, meaningful genres such as politics,
+international affairs, economy/households, society/daily life, and business/AI.
+Choose only genres supported by the day's important stories; no quotas or filler.
+Before each group, speak a standalone sentence such as
+`まずは、経済・家計のニュースです。` or `続いて、国際・安全保障のニュースです。`.
+For the final group, `最後は、社会・暮らしのニュースです。` is suitable.
+Announce the genre once per group. Every story, including the first and short
+items, then starts with a short, factual spoken headline ending in `。`.
+Do not use a separate opening list of headlines, Markdown labels, or a spoken
+`見出し` label. Keep the confirmed substance and normal reading speed.
+
+Exact plain-text manuscript layout: each genre cue is its own block; each story
+is one block with the headline on its first line, one single newline, then the
+body. Separate blocks with exactly one blank line (`\n\n`); do not put blank lines
+inside a story body. The script.txt and manuscript contain these audible cues.
+Example layout (illustrative wording only; not news to reuse):
+
+```text
+まずは、経済・家計のニュースです。
+
+政策金利を据え置き。
+ここから、確認した事実と必要な背景を伝えます。
+
+家計向けの支援を発表。
+ここから、次の記事の本文です。
+
+続いて、国際・安全保障のニュースです。
+
+首脳会談の日程を発表。
+ここから、国際ニュースの本文です。
+```
+
+Run pinned `build.validate_spoken_structure(manuscript)` as well as
+`build.validate`. Save its genre/story counts in checks.json; count only article
+bodies as stories, not genre announcements or headlines. Confirm each headline
+against its body and that each genre matches its grouped stories. The audio
+builder inserts 1.8-second genre boundaries, 1.2-second story boundaries,
+0.6 seconds after a headline and 0.08 seconds within a body, in addition to the
+voice engine's own sentence silence. Preserve voice/speed/intonation settings.
+
 For an actual error response, preserve its text/code/scope separately from article
 text and use `daily_guard.py fetch-error`. `Failed to fetch restricted URL` alone
 excludes that article: no retry or alternate retrieval of the same content. It

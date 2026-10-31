@@ -1,5 +1,21 @@
 # Daily Briefing Principles
 
+## Current spoken navigation — user instruction 2026-10-31
+
+The current daily delivery must audibly announce each included genre once before
+its contiguous group, then read a brief factual headline before EVERY article.
+Use natural cues such as `まずは、経済・家計のニュースです。` and
+`続いて、国際・安全保障のニュースです。`. Omit empty genres and keep
+importance-first selection; do not fill categories mechanically.
+Write a standalone genre block, then story blocks separated by one blank line.
+Each story block has its short headline ending in `。` on the first line, one
+single newline, then the body without internal blank lines. These are spoken
+words in the manuscript, not only visual headings. No opening headline list,
+Markdown markers, or spoken `見出し` label. Do not add a greeting or mandatory
+closing summary to the current pipeline. This current layout takes precedence
+over older greeting/closing/Google Docs instructions below. See the current
+`docs/news_daily_runbook.md` for the exact layout and offline structure check.
+
 ## Core Model
 
 The foundational learning document remains the map:
