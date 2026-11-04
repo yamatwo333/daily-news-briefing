@@ -68,6 +68,13 @@ def check_once(data, fetch):
     if json.loads(fetch("sources.json")) != data["sources"]:
         raise PublicationPending("Published sources differ")
     page = fetch("index.html").decode("utf-8")
+    if "edition" in data:
+        if manifest.get("edition") != data["edition"]:
+            raise PublicationPending("Published edition format differs")
+        if data["edition"]["kind"] == "compact":
+            notice = f'本日は本文を確認できた{data["edition"]["story_count"]}本の短縮版です。'
+            if notice not in page:
+                raise PublicationPending("Compact edition disclosure is missing")
     if data["id"] not in page:
         raise PublicationPending("Published HTML belongs to another edition")
     if (f'src="audio.mp3?v={manifest.get("audio_sha256")}"' not in page or

@@ -1,5 +1,17 @@
 # Daily Briefing Principles
 
+## Availability correction — user instruction 2026-11-04
+
+Facts must remain verified, but completeness and story/character targets are not
+all-or-nothing publication conditions. Follow the current runbook's bounded,
+multi-publisher discovery and `daily_guard.py coverage` decision. If collection
+falls short after that discovery, publish the verified news as an explicitly
+labelled compact edition rather than discarding it. Do not invent, pad, reuse
+stale material, bypass a denied fetch, or present missing major topics as covered.
+Every selected story still requires body/fact/date/newsworthiness verification.
+This procedure overrides any older instruction that would stop solely because
+of source availability, fewer than 12 stories, short length or incomplete genres.
+
 ## Current spoken navigation — user instruction 2026-10-31
 
 The current daily delivery must audibly announce each included genre once before

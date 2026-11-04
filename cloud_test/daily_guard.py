@@ -6,9 +6,56 @@ Pass actual tool error metadata, never article text, to classify_fetch_error.
 import argparse
 from datetime import datetime, time, timedelta, timezone
 import json
+import re
 import sys
+from urllib.parse import urlsplit
 
 JST = timezone(timedelta(hours=9))
+RESEARCH_BUDGET_SECONDS = 600
+
+
+def coverage_decision(candidates, elapsed_seconds=0, discovery_complete=False,
+                      coverage_gaps=None):
+    """Quantity/coverage gaps never discard independently verified news."""
+    if (not isinstance(candidates, list) or
+            not isinstance(elapsed_seconds, (int, float)) or elapsed_seconds < 0):
+        raise ValueError("Actual candidates and nonnegative research time are required")
+    coverage_gaps = coverage_gaps or []
+    if not isinstance(coverage_gaps, list) or any(not isinstance(x, str) for x in coverage_gaps):
+        raise ValueError("coverage_gaps must list actual unconfirmed topics")
+    verified, seen = [], set()
+    for story in candidates:
+        story_id = story.get("id")
+        if not isinstance(story_id, str) or not story_id or story_id in seen:
+            raise ValueError("Candidate IDs must be unique nonempty strings")
+        seen.add(story_id)
+        urls = story.get("source_urls")
+        valid_sources = isinstance(urls, list) and bool(urls)
+        if valid_sources:
+            for url in urls:
+                if not isinstance(url, str):
+                    valid_sources = False
+                    break
+                parsed = urlsplit(url)
+                if (parsed.scheme != "https" or not parsed.hostname or
+                        parsed.username or parsed.password):
+                    valid_sources = False
+                    break
+        if (all(story.get(k) is True for k in
+                ("body_verified", "facts_verified", "in_window", "newsworthy"))
+                and valid_sources):
+            verified.append(story_id)
+    result = dict(verified_ids=verified, verified_count=len(verified),
+                  coverage_gaps=coverage_gaps, max_research_seconds=RESEARCH_BUDGET_SECONDS)
+    if (not discovery_complete and elapsed_seconds < RESEARCH_BUDGET_SECONDS
+            and (len(verified) < 12 or coverage_gaps)):
+        return dict(result, action="continue_research", write_input=False)
+    if not verified:
+        return dict(result, action="stop_no_verified_news", write_input=False)
+    compact = len(verified) < 12 or bool(coverage_gaps)
+    return dict(result, action="prepare_compact" if compact else "prepare_normal",
+                edition_kind="compact" if compact else "normal",
+                write_input="after_fact_structure_and_conflict_checks")
 
 
 def environment_decision(observation, elapsed_seconds=0):
@@ -43,7 +90,9 @@ def classify_fetch_error(error):
     if explicit:
         return {"action": "stop_operation", "retry_url": False,
                 "alternate_route": False, "reason": "explicit_tool_or_policy_denial"}
-    if ("Failed to fetch restricted URL" in text or
+    url_unavailable = re.search(
+        r"(?:^|\n)URL https://\S+ is not accessible via this tool\.\s*$", text) is not None
+    if (url_unavailable or "Failed to fetch restricted URL" in text or
             error.get("http_status") in {400, 401, 403, 404, 410, 429, 500, 502, 503, 504} or
             error.get("kind") in {"url_unavailable", "paywall", "body_missing", "robots"}):
         return {"action": "exclude_article", "retry_url": False,
@@ -83,13 +132,16 @@ def delivery_decision(now, current_cutoff=None, pipeline=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("decision", choices=["environment", "fetch-error", "delivery"])
+    parser.add_argument("decision", choices=["environment", "fetch-error", "delivery", "coverage"])
     args = parser.parse_args()
     data = json.load(sys.stdin)
     if args.decision == "environment":
         result = environment_decision(data["observation"], data.get("elapsed_seconds", 0))
     elif args.decision == "fetch-error":
         result = classify_fetch_error(data)
+    elif args.decision == "coverage":
+        result = coverage_decision(data["candidates"], data.get("elapsed_seconds", 0),
+                                   data.get("discovery_complete", False), data.get("coverage_gaps"))
     else:
         result = delivery_decision(data["now"], data.get("current_cutoff"), data.get("pipeline"))
     print(json.dumps(result, ensure_ascii=False))

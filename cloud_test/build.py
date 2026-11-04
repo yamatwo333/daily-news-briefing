@@ -81,6 +81,13 @@ def validate(data, now=None):
             raise ValueError("出典は認証情報を含まないHTTPS URLにしてください")
         if not isinstance(source.get("title"), str) or not 1 <= len(source["title"]) <= 300:
             raise ValueError("出典の表題が必要です")
+    if "edition" in data:
+        edition = data["edition"]
+        if not isinstance(edition, dict) or edition.get("kind") not in {"normal", "compact"}:
+            raise ValueError("配信形式はnormalまたはcompactです")
+        count = edition.get("story_count")
+        if type(count) is not int or count != validate_spoken_structure(text)["stories"]:
+            raise ValueError("配信本数が実際の本文と一致しません")
     chunks = [(sentence + "。", i)
               for i, paragraph in enumerate(text.strip().split("\n\n"))
               for sentence in paragraph.split("。") if sentence.strip()]
@@ -200,11 +207,15 @@ def render(data, audio, directory):
     audio_version = esc(audio.get("audio_sha256", data["id"]), quote=True)
     text_version = hashlib.sha256(data["manuscript"].encode()).hexdigest()
     freshness_cutoff = json.dumps(data["cutoff_at"])
+    edition = data.get("edition")
+    edition_notice = (f'本日は本文を確認できた{edition["story_count"]}本の短縮版です。'
+                      '一部の主要ニュースは確認できず、収録していません。'
+                      if edition and edition["kind"] == "compact" else '毎朝のニュース')
     html_text = f'''<!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>NEWS</title>
 <style>body{{max-width:760px;margin:40px auto;padding:0 20px;font:18px/1.9 system-ui,sans-serif;color:#202731;background:#faf9f6}}h1{{font-size:2rem}}audio{{width:100%;margin:18px 0}}.meta{{font-size:.9rem;color:#57616d}}.notice{{padding:12px 16px;border-left:4px solid #577b76;background:#edf2ee}}p{{margin:1.5em 0}}a{{color:#275c68}}button{{font:inherit}}summary{{cursor:pointer}}</style>
-<h1>NEWS</h1><div class="notice">毎朝のニュース</div>
+<h1>NEWS</h1><div class="notice">{esc(edition_notice)}</div>
 <p id="freshness" class="notice" role="status" hidden></p>
 <p class="meta">ニュース確認の基準：{cutoff}（日本時間）<br>音声作成：{completed}（日本時間）<br>玄野武宏・1.3倍 ／ {duration // 60}分{duration % 60:02d}秒</p>
 <audio controls preload="metadata" src="audio.mp3?v={audio_version}">音声を再生できません。</audio>
@@ -235,6 +246,8 @@ setInterval(updateFreshness, 60000);
                     voice=VOICE, settings=SETTINGS, sentences=len(validate(data)),
                     manuscript_sha256=hashlib.sha256(data["manuscript"].encode()).hexdigest(),
                     **audio)
+    if edition:
+        manifest["edition"] = edition
     (directory / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
     (directory / "sources.json").write_text(json.dumps(data["sources"], ensure_ascii=False, indent=2))
     (directory / ".nojekyll").touch()
