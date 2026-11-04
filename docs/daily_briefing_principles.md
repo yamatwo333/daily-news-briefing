@@ -1,16 +1,18 @@
 # Daily Briefing Principles
 
-## Availability correction — user instruction 2026-11-04
+## Normal volume takes priority — user clarification 2026-11-04
 
-Facts must remain verified, but completeness and story/character targets are not
-all-or-nothing publication conditions. Follow the current runbook's bounded,
-multi-publisher discovery and `daily_guard.py coverage` decision. If collection
-falls short after that discovery, publish the verified news as an explicitly
-labelled compact edition rather than discarding it. Do not invent, pad, reuse
-stale material, bypass a denied fetch, or present missing major topics as covered.
-Every selected story still requires body/fact/date/newsworthiness verification.
-This procedure overrides any older instruction that would stop solely because
-of source availability, fewer than 12 stories, short length or incomplete genres.
+The default is the usual 12–18 substantive stories and about 4,500–6,500 Japanese
+characters. Build a 30–40-story candidate pool across independent newsrooms and
+use the current runbook's three discovery passes and up to 30-minute research
+budget. Verify article bodies, facts and dates; no filler or invented context.
+Check both actual story count and saved manuscript length. A twelve-item outline
+or a short first draft is not a normal edition; develop verified background and
+significance before accepting a shortfall. A missing major topic is recorded
+honestly, but does not by itself change a full-length edition to compact.
+Compact editions are the last resort after documented source exhaustion or the
+research deadline, as enforced by the current daily_guard.py coverage procedure.
+This clarification supersedes the earlier 10-minute/two-pass compact fallback.
 
 ## Current spoken navigation — user instruction 2026-10-31
 

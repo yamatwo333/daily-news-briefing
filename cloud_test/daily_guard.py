@@ -11,18 +11,33 @@ import sys
 from urllib.parse import urlsplit
 
 JST = timezone(timedelta(hours=9))
-RESEARCH_BUDGET_SECONDS = 600
+RESEARCH_BUDGET_SECONDS = 1800
+NORMAL_MIN_CHARACTERS = 4300
 
 
 def coverage_decision(candidates, elapsed_seconds=0, discovery_complete=False,
-                      coverage_gaps=None):
-    """Quantity/coverage gaps never discard independently verified news."""
+                      coverage_gaps=None, manuscript_characters=None,
+                      research_passes=0, publisher_origins=None,
+                      examined_candidates=0, exhaustion_reason="",
+                      expansion_attempted=False):
+    """Prioritize normal volume; compact is allowed only after real exhaustion."""
     if (not isinstance(candidates, list) or
             not isinstance(elapsed_seconds, (int, float)) or elapsed_seconds < 0):
         raise ValueError("Actual candidates and nonnegative research time are required")
     coverage_gaps = coverage_gaps or []
     if not isinstance(coverage_gaps, list) or any(not isinstance(x, str) for x in coverage_gaps):
         raise ValueError("coverage_gaps must list actual unconfirmed topics")
+    if (manuscript_characters is not None and
+            (type(manuscript_characters) is not int or manuscript_characters < 0)):
+        raise ValueError("manuscript_characters must be the actual saved length")
+    if (type(research_passes) is not int or research_passes < 0 or
+            type(examined_candidates) is not int or examined_candidates < 0 or
+            not isinstance(exhaustion_reason, str) or type(expansion_attempted) is not bool):
+        raise ValueError("Actual research and manuscript expansion evidence is required")
+    publisher_origins = publisher_origins or []
+    if (not isinstance(publisher_origins, list) or
+            any(not isinstance(x, str) or not x.strip() for x in publisher_origins)):
+        raise ValueError("publisher_origins must name independent editorial origins")
     verified, seen = [], set()
     for story in candidates:
         story_id = story.get("id")
@@ -46,15 +61,31 @@ def coverage_decision(candidates, elapsed_seconds=0, discovery_complete=False,
                 and valid_sources):
             verified.append(story_id)
     result = dict(verified_ids=verified, verified_count=len(verified),
-                  coverage_gaps=coverage_gaps, max_research_seconds=RESEARCH_BUDGET_SECONDS)
-    if (not discovery_complete and elapsed_seconds < RESEARCH_BUDGET_SECONDS
-            and (len(verified) < 12 or coverage_gaps)):
+                  coverage_gaps=coverage_gaps, max_research_seconds=RESEARCH_BUDGET_SECONDS,
+                  manuscript_characters=manuscript_characters,
+                  research_passes=research_passes, examined_candidates=examined_candidates,
+                  independent_publishers=len(set(x.strip() for x in publisher_origins)))
+    # A twelve-item outline or a 2,500-character draft is not a normal edition.
+    if len(verified) >= 12:
+        if manuscript_characters is None:
+            return dict(result, action="draft_normal", write_input=False)
+        if manuscript_characters >= NORMAL_MIN_CHARACTERS:
+            return dict(result, action="prepare_normal", edition_kind="normal",
+                        write_input="after_fact_structure_and_conflict_checks")
+        if not expansion_attempted:
+            return dict(result, action="expand_verified_manuscript", write_input=False)
+    exhausted = (discovery_complete is True and elapsed_seconds >= 900 and
+                 research_passes >= 3 and result["independent_publishers"] >= 5 and
+                 examined_candidates >= 24 and bool(exhaustion_reason.strip()))
+    deadline = elapsed_seconds >= RESEARCH_BUDGET_SECONDS
+    if not exhausted and not deadline:
         return dict(result, action="continue_research", write_input=False)
     if not verified:
         return dict(result, action="stop_no_verified_news", write_input=False)
-    compact = len(verified) < 12 or bool(coverage_gaps)
-    return dict(result, action="prepare_compact" if compact else "prepare_normal",
-                edition_kind="compact" if compact else "normal",
+    reason = "documented_source_exhaustion" if exhausted else "research_deadline_reached"
+    if manuscript_characters is None:
+        return dict(result, action="draft_compact", fallback_reason=reason, write_input=False)
+    return dict(result, action="prepare_compact", edition_kind="compact", fallback_reason=reason,
                 write_input="after_fact_structure_and_conflict_checks")
 
 
@@ -141,7 +172,10 @@ def main():
         result = classify_fetch_error(data)
     elif args.decision == "coverage":
         result = coverage_decision(data["candidates"], data.get("elapsed_seconds", 0),
-                                   data.get("discovery_complete", False), data.get("coverage_gaps"))
+                                   data.get("discovery_complete", False), data.get("coverage_gaps"),
+                                   **{k: data[k] for k in ("manuscript_characters", "research_passes",
+                                       "publisher_origins", "examined_candidates", "exhaustion_reason",
+                                       "expansion_attempted") if k in data})
     else:
         result = delivery_decision(data["now"], data.get("current_cutoff"), data.get("pipeline"))
     print(json.dumps(result, ensure_ascii=False))

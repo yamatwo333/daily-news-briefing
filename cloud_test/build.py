@@ -88,6 +88,8 @@ def validate(data, now=None):
         count = edition.get("story_count")
         if type(count) is not int or count != validate_spoken_structure(text)["stories"]:
             raise ValueError("配信本数が実際の本文と一致しません")
+        if edition["kind"] == "normal" and (count < 12 or len(text) < 4300):
+            raise ValueError("通常版には12本以上・約4300字以上の確認済み原稿が必要です")
     chunks = [(sentence + "。", i)
               for i, paragraph in enumerate(text.strip().split("\n\n"))
               for sentence in paragraph.split("。") if sentence.strip()]

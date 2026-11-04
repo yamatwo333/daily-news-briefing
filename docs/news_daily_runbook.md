@@ -54,63 +54,76 @@ the previous successful cutoff, ordinarily 24 hours after a failure, with major
 continuing developments checked within 48 hours. Maintain the approved news
 selection policy, Japanese spoken prose, 12–18 stories and about 4,500–6,500
 characters (the approved approximately 4,300-character scale is acceptable).
-These quantities are targets, never minimum publication gates; the availability
-procedure below takes precedence over older fullness/length instructions.
+These are normal-edition targets, not grounds for discarding all verified news.
+The normal-first collection and last-resort procedure below controls the decision.
 No quotas, weak filler, invented background, copied old manuscript or unverified
 numbers. Broaden candidate discovery across general news and the user's business,
 marketing, franchise, self-employed and AI interests. Verify actual bodies.
 
-### Availability and bounded collection — user recovery request 2026-11-04
+### Normal volume first; compact only as a last resort — 2026-11-04 clarification
 
-Do not stop the whole edition merely because some article URLs fail, a major
-topic is unconfirmed, or fewer than 12 stories / 4,300 characters are available.
-Factual quality is a per-story requirement; quantity and comprehensive coverage
-are goals. Never fill missing coverage with snippets, guesses, stale text, weak
-filler, unconfirmed election results, or unavailable article contents.
+The primary output is the usual 12–18 substantive stories and about 4,500–6,500
+Japanese characters (the approved approximate 4,300-character scale is acceptable).
+A first-pass shortage or an early discovery_complete is not permission to shorten.
+Research starts with 30–40 candidate stories across at least five independent
+editorial origins. Different hosts republishing one wire service count as one
+origin. Prioritize the day's main public agenda, then the user's business/AI and
+social/daily-life interests; use no fixed genre quotas or weak filler.
 
-1. Discover the main public agenda across several independent newsrooms first.
-   Build a candidate queue with publication/event times and body URLs. Do not
-   depend on a single aggregator, publisher, or list of the first search results.
-   Different hosts republishing the same wire service are not independent
-   newsrooms. Record publisher origin, host, queries and candidate progress.
-2. Read bodies through the hosted search tool. After two URL-level retrieval
-   failures on one host in this run, stop selecting further URLs on that host
-   and continue with independent publishers/other newsworthy candidates.
-   Query for new candidates by topic and publisher rather than repeatedly opening
-   unavailable pages. First-party announcements can verify candidates discovered
-   from the public news agenda; they must not become official-release filler.
-   A separately authored, independently published report may be a normal source;
-   never fetch a mirror/cache/proxy/translation/archive, change URL parameters,
-   switch tools or use VM networking to recover a denied/unavailable document.
-   Explicit policy/permission denials still stop the denied operation, with no
-   retry or permission expansion. Record actual errors without mislabelling them.
-3. Research is bounded by 600 actual seconds after discovery starts. Track elapsed
-   time and source-host failures in checks.json. If the target is not reached,
-   make at least two distinct discovery passes across independent publishers
-   before marking discovery_complete; otherwise continue until the time budget.
-   Do not abandon seven confirmed candidates after only one batch of URL errors.
-4. For each selected story, save a unique id, body_verified, facts_verified,
-   in_window, newsworthy (actual booleans), and source_urls (verified HTTPS body
-   URLs). Call pinned `daily_guard.py coverage` with these actual candidates,
-   elapsed_seconds, discovery_complete, and factual coverage_gaps. Follow the
-   decision. Only verified IDs can become article bodies; the code is not a
-   replacement for checking evidence. Save the input and result in checks.json.
-5. `prepare_compact` means write and publish the verified subset, even with only
-   1–11 stories. Use natural genre groupings and headlines as usual. Do not pad
-   or force a 4,300-character minimum. When zero verified stories remain, report
-   that no current edition could be produced and retain the previous successful
-   edition with its real date. Never relabel it as today's edition.
+Use three distinct discovery passes: (1) major public agenda across general
+newsrooms; (2) missing important topics through independently authored reports
+and first-party confirmation; (3) neglected public-interest/business/local topics
+with substantive current developments. Track queries, origins, unique candidates,
+body availability, selection/exclusion reasons, current facts and dates. Each
+selected candidate needs id/body_verified/facts_verified/in_window/newsworthy and
+verified HTTPS source_urls. Scan more candidates than the final story count so
+unavailable or weak stories can be replaced rather than shrinking the edition.
 
-For new editions include optional schema-1 metadata
-`edition: {kind: "normal" or "compact", story_count: N}` matching the coverage
-decision and `validate_spoken_structure` article count. The public page and
-manifest explicitly identify compact editions; public verification checks that
-disclosure too. Coverage gaps and actual errors are retained in checks.json and
-the final report. Omit unsupported topics from the script. Normal editions keep
-the usual breadth and depth. A complete/normal label must not hide known gaps.
-Both modes go through the same fact, structure, exact-save, audio and publication
-verification checks. Pipeline/permission/data-integrity failures still stop the
-affected operation; availability logic never bypasses those checks.
+After two URL-level failures on a host, stop selecting that host and move to
+independent sources. A separately authored report is a normal source; do not
+retry unavailable URLs or recover the same document through mirrors, caches,
+archives, translations, parameter changes, other tools, or VM networking.
+Explicit denials take precedence and stop the denied operation. Official releases
+verify an identified news agenda; they are not filler to reach a quota.
+
+Run pinned daily_guard.py coverage during research, before drafting and before
+writing the inbox. Research may take up to 1,800 actual seconds (30 minutes),
+instead of the earlier 600-second cap. Do not idle to reach a time threshold or
+repeat failed operations. The earlier discovery_complete shortcut is superseded.
+The guard accepts actual research_passes, publisher_origins, examined_candidates,
+exhaustion_reason, manuscript_characters and expansion_attempted in addition to
+candidates, elapsed_seconds, discovery_complete and coverage_gaps.
+
+- continue_research: broaden independent candidate discovery; no public write.
+- draft_normal: enough verified articles exist; write the normal, explanatory
+  manuscript. This action does not authorize a public write.
+- expand_verified_manuscript: the count is adequate but text is too short. First
+  add verified background, what changed, significance and necessary explanation;
+  check source evidence. Do not pad, repeat text or invent details. Record the
+  actual attempt and run the guard again with the new saved character count.
+- prepare_normal: at least 12 verified selected stories AND at least 4,300 actual
+  saved characters. Aim for 4,500–6,500, with natural explanation per article.
+  Known unconfirmed topics are disclosed in checks/final report; a normal-volume
+  label does not claim exhaustive coverage. A missing topic alone does not turn
+  an otherwise full-length edition into a compact one.
+- draft_compact/prepare_compact: last resort only after the 30-minute research
+  limit, or documented exhaustion after at least 15 actual minutes, three
+  discovery passes, five independent origins and 24 examined unique candidates.
+  A nonempty exhaustion_reason must identify actual remaining access/evidence
+  limitations. Do not invent audit counts. Record fallback_reason and explain
+  why a normal edition could not be produced. Before a write, the guard requires
+  the actual saved manuscript length; drafts alone never authorize writing.
+- stop_no_verified_news: no current, factual, newsworthy story can be verified.
+  Keep the previous edition with its real date and report the failure.
+
+The guard never lowers per-story verification. Do not turn snippets, guesses,
+unconfirmed election results, old manuscripts, or low-value official notices
+into filler. Each final story still has its spoken headline and genre grouping.
+In the schema-1 inbox include edition={kind:normal or compact,story_count:N},
+matching the final guard result and spoken structure count. The public page,
+manifest and verifier disclose/check compact editions. Save all guard inputs,
+results and actual timing in checks.json. Normal collection is the default;
+compact is a delivery safeguard after documented effort, never a shortcut.
 
 ### Audible genres and individual headlines — user update 2026-10-31
 
