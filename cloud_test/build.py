@@ -21,6 +21,9 @@ import wave
 VOICE = "VOICEVOX:玄野武宏"
 SPEAKER_UUID = "c30dc15a-0992-4f8d-8bb8-ad3b314e6a6f"
 ENGINE_VERSION = "0.25.2"
+LISTENING_POLICY = "eight-minute-v1"
+MAX_AUDIO_SECONDS = 600
+MAX_MANUSCRIPT_CHARACTERS = 4200
 SETTINGS = dict(speedScale=1.3, intonationScale=0.8, pauseLengthScale=0.9,
                 volumeScale=1.0, prePhonemeLength=0.1,
                 postPhonemeLength=0.12, outputStereo=False)
@@ -81,6 +84,12 @@ def validate(data, now=None):
             raise ValueError("出典は認証情報を含まないHTTPS URLにしてください")
         if not isinstance(source.get("title"), str) or not 1 <= len(source["title"]) <= 300:
             raise ValueError("出典の表題が必要です")
+    listening = data.get("listening_policy")
+    if listening is not None:
+        if listening != LISTENING_POLICY or "edition" not in data:
+            raise ValueError("未対応の再生時間方針、または配信形式がありません")
+        if len(text) > MAX_MANUSCRIPT_CHARACTERS:
+            raise ValueError("8分前後の原稿は4200字以内に編集してください")
     if "edition" in data:
         edition = data["edition"]
         if not isinstance(edition, dict) or edition.get("kind") not in {"normal", "compact"}:
@@ -88,14 +97,26 @@ def validate(data, now=None):
         count = edition.get("story_count")
         if type(count) is not int or count != validate_spoken_structure(text)["stories"]:
             raise ValueError("配信本数が実際の本文と一致しません")
-        if edition["kind"] == "normal" and (count < 12 or len(text) < 4300):
-            raise ValueError("通常版には12本以上・約4300字以上の確認済み原稿が必要です")
+        minimum = 3200
+        if edition["kind"] == "normal" and (count < 12 or len(text) < minimum):
+            raise ValueError(f"通常版には12本以上・{minimum}字以上の確認済み原稿が必要です")
     chunks = [(sentence + "。", i)
               for i, paragraph in enumerate(text.strip().split("\n\n"))
               for sentence in paragraph.split("。") if sentence.strip()]
     if not chunks or any(len(text) > 800 for text, _ in chunks):
         raise ValueError("1文が長すぎます")
     return chunks
+
+
+def prepare_new_input(data):
+    """Apply current build policy to legacy scheduler JSON without changing prose.
+
+    Historical publication checks do not call this new-build entry point.
+    """
+    prepared = dict(data)
+    prepared.setdefault("listening_policy", LISTENING_POLICY)
+    validate(prepared)
+    return prepared
 
 
 def request(base, path, params=None, body=None, method="GET"):
@@ -160,8 +181,8 @@ def synthesize(chunks, base, directory):
     channels, width, rate = dimensions
     pcm = b"".join(parts)
     seconds = len(pcm) / (channels * width * rate)
-    if not 1 <= seconds <= 1800:
-        raise ValueError("音声の長さが想定範囲外です")
+    if not 1 <= seconds <= MAX_AUDIO_SECONDS:
+        raise ValueError(f"音声が10分上限を超えています（{seconds:.3f}秒）。原稿の再編集が必要です。")
     raw = directory / "raw.wav"
     with wave.open(str(raw), "wb") as wav:
         wav.setparams((channels, width, rate, 0, "NONE", "not compressed"))
@@ -188,6 +209,15 @@ def synthesize(chunks, base, directory):
     levels = measurements(check.stderr)
     if float(levels["input_tp"]) >= 0 or mp3.stat().st_size > 25_000_000:
         raise ValueError("音量またはファイルサイズが想定範囲外です")
+    ffprobe = shutil.which("ffprobe")
+    if not ffprobe:
+        raise RuntimeError("音声の実時間を確認するffprobeがありません")
+    probe = subprocess.run([ffprobe, "-v", "error", "-show_entries", "format=duration",
+                            "-of", "default=noprint_wrappers=1:nokey=1", str(mp3)],
+                           capture_output=True, text=True, check=True)
+    seconds = float(probe.stdout.strip())
+    if not 1 <= seconds <= MAX_AUDIO_SECONDS:
+        raise ValueError(f"完成MP3が10分上限を超えています（{seconds:.3f}秒）。原稿の再編集が必要です。")
     raw.unlink()
     return dict(duration_seconds=round(seconds, 3),
                 synthesis_seconds=round(time.monotonic() - start, 3),
@@ -198,6 +228,10 @@ def synthesize(chunks, base, directory):
 
 
 def render(data, audio, directory):
+    if data.get("listening_policy") == LISTENING_POLICY:
+        duration = audio.get("duration_seconds")
+        if type(duration) not in (int, float) or not 1 <= duration <= MAX_AUDIO_SECONDS:
+            raise ValueError("公開音声は10分以内である必要があります")
     esc = html.escape
     jst = timezone(timedelta(hours=9))
     cutoff = timestamp(data["cutoff_at"]).astimezone(jst).strftime("%Y年%m月%d日 %H:%M")
@@ -250,6 +284,8 @@ setInterval(updateFreshness, 60000);
                     **audio)
     if edition:
         manifest["edition"] = edition
+    if data.get("listening_policy"):
+        manifest["listening_policy"] = data["listening_policy"]
     (directory / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
     (directory / "sources.json").write_text(json.dumps(data["sources"], ensure_ascii=False, indent=2))
     (directory / ".nojekyll").touch()
@@ -265,7 +301,7 @@ def main():
     args = parser.parse_args()
     if args.input.stat().st_size > 120_000:
         raise ValueError("リクエストが大きすぎます")
-    data = json.loads(args.input.read_text())
+    data = prepare_new_input(json.loads(args.input.read_text()))
     chunks = validate(data)
     if args.validate_only:
         print(f"原稿確認済み：{len(chunks)}文")

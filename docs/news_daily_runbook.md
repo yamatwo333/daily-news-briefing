@@ -6,6 +6,60 @@ the research and Japanese writing using the existing subscription. No paid API,
 other model, new schedule, Google Docs sync, credential access, or permission
 expansion. Public destination and repository remain unchanged.
 
+## Listening length and clarity — user update 2026-11-05
+
+Target about 8 minutes (normally 7–9); the finished audio must not exceed 600
+seconds, including genre cues, headlines and pauses. Keep the approved voice,
+speed 1.3, intonation 0.8 and audible boundaries. Never accelerate, cut off the
+recording, or remove the explanatory sentence just to fit. This supersedes older
+4,300-character minimums, 4,500–6,500-character targets and 6–8-sentence templates.
+
+Keep the praised news selection and broad research effort. Normally select
+12–16 substantive stories; up to 18 only when they fit without crowding out
+understanding. Aim for 3,600–3,900 total Japanese characters, including headlines
+and cues. New normal editions require at least 12 stories and 3,200 characters;
+all new editions have a 4,200-character editorial ceiling. These are planning
+bounds, not a guarantee of speaking time or permission to pad. Check actual audio.
+An eight-minute normal edition is not a source-shortage compact edition.
+
+For each story use a brief factual headline, then usually 3–5 short sentences:
+what happened and who is affected, then ONE necessary background/meaning/impact
+explanation. Usually 180–280 characters including the headline; give an unusually
+important story up to about 350 while saving space elsewhere. Allocate a total
+budget before drafting. Explain one level more clearly than the old script,
+without treating the listener as a child or repeating basic lessons every day.
+
+Use everyday words and introduce unfamiliar acronyms with a short natural gloss.
+Keep subjects explicit and one main idea per sentence. Prefer one or two essential
+numbers with a useful comparison over lists of amounts, dates or organization
+names. Integrate uncertainty precisely as 'proposed', 'scheduled', or 'according
+to X'. Do not append repetitive 'this does not mean...' corrections or generic
+'we need to watch...' endings. Preserve a caveat when it actually changes the
+meaning. Do not invent personal consequences or causal links to make a story easy.
+
+Read the draft as something heard once: can a listener say what happened and why
+it matters without seeing the text? Remove duplicate detail before removing the
+useful explanation. Keep source detail in the source list, not spoken URLs.
+Record this editorial review and actual character/story counts in checks.json.
+
+New inboxes should include listening_policy="eight-minute-v1". For compatibility
+with existing scheduled JSON, the new-input CLI adds that build metadata when
+omitted, without changing the manuscript, sources, ID or dates. It validates the
+4,200-character ceiling, and the audio builder
+checks the measured final MP3 duration before rendering/uploading. If over 600
+seconds, no overlong audio is published: report that the manuscript needs editing,
+without automatic truncation, faster speech, or a second unapproved inbox write.
+The public verifier checks the policy and 600-second ceiling. Historical inputs
+without the policy remain readable and verifiable; do not relabel old long audio.
+
+The November 5 user change supersedes the older length instructions embedded in
+the existing daily schedule. Always use these current repository editing rules
+and the current coverage guard results after fetching the pinned HEAD. An old
+4,300-character floor must not be used to pad a new script or reject prepare_normal.
+The schedule itself remains at 07:00; no schedule mutation is required for this
+repository policy to apply. The prepared replacement prompt is saved separately
+for eventual schedule-text alignment, not an instruction to create another task.
+
 ## 1. Read current code, not the historical local checkout
 
 Use the formal GitHub connector to read the `news-cloud-test` branch HEAD. Pin
@@ -52,8 +106,8 @@ Never write a second input merely because the first pipeline has not finished.
 First daily edition: preceding 24 hours. Subsequently: new developments since
 the previous successful cutoff, ordinarily 24 hours after a failure, with major
 continuing developments checked within 48 hours. Maintain the approved news
-selection policy, Japanese spoken prose, 12–18 stories and about 4,500–6,500
-characters (the approved approximately 4,300-character scale is acceptable).
+selection policy and Japanese spoken prose under the current eight-minute
+listening budget above (normally 12–16 stories and 3,600–3,900 characters).
 These are normal-edition targets, not grounds for discarding all verified news.
 The normal-first collection and last-resort procedure below controls the decision.
 No quotas, weak filler, invented background, copied old manuscript or unverified
@@ -62,8 +116,8 @@ marketing, franchise, self-employed and AI interests. Verify actual bodies.
 
 ### Normal volume first; compact only as a last resort — 2026-11-04 clarification
 
-The primary output is the usual 12–18 substantive stories and about 4,500–6,500
-Japanese characters (the approved approximate 4,300-character scale is acceptable).
+The primary output is a substantive normal edition within the listening budget
+above. The November 5 listening limit supersedes the former longer word target.
 A first-pass shortage or an early discovery_complete is not permission to shorten.
 Research starts with 30–40 candidate stories across at least five independent
 editorial origins. Different hosts republishing one wire service count as one
@@ -101,8 +155,10 @@ candidates, elapsed_seconds, discovery_complete and coverage_gaps.
   add verified background, what changed, significance and necessary explanation;
   check source evidence. Do not pad, repeat text or invent details. Record the
   actual attempt and run the guard again with the new saved character count.
-- prepare_normal: at least 12 verified selected stories AND at least 4,300 actual
-  saved characters. Aim for 4,500–6,500, with natural explanation per article.
+- shorten_manuscript: more than 4,200 actual characters; remove redundant detail
+  and secondary specifics, preserve meaning, then revalidate. No public write.
+- prepare_normal: at least 12 verified selected stories AND 3,200–4,200 actual
+  saved characters. Aim for 3,600–3,900 with one useful explanation per article.
   Known unconfirmed topics are disclosed in checks/final report; a normal-volume
   label does not claim exhaustive coverage. A missing topic alone does not turn
   an otherwise full-length edition into a compact one.
@@ -120,7 +176,8 @@ The guard never lowers per-story verification. Do not turn snippets, guesses,
 unconfirmed election results, old manuscripts, or low-value official notices
 into filler. Each final story still has its spoken headline and genre grouping.
 In the schema-1 inbox include edition={kind:normal or compact,story_count:N},
-matching the final guard result and spoken structure count. The public page,
+matching the final guard result and spoken structure count, plus
+listening_policy="eight-minute-v1" for every new input. The public page,
 manifest and verifier disclose/check compact editions. Save all guard inputs,
 results and actual timing in checks.json. Normal collection is the default;
 compact is a delivery safeguard after documented effort, never a shortcut.

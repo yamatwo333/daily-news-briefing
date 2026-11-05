@@ -58,8 +58,8 @@ class AvailabilityTests(unittest.TestCase):
         self.assertEqual(coverage_decision(stories[:5], 1800)['action'], 'stop_no_verified_news')
 
     def test_normal_coverage_still_publishes_and_gaps_cannot_be_hidden(self):
-        self.assertEqual(coverage_decision(candidates(12), 400, manuscript_characters=4500)['action'], 'prepare_normal')
-        result = coverage_decision(candidates(12), 600, manuscript_characters=4500,
+        self.assertEqual(coverage_decision(candidates(12), 400, manuscript_characters=3700)['action'], 'prepare_normal')
+        result = coverage_decision(candidates(12), 600, manuscript_characters=3700,
                                   coverage_gaps=['未確認の重要分野'])
         self.assertEqual(result['action'], 'prepare_normal')
         self.assertEqual(result['coverage_gaps'], ['未確認の重要分野'])
@@ -73,7 +73,7 @@ class AvailabilityTests(unittest.TestCase):
         short = coverage_decision(candidates(12), 1800, manuscript_characters=2506)
         self.assertEqual(short['action'], 'expand_verified_manuscript')
         self.assertFalse(short['write_input'])
-        full = coverage_decision(candidates(12), 1800, manuscript_characters=4800,
+        full = coverage_decision(candidates(12), 1800, manuscript_characters=3900,
                                  expansion_attempted=True)
         self.assertEqual(full['action'], 'prepare_normal')
 

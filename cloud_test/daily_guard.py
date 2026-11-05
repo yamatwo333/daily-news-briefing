@@ -12,7 +12,8 @@ from urllib.parse import urlsplit
 
 JST = timezone(timedelta(hours=9))
 RESEARCH_BUDGET_SECONDS = 1800
-NORMAL_MIN_CHARACTERS = 4300
+NORMAL_MIN_CHARACTERS = 3200
+MAX_MANUSCRIPT_CHARACTERS = 4200
 
 
 def coverage_decision(candidates, elapsed_seconds=0, discovery_complete=False,
@@ -63,9 +64,17 @@ def coverage_decision(candidates, elapsed_seconds=0, discovery_complete=False,
     result = dict(verified_ids=verified, verified_count=len(verified),
                   coverage_gaps=coverage_gaps, max_research_seconds=RESEARCH_BUDGET_SECONDS,
                   manuscript_characters=manuscript_characters,
+                  listening_policy="eight-minute-v1",
+                  target_manuscript_characters=[3600, 3900],
+                  normal_min_characters=NORMAL_MIN_CHARACTERS,
+                  max_audio_seconds=600,
                   research_passes=research_passes, examined_candidates=examined_candidates,
                   independent_publishers=len(set(x.strip() for x in publisher_origins)))
-    # A twelve-item outline or a 2,500-character draft is not a normal edition.
+    # Length is a listening budget, not a reason to pad or accelerate speech.
+    if manuscript_characters is not None and manuscript_characters > MAX_MANUSCRIPT_CHARACTERS:
+        return dict(result, action="shorten_manuscript", write_input=False,
+                    max_manuscript_characters=MAX_MANUSCRIPT_CHARACTERS,
+                    instruction="11月5日の利用者変更：旧4300字下限は撤廃。3600〜3900字を目標に、出来事と必要な意味の説明を残して重複・細部を削り再検査してください。")
     if len(verified) >= 12:
         if manuscript_characters is None:
             return dict(result, action="draft_normal", write_input=False)

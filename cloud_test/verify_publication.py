@@ -85,7 +85,13 @@ def check_once(data, fetch):
             hashlib.sha256(audio).hexdigest() != manifest.get("audio_sha256")):
         raise PublicationPending("Published audio or its hash differs")
     duration = manifest.get("duration_seconds")
-    if not isinstance(duration, (int, float)) or not 1 <= duration <= 1800:
+    policy = data.get("listening_policy") or manifest.get("listening_policy")
+    if policy is not None and policy != "eight-minute-v1":
+        raise ValueError("Unsupported listening policy")
+    maximum = 600 if policy == "eight-minute-v1" else 1800
+    if data.get("listening_policy") and manifest.get("listening_policy") != data["listening_policy"]:
+        raise PublicationPending("Published listening policy differs")
+    if type(duration) not in (int, float) or not 1 <= duration <= maximum:
         raise ValueError("Published audio duration is invalid")
     return {"result": "verified", "id": data["id"],
             "verified_at": datetime.now(timezone.utc).isoformat(),

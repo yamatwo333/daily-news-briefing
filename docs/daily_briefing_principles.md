@@ -1,9 +1,63 @@
 # Daily Briefing Principles
 
+## Listening length and clarity — user update 2026-11-05
+
+Target about 8 minutes (normally 7–9); the finished audio must not exceed 600
+seconds, including genre cues, headlines and pauses. Keep the approved voice,
+speed 1.3, intonation 0.8 and audible boundaries. Never accelerate, cut off the
+recording, or remove the explanatory sentence just to fit. This supersedes older
+4,300-character minimums, 4,500–6,500-character targets and 6–8-sentence templates.
+
+Keep the praised news selection and broad research effort. Normally select
+12–16 substantive stories; up to 18 only when they fit without crowding out
+understanding. Aim for 3,600–3,900 total Japanese characters, including headlines
+and cues. New normal editions require at least 12 stories and 3,200 characters;
+all new editions have a 4,200-character editorial ceiling. These are planning
+bounds, not a guarantee of speaking time or permission to pad. Check actual audio.
+An eight-minute normal edition is not a source-shortage compact edition.
+
+For each story use a brief factual headline, then usually 3–5 short sentences:
+what happened and who is affected, then ONE necessary background/meaning/impact
+explanation. Usually 180–280 characters including the headline; give an unusually
+important story up to about 350 while saving space elsewhere. Allocate a total
+budget before drafting. Explain one level more clearly than the old script,
+without treating the listener as a child or repeating basic lessons every day.
+
+Use everyday words and introduce unfamiliar acronyms with a short natural gloss.
+Keep subjects explicit and one main idea per sentence. Prefer one or two essential
+numbers with a useful comparison over lists of amounts, dates or organization
+names. Integrate uncertainty precisely as 'proposed', 'scheduled', or 'according
+to X'. Do not append repetitive 'this does not mean...' corrections or generic
+'we need to watch...' endings. Preserve a caveat when it actually changes the
+meaning. Do not invent personal consequences or causal links to make a story easy.
+
+Read the draft as something heard once: can a listener say what happened and why
+it matters without seeing the text? Remove duplicate detail before removing the
+useful explanation. Keep source detail in the source list, not spoken URLs.
+Record this editorial review and actual character/story counts in checks.json.
+
+New inboxes should include listening_policy="eight-minute-v1". For compatibility
+with existing scheduled JSON, the new-input CLI adds that build metadata when
+omitted, without changing the manuscript, sources, ID or dates. It validates the
+4,200-character ceiling, and the audio builder
+checks the measured final MP3 duration before rendering/uploading. If over 600
+seconds, no overlong audio is published: report that the manuscript needs editing,
+without automatic truncation, faster speech, or a second unapproved inbox write.
+The public verifier checks the policy and 600-second ceiling. Historical inputs
+without the policy remain readable and verifiable; do not relabel old long audio.
+
+The November 5 user change supersedes the older length instructions embedded in
+the existing daily schedule. Always use these current repository editing rules
+and the current coverage guard results after fetching the pinned HEAD. An old
+4,300-character floor must not be used to pad a new script or reject prepare_normal.
+The schedule itself remains at 07:00; no schedule mutation is required for this
+repository policy to apply. The prepared replacement prompt is saved separately
+for eventual schedule-text alignment, not an instruction to create another task.
+
 ## Normal volume takes priority — user clarification 2026-11-04
 
-The default is the usual 12–18 substantive stories and about 4,500–6,500 Japanese
-characters. Build a 30–40-story candidate pool across independent newsrooms and
+The default is a substantive normal edition within the November 5 listening
+budget (normally 12–16 stories and 3,600–3,900 Japanese characters). Build a 30–40-story candidate pool across independent newsrooms and
 use the current runbook's three discovery passes and up to 30-minute research
 budget. Verify article bodies, facts and dates; no filler or invented context.
 Check both actual story count and saved manuscript length. A twelve-item outline
@@ -355,18 +409,17 @@ That closing section must contain exactly 3 short points and then end cleanly.
 
 ## Length And Density Targets
 
-The final read-aloud script should target roughly 3,600 to 4,800 Japanese
-characters.
+The current read-aloud script targets 3,600–3,900 Japanese characters and about
+eight minutes; the November 5 policy above controls all limits.
 
 Keep it short enough to finish comfortably and dense enough to be useful.
 
 If 7 main stories are selected, shorten each story further rather than
 exceeding the listening comfort target.
 
-Each main story should usually stay within 6 to 8 sentences total.
+Each story should usually use 3–5 short body sentences with one useful explanation.
 
-Strict cap: do not exceed 8 sentences for a main story unless absolutely
-necessary for accuracy.
+Avoid long individual stories; edit within the shared total listening budget.
 
 After the sentence beginning with `次に見るべき点は`, do not add more
 explanation for that story.
@@ -743,9 +796,8 @@ Per-story rules:
 - Explain why it matters in 1 to 2 short sentences
 - Explain Japan / daily-life impact briefly and concretely
 - End with 1 short sentence about what to watch next
-- Each main story should usually stay within 6 to 8 sentences total
-- Strict cap: do not exceed 8 sentences unless absolutely necessary for
-  accuracy
+- Each story should usually use 3–5 short body sentences
+- Keep each story concise under the current total listening budget
 - After the sentence beginning with `次に見るべき点は`, do not add more
   explanation for that story
 

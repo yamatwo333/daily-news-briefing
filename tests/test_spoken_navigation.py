@@ -54,6 +54,8 @@ class SpokenNavigationTests(unittest.TestCase):
             return b'{}' if path == '/audio_query' else buffer.getvalue()
         captured = []
         def encoder(command, **kwargs):
+            if '-show_entries' in command:
+                return SimpleNamespace(stdout='6.08\n')
             if command[-1].endswith('audio.mp3'):
                 Path(command[-1]).write_bytes(b'encoder fixture')
             if command[-1] == '-' and command[command.index('-i') + 1].endswith('raw.wav'):
