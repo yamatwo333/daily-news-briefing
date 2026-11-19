@@ -6,6 +6,14 @@ the research and Japanese writing using the existing subscription. No paid API,
 other model, new schedule, Google Docs sync, credential access, or permission
 expansion. Public destination and repository remain unchanged.
 
+## 11月19日の編集指示（毎朝適用）
+
+これまでの題材選びを軸に、初めてその話題を聞く成人が一度で追える原稿にする。第一文では制度名や肩書より先に「誰が何をできるようになるか」「誰の何が変わったか」を言う。用語が必要なら、意味を先に伝えてから名前を添える。解説は記事ごとに理解の鍵を一つ選ぶ。仕組みと暮らしへの影響を両方詰め込む必要はない。読み返して、見出しの言い直し、判断に不要な数字、経緯の列挙を削る。
+
+候補探索の際に生成AIの動向も毎日確認する。GPTなど主要な新モデルの発表・提供開始、一般の利用者の使い方が変わる機能・利用条件の変更を拾う。公式発表やリリースノートの本文で新しさ、利用できる人、提供開始時期を確認し、重要な新展開なら他の候補と比較して採用する。発表と一般提供を区別し、モデル名やベンチマークより「何に使えて、以前とどこが違うか」を具体的に一つ説明する。固定枠は設けない。
+
+音声の間は下記の現行ビルダーに従う。旧予約文の秒数は11月19日改定前の設定。
+
 ## Listening length and clarity — user update 2026-11-05
 
 Target about 8 minutes (normally 7–9); the finished audio must not exceed 600
@@ -220,8 +228,8 @@ Run pinned `build.validate_spoken_structure(manuscript)` as well as
 `build.validate`. Save its genre/story counts in checks.json; count only article
 bodies as stories, not genre announcements or headlines. Confirm each headline
 against its body and that each genre matches its grouped stories. The audio
-builder inserts 1.8-second genre boundaries, 1.2-second story boundaries,
-0.6 seconds after a headline and 0.08 seconds within a body, in addition to the
+builder inserts 0.75 seconds before a new genre, 0.25 after its cue, 0.55
+between stories, 0.20 after a headline and no extra body-sentence silence beyond the
 voice engine's own sentence silence. Preserve voice/speed/intonation settings.
 
 For an actual error response, preserve its text/code/scope separately from article

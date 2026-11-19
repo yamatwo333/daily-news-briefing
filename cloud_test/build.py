@@ -151,13 +151,16 @@ def pause_seconds(chunks, index):
     text, paragraph = chunks[index]
     next_text, next_paragraph = chunks[index + 1]
     if paragraph != next_paragraph:
-        if any(re.fullmatch(GENRE_CUE, value.strip()) for value in (text, next_text)):
-            return 1.8
-        return 1.2
+        if re.fullmatch(GENRE_CUE, next_text.strip()):
+            return 0.75
+        if re.fullmatch(GENRE_CUE, text.strip()):
+            return 0.25
+        return 0.55
     # A headline ends with 。 and its body starts on the next single line.
     if next_text.lstrip(" \t").startswith("\n"):
-        return 0.6
-    return 0.08
+        return 0.20
+    # VOICEVOX already supplies a breath between synthesized sentences.
+    return 0.0
 
 
 def synthesize(chunks, base, directory):
