@@ -105,7 +105,38 @@ def validate(data, now=None):
               for sentence in paragraph.split("。") if sentence.strip()]
     if not chunks or any(len(text) > 800 for text, _ in chunks):
         raise ValueError("1文が長すぎます")
+    recap_range(data, chunks)
     return chunks
+
+
+def recap_range(data, chunks):
+    """Only an explicitly named, self-contained recap at a story's end may be skipped."""
+    recap = data.get("optional_recap")
+    if recap is None:
+        return None
+    if not isinstance(recap, dict):
+        raise ValueError("振り返り情報が不正です")
+    source = recap.get("source_id")
+    if (not isinstance(source, str) or not re.fullmatch(r"test-[0-9]{8}T[0-9]{6}Z", source)
+            or source >= data["id"]):
+        raise ValueError("振り返りには以前の配信IDが必要です")
+    sentences = recap.get("sentences")
+    if (not isinstance(sentences, list) or not 1 <= len(sentences) <= 2 or
+            not all(isinstance(s, str) and s.endswith("。") and s.count("。") == 1 for s in sentences)
+            or not sentences[0].startswith("振り返ると、")):
+        raise ValueError("振り返りは「振り返ると、」から始まる1〜2文です")
+    matches = []
+    for i in range(2, len(chunks) - len(sentences) + 1):
+        group = chunks[i][1]
+        end = i + len(sentences)
+        if (chunks[i-2][1] == chunks[i-1][1] == group and
+                all(g == group for _, g in chunks[i:end]) and
+                [s.strip() for s, _ in chunks[i:end]] == sentences and
+                (end == len(chunks) or chunks[end][1] != group)):
+            matches.append((i, end))
+    if len(matches) != 1:
+        raise ValueError("本文末尾の振り返りと指定文が一意に一致しません")
+    return matches[0]
 
 
 def prepare_new_input(data):
@@ -163,9 +194,11 @@ def pause_seconds(chunks, index):
     return 0.0
 
 
-def synthesize(chunks, base, directory):
+def synthesize(chunks, base, directory, recap=None):
     check_engine(base)
     start, parts, dimensions = time.monotonic(), [], None
+    frame_cursor = 0
+    boundaries = []
     for n, (text, paragraph) in enumerate(chunks):
         query = json.loads(request(base, "/audio_query", {"text": text, "speaker": 11}, method="POST"))
         query.update(SETTINGS)
@@ -175,11 +208,15 @@ def synthesize(chunks, base, directory):
             if dimensions is not None and actual != dimensions:
                 raise ValueError("音声形式が途中で変化しました")
             dimensions = actual
+            boundaries.append(frame_cursor / actual[2])
+            frame_cursor += wav.getnframes()
             parts.append(wav.readframes(wav.getnframes()))
         if n + 1 < len(chunks):
             pause = pause_seconds(chunks, n)
             channels, width, rate = dimensions
-            parts.append(b"\0" * round(rate * pause) * channels * width)
+            silence = round(rate * pause)
+            frame_cursor += silence
+            parts.append(b"\0" * silence * channels * width)
         print(f"音声合成 {n + 1}/{len(chunks)}", flush=True)
     channels, width, rate = dimensions
     pcm = b"".join(parts)
@@ -222,7 +259,11 @@ def synthesize(chunks, base, directory):
     if not 1 <= seconds <= MAX_AUDIO_SECONDS:
         raise ValueError(f"完成MP3が10分上限を超えています（{seconds:.3f}秒）。原稿の再編集が必要です。")
     raw.unlink()
-    return dict(duration_seconds=round(seconds, 3),
+    segments = {}
+    if recap:
+        boundaries.append(frame_cursor / rate)
+        segments['recap_seconds'] = [boundaries[i] for i in recap]
+    return dict(**segments, duration_seconds=round(seconds, 3),
                 synthesis_seconds=round(time.monotonic() - start, 3),
                 loudness_lufs=float(levels["input_i"]),
                 true_peak_dbtp=float(levels["input_tp"]),
@@ -250,6 +291,8 @@ def render(data, audio, directory):
     edition_notice = (f'本日は本文を確認できた{edition["story_count"]}本の短縮版です。'
                       '一部の主要ニュースは確認できず、収録していません。'
                       if edition and edition["kind"] == "compact" else '毎朝のニュース')
+    recap = data.get('optional_recap') or {}
+    start, end = audio['recap_seconds'] if recap else (0, 0)
     html_text = f'''<!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>NEWS</title>
@@ -258,6 +301,8 @@ def render(data, audio, directory):
 <p id="freshness" class="notice" role="status" hidden></p>
 <p class="meta">ニュース確認の基準：{cutoff}（日本時間）<br>音声作成：{completed}（日本時間）<br>玄野武宏・1.3倍 ／ {duration // 60}分{duration % 60:02d}秒</p>
 <audio controls preload="metadata" src="audio.mp3?v={audio_version}">音声を再生できません。</audio>
+<button type="button" id="listen-toggle" aria-pressed="false" data-edition="{esc(data['id'])}" data-source="{esc(recap.get('source_id', ''))}" data-start="{start}" data-end="{end}">聞き終わった</button>
+<span class="meta" id="listen-note">このブラウザに記録します。</span>
 <p><a href="audio.mp3?v={audio_version}" download>音声を保存</a> · <a href="script.txt?v={text_version}">原稿を開く</a></p>
 <details><summary>原稿を読む</summary>{paragraphs}</details>
 <details><summary>出典</summary><ul>{sources}</ul></details>
@@ -277,6 +322,36 @@ function updateFreshness() {{
 }}
 updateFreshness();
 setInterval(updateFreshness, 60000);
+</script><script>
+const edition = document.getElementById('listen-toggle').dataset.edition;
+const toggle = document.getElementById('listen-toggle');
+const player = document.querySelector('audio');
+const prefix = 'daily-news:heard:';
+const source = toggle.dataset.source;
+const start = Number(toggle.dataset.start), end = Number(toggle.dataset.end);
+function heard(id) {{
+  try {{ return localStorage.getItem(prefix + id) === '1'; }}
+  catch {{ return false; }}
+}}
+function showState() {{
+  const done = heard(edition);
+  toggle.textContent = done ? '聞き終わった ✓（取り消す）' : '聞き終わった';
+  toggle.setAttribute('aria-pressed', String(done));
+}}
+toggle.addEventListener('click', () => {{
+  try {{
+    if (heard(edition)) localStorage.removeItem(prefix + edition);
+    else localStorage.setItem(prefix + edition, '1');
+    showState();
+  }} catch {{ document.getElementById('listen-note').textContent = 'このブラウザでは記録を保存できません。'; }}
+}});
+function skipHeardRecap() {{
+  if (source && !player.paused && !player.seeking && player.currentTime >= start &&
+      player.currentTime < end && heard(source)) player.currentTime = end;
+}}
+player.addEventListener('timeupdate', skipHeardRecap);
+player.addEventListener('playing', skipHeardRecap);
+showState();
 </script></html>'''
     (directory / "index.html").write_text(html_text)
     (directory / "script.txt").write_text(data["manuscript"])
@@ -312,7 +387,7 @@ def main():
     if args.engine not in ("http://127.0.0.1:50021", "http://127.0.0.1:50101"):
         raise ValueError("音声エンジンはループバック接続に限定します")
     args.output.mkdir(parents=True, exist_ok=False)
-    audio = synthesize(chunks, args.engine, args.output)
+    audio = synthesize(chunks, args.engine, args.output, recap_range(data, chunks))
     manifest = render(data, audio, args.output)
     print(json.dumps(manifest, ensure_ascii=False, indent=2))
 

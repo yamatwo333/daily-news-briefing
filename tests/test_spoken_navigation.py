@@ -70,8 +70,9 @@ class SpokenNavigationTests(unittest.TestCase):
              patch.object(build.shutil, 'which', return_value='ffmpeg'), \
              patch.object(build.subprocess, 'run', side_effect=encoder), \
              patch.object(build, 'measurements', return_value=levels):
-            result = build.synthesize(chunks, 'http://127.0.0.1:50021', Path(temp))
+            result = build.synthesize(chunks, 'http://127.0.0.1:50021', Path(temp), recap=(3, 5))
         expected = b''.join(voiced + b'\0' * round(1000 * pause) * 2 for pause in pauses)
+        self.assertEqual(result['recap_seconds'], [0.75, 2.25])
         self.assertEqual(captured, [expected])
         self.assertEqual(result['duration_seconds'], 2.35)
 
