@@ -1,52 +1,34 @@
-# daily-news-briefing
+# NEWS
 
-Generate a daily Japanese morning news digest, keep local reference outputs,
-and mirror the final daily read-aloud study script into one fixed Google Doc
-for NotebookLM.
+GPTが選定・事実確認・執筆する日本語の朝ニュースです。音声・原稿・出典は毎日同じURLで提供します。
 
-## Repository layout
+https://yamatwo333.github.io/daily-news-briefing/
 
-- `scripts/sync_google_doc.py`: push a generated Markdown file to Google Docs
-- `apps-script/Code.gs`: Apps Script web app that receives the Markdown
-- `config/google_doc_sync.json`: fixed Google Doc sync settings
-- `docs/news_foundation_2026_ja.*`: foundational learning map for the daily brief
-- `docs/daily_briefing_principles.md`: concise operating model for the daily brief
-- `docs/automation_prompt_daily_briefing.md`: tracked reference copy of the daily automation prompt
-- `docs/google-doc-sync.md`: setup and operation notes
-- `output/`: ignored generated briefings
+## 現在の運用
 
-## Daily briefing model
+既存のGPTクラウド予約が毎日7:00（Asia/Tokyo）に開始し、処理完了後に音声と原稿を更新します。原稿は既存のPro契約のGPTが作成し、有料AI API・他社モデルは使いません。Googleドキュメント同期は現行工程に含めません。
 
-The foundational document is the map. The daily brief is now an ear-first
-morning news digest built on top of that map, not a worksheet-like lesson
-script. Use
-`docs/daily_briefing_principles.md` as the concise source of truth for the
-near-100-point, newsworthiness-first, importance-first, public-salience-aware
-briefing model, coverage windows, recurring-story evaluation, flexible section
-flow, and
-beginner-friendly writing, and use
-`docs/automation_prompt_daily_briefing.md` as the tracked source of truth for
-the daily automation prompt.
+1. 正式ホスト型検索でニュース候補の記事本文を確認し、新しい日本語原稿を作成。
+2. 現行ブランチHEADに固定した手順・オフライン判定・原稿検査を使用。VMからの外部コマンド通信は使用しない。
+3. `news-cloud-test` の `inbox/latest.json` だけを1回更新。
+4. GitHub Actionsが回帰テスト・原稿検査・VOICEVOX音声生成・Pages公開を実施。
+5. GitHubの `verify-publication` が公開ページ・原稿・出典・音声の版、全文、ハッシュ、サイズを照合。deploy成功だけで公開照合済みとは扱わない。
 
-Keep daily outputs beginner-friendly, plain, calm, headline-first, and easy to
-follow by ear. Treat the five core sections in
-`docs/daily_briefing_principles.md` as agenda lanes, not mechanical quotas;
-skip weak rotating sections and allow extra `社会・暮らし・インフラ` coverage
-on strong public-health, privacy, consumer-safety, or institutional-trust days.
-The synced read-aloud body should start with a very short greeting, move
-directly into the section-based digest, then use
-`そのほか、短く確認します。` and `今日ここだけ覚える`, while avoiding noisy
-markdown symbols for TTS-friendly reading. Use the two tracked docs above as
-the source of truth for structure, prioritization, repetition control, and
-sync behavior.
+現在の運用手順の正本は [docs/news_daily_runbook.md](docs/news_daily_runbook.md) です。予約はこの手順と `cloud_test/daily_guard.py` を毎回同じHEADから取得します。クラウドの古いローカルcheckoutや、過去の試験指示を現在の仕様と混同しません。
 
-## Quick sync check
+記事単位の取得不能はその記事を除外し、再取得や別経路での回避をせず、確認済みの別記事で継続します。本当の安全審査・明示的権限拒否は該当操作を停止します。使用しないVM外向きHTTPの状態を、別の権限境界を持つホスト型ツールの共通前提にはしません。
 
-After generating a Markdown artifact, create a local `.env` from `.env.example`
-and validate without updating Google Docs:
+## 主なファイル
 
-```sh
-python3 scripts/sync_google_doc.py path/to/generated.md --dry-run
-```
+- `docs/news_daily_runbook.md`: 現行の毎朝配信手順・失敗時の扱い。
+- `cloud_test/daily_guard.py`: オフラインの実行境界・取得エラー・重複配信判定。
+- `cloud_test/build.py`: 原稿検査、玄野武宏の音声化、公開ページ生成。
+- `cloud_test/verify_publication.py`: GitHub上で行う公開ファイルの独立照合。
+- `tests/`: 起動状態、URL取得不能、明示的拒否、日時・重複・古い公開物・キャッシュの回帰テスト。
+- `docs/daily_briefing_principles.md` と `docs/news_foundation_2026_ja.*`: 編集・ニュース理解の参考。古い同期・挨拶・定型構成などが現行手順や最新の利用者指示と衝突する場合は、現行方針を優先。
 
-For full setup and sync operation, see `docs/google-doc-sync.md`.
+## 旧構成の資料
+
+`scripts/sync_google_doc.py`、Apps Script、Google Docs同期設定、旧 `docs/automation_prompt_daily_briefing.md` は旧構成の参考資料です。現在の予約や同期を表す正本ではなく、このREADMEを読んだだけで実行・再設定しません。旧設定の秘密値・認証情報は読み出したり公開したりしません。
+
+本番の閲覧先は固定URLですが、配信経路は引き続き `news-cloud-test` です。mainへのマージや権限拡大はこの更新に含めていません。
