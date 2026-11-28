@@ -1,5 +1,11 @@
 # Daily Briefing Principles
 
+## 11月28日：耳で聞いて話が追える原稿
+
+第一声で「誰が何を決めたか」が伝わるようにする。人の名前や長い説明を主語と結論の間に重ねない。例えば「政治資金パーティーに官僚を呼び、企業関係者への政策説明をさせた大臣への問責決議案を否決」なら、「参議院は、文部科学大臣の責任を問う案を退けました。きっかけは、大臣が政治資金を集める会に官僚を呼び、企業の関係者に政策を説明させたことです」と分けて話す。用語が理解に役立つ回は「こうして議会が責任を問うのが『問責決議案』です」のように短く添える。この例文は執筆手法の例で、日々のニュースには当日の確認済み事実を使う。
+
+背景を知らない人が「そもそも何が問題？」「結局どうなった？」と思う箇所に、具体的な答えを一つ置く。ひとつの記事で別の法案や次の日程に話が飛ぶなら、理解に欠かせない場合だけつながりを説明する。長くなるときは、二次的な日程、重なる数字、抽象的なまとめを先に削る。役に立つ用語は別の日にも短く触れ、説明のために題材や本数を減らさない。
+
 ## 11月24日からの編集方針：数日ぶりに聞く人にも伝わる朝刊
 
 聞き手は世の中の動きを知りたい成人で、その話の昨日までの経緯や制度の名前を知っているとは限らない。見出しも本文も話し言葉で書く。まず具体的な人の行動や変化を短い一文で伝え、次に「なぜそれが問題になるのか」「以前はどうだったのか」など、理解に必要なつながりを一つ補う。数字や固有名詞を削っても、誰が決めたか、まだ案の段階かなど、意味を左右する区別は残す。「今後の動向が注目されます」のように、どの話にも使えるまとめは省く。
@@ -18,13 +24,13 @@
 
 Target about 8 minutes (normally 7–9); the finished audio must not exceed 600
 seconds, including genre cues, headlines and pauses. Keep the approved voice,
-speed 1.3, intonation 0.8 and audible boundaries. Never accelerate, cut off the
+speed 1.2, intonation 0.8 and audible boundaries. Never accelerate, cut off the
 recording, or remove the explanatory sentence just to fit. This supersedes older
 4,300-character minimums, 4,500–6,500-character targets and 6–8-sentence templates.
 
 Keep the praised news selection and broad research effort. Normally select
 12–16 substantive stories; up to 18 only when they fit without crowding out
-understanding. Aim for 3,600–3,900 total Japanese characters, including headlines
+understanding. Aim for 3,350–3,650 total Japanese characters, including headlines
 and cues. New normal editions require at least 12 stories and 3,200 characters;
 all new editions have a 4,200-character editorial ceiling. These are planning
 bounds, not a guarantee of speaking time or permission to pad. Check actual audio.
@@ -71,7 +77,7 @@ for eventual schedule-text alignment, not an instruction to create another task.
 ## Normal volume takes priority — user clarification 2026-11-04
 
 The default is a substantive normal edition within the November 5 listening
-budget (normally 12–16 stories and 3,600–3,900 Japanese characters). Build a 30–40-story candidate pool across independent newsrooms and
+budget (normally 12–16 stories and 3,350–3,650 Japanese characters). Build a 30–40-story candidate pool across independent newsrooms and
 use the current runbook's three discovery passes and up to 30-minute research
 budget. Verify article bodies, facts and dates; no filler or invented context.
 Check both actual story count and saved manuscript length. A twelve-item outline
@@ -423,7 +429,7 @@ That closing section must contain exactly 3 short points and then end cleanly.
 
 ## Length And Density Targets
 
-The current read-aloud script targets 3,600–3,900 Japanese characters and about
+The current read-aloud script targets 3,350–3,650 Japanese characters and about
 eight minutes; the November 5 policy above controls all limits.
 
 Keep it short enough to finish comfortably and dense enough to be useful.

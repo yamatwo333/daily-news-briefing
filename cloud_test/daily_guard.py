@@ -65,7 +65,7 @@ def coverage_decision(candidates, elapsed_seconds=0, discovery_complete=False,
                   coverage_gaps=coverage_gaps, max_research_seconds=RESEARCH_BUDGET_SECONDS,
                   manuscript_characters=manuscript_characters,
                   listening_policy="eight-minute-v1",
-                  target_manuscript_characters=[3600, 3900],
+                  target_manuscript_characters=[3350, 3650],
                   normal_min_characters=NORMAL_MIN_CHARACTERS,
                   max_audio_seconds=600,
                   research_passes=research_passes, examined_candidates=examined_candidates,
@@ -74,7 +74,7 @@ def coverage_decision(candidates, elapsed_seconds=0, discovery_complete=False,
     if manuscript_characters is not None and manuscript_characters > MAX_MANUSCRIPT_CHARACTERS:
         return dict(result, action="shorten_manuscript", write_input=False,
                     max_manuscript_characters=MAX_MANUSCRIPT_CHARACTERS,
-                    instruction="11月5日の利用者変更：旧4300字下限は撤廃。3600〜3900字を目標に、出来事と必要な意味の説明を残して重複・細部を削り再検査してください。")
+                    instruction="11月5日の利用者変更：旧4300字下限は撤廃。3350〜3650字を目標に、出来事と必要な意味の説明を残して重複・細部を削り再検査してください。")
     if len(verified) >= 12:
         if manuscript_characters is None:
             return dict(result, action="draft_normal", write_input=False)

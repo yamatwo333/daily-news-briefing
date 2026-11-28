@@ -6,6 +6,10 @@ the research and Japanese writing using the existing subscription. No paid API,
 other model, new schedule, Google Docs sync, credential access, or permission
 expansion. Public destination and repository remain unchanged.
 
+## 11月28日からの音声・原稿
+
+玄野武宏を通常の1.2倍で合成する。予約文に残る以前の速度指定はこの設定で更新する。音声8分前後・実測10分以内に合わせ、新しい原稿の目安は見出し込み3,350〜3,650字。題材・本数は重要度で選ぶ。編集時は、話の結論を最初の短い文に出し、背景の知識がないと分からない理由を次の文で一つ補う。数字や手続きが続くところは、どれが結論を理解するのに必要かを選ぶ。具体例は編集方針の11月28日節を参照。
+
 ## 聞き逃しをカバーする手順（2026-11-24）
 
 調査の最初に、開始時に取得した `news-cloud-test` のHEADを基準に、GitHub接続のコミット履歴で `inbox/latest.json` の変更を直近7日・最大7件に絞る。同日差し替えは最新の版を使う。まず直近3回分の見出しを確認し、重要な続報や利用者が明示した聞き逃し日の候補があれば7日の範囲で該当版を見る。比較には当該コミットの原稿・出典を使う。入力履歴だけで公開成功や聴取済みを推定しない。実際に聞いた日について利用者の申告がある場合はそれを優先する。聴取履歴が分からないときは、数日ぶりの人でも追える共通の朝刊を作る。
@@ -30,13 +34,13 @@ expansion. Public destination and repository remain unchanged.
 
 Target about 8 minutes (normally 7–9); the finished audio must not exceed 600
 seconds, including genre cues, headlines and pauses. Keep the approved voice,
-speed 1.3, intonation 0.8 and audible boundaries. Never accelerate, cut off the
+speed 1.2, intonation 0.8 and audible boundaries. Never accelerate, cut off the
 recording, or remove the explanatory sentence just to fit. This supersedes older
 4,300-character minimums, 4,500–6,500-character targets and 6–8-sentence templates.
 
 Keep the praised news selection and broad research effort. Normally select
 12–16 substantive stories; up to 18 only when they fit without crowding out
-understanding. Aim for 3,600–3,900 total Japanese characters, including headlines
+understanding. Aim for 3,350–3,650 total Japanese characters, including headlines
 and cues. New normal editions require at least 12 stories and 3,200 characters;
 all new editions have a 4,200-character editorial ceiling. These are planning
 bounds, not a guarantee of speaking time or permission to pad. Check actual audio.
@@ -127,7 +131,7 @@ First daily edition: preceding 24 hours. Subsequently: new developments since
 the previous successful cutoff, ordinarily 24 hours after a failure, with major
 continuing developments checked within 48 hours. Maintain the approved news
 selection policy and Japanese spoken prose under the current eight-minute
-listening budget above (normally 12–16 stories and 3,600–3,900 characters).
+listening budget above (normally 12–16 stories and 3,350–3,650 characters).
 These are normal-edition targets, not grounds for discarding all verified news.
 The normal-first collection and last-resort procedure below controls the decision.
 No quotas, weak filler, invented background, copied old manuscript or unverified
@@ -178,7 +182,7 @@ candidates, elapsed_seconds, discovery_complete and coverage_gaps.
 - shorten_manuscript: more than 4,200 actual characters; remove redundant detail
   and secondary specifics, preserve meaning, then revalidate. No public write.
 - prepare_normal: at least 12 verified selected stories AND 3,200–4,200 actual
-  saved characters. Aim for 3,600–3,900 with one useful explanation per article.
+  saved characters. Aim for 3,350–3,650 with one useful explanation per article.
   Known unconfirmed topics are disclosed in checks/final report; a normal-volume
   label does not claim exhaustive coverage. A missing topic alone does not turn
   an otherwise full-length edition into a compact one.

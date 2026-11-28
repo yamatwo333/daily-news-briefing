@@ -24,7 +24,7 @@ ENGINE_VERSION = "0.25.2"
 LISTENING_POLICY = "eight-minute-v1"
 MAX_AUDIO_SECONDS = 600
 MAX_MANUSCRIPT_CHARACTERS = 4200
-SETTINGS = dict(speedScale=1.3, intonationScale=0.8, pauseLengthScale=0.9,
+SETTINGS = dict(speedScale=1.2, intonationScale=0.8, pauseLengthScale=0.9,
                 volumeScale=1.0, prePhonemeLength=0.1,
                 postPhonemeLength=0.12, outputStereo=False)
 GENRE_CUE = r"(?:まずは|続いては|続いて|次は|最後は)[、，\s]*[^。\n]{1,40}のニュースです。"
@@ -299,7 +299,7 @@ def render(data, audio, directory):
 <style>body{{max-width:760px;margin:40px auto;padding:0 20px;font:18px/1.9 system-ui,sans-serif;color:#202731;background:#faf9f6}}h1{{font-size:2rem}}audio{{width:100%;margin:18px 0}}.meta{{font-size:.9rem;color:#57616d}}.notice{{padding:12px 16px;border-left:4px solid #577b76;background:#edf2ee}}p{{margin:1.5em 0}}a{{color:#275c68}}button{{font:inherit}}summary{{cursor:pointer}}</style>
 <h1>NEWS</h1><div class="notice">{esc(edition_notice)}</div>
 <p id="freshness" class="notice" role="status" hidden></p>
-<p class="meta">ニュース確認の基準：{cutoff}（日本時間）<br>音声作成：{completed}（日本時間）<br>玄野武宏・1.3倍 ／ {duration // 60}分{duration % 60:02d}秒</p>
+<p class="meta">ニュース確認の基準：{cutoff}（日本時間）<br>音声作成：{completed}（日本時間）<br>玄野武宏・{SETTINGS['speedScale']}倍 ／ {duration // 60}分{duration % 60:02d}秒</p>
 <audio controls preload="metadata" src="audio.mp3?v={audio_version}">音声を再生できません。</audio>
 <button type="button" id="listen-toggle" aria-pressed="false" data-edition="{esc(data['id'])}" data-source="{esc(recap.get('source_id', ''))}" data-start="{start}" data-end="{end}">聞き終わった</button>
 <span class="meta" id="listen-note">このブラウザに記録します。</span>
